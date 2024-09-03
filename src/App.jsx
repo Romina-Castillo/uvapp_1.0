@@ -1,12 +1,13 @@
-import Appbar from './components/Appbar';
-import Grid from './components/Grid';
+
+import { Container } from "@mui/material";
+import Navbar from "./components/navbar/Navbar";
+
 
 function App() {
   return (
-    <div>
-      <Appbar />
-      <Grid />
-    </div>
+    <Container sx={{ mt: 5 }}>
+      <Navbar />
+    </Container>
   );
 }
 
