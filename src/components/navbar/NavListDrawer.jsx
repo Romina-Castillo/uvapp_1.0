@@ -1,19 +1,29 @@
-import { Box, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 
-export default function NavListDrawer() {
-    return <Box sx={{ width: 250, bgcolor: "lightgreen"}}>
-        <nav> 
-            <List>
-                <ListItem desablePadding>
-                    <ListItemButton
-                    component="a"
-                    href="Inicio"
-                    >
-                        <ListItemText> Inicio </ListItemText>
-                    </ListItemButton>
-                </ListItem>
-            </List>
-        </nav>
-    </Box>;
+export default function NavListDrawer( {navArrayLinks, NavLink, setOpen} ) {
+    return (
+        <Box sx={{ width: 250, bgcolor: "lightgreen"}}>
+            <nav> 
+                <List>
+                    {navArrayLinks.map((item) => (
 
-}
+                        <ListItem 
+                            disablePadding
+                            key={item.title}
+                        >
+                            <ListItemButton
+                                component= {NavLink}
+                                to={item.path}
+                                onClick= {() => setOpen(false)}
+                            >
+                                <ListItemIcon> {item.icon} </ListItemIcon>
+                                <ListItemText> {item.title} </ListItemText> 
+                    
+                            </ListItemButton>
+                        </ListItem>
+                    ))}
+                </List>
+            </nav>
+        </Box>
+    );
+};
