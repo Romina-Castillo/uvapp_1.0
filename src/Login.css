@@ -1,0 +1,79 @@
+body {
+    background-image: url("/Vinedos-Mendoza.jpg");
+    height: 100vh;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+
+  /* Cabecera con el título y los íconos */
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 38%;
+    background-color: #a27b38; /* Color dorado */
+    color: white;
+  }
+  
+  .app-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  
+  /* Contenedor del formulario */
+  .form-container {
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+  }
+  
+  /* Estilos de los campos de entrada */
+  .input-field {
+    margin-bottom: 10px;
+  }
+  
+  /* Botón de inicio de sesión */
+  .login-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  /* Enlace de contraseña olvidada */
+  .forgot-password {
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+    text-align: right;
+  }
+  
+  /* Botón de Facebook */
+  .facebook-button {
+    background-color: #3b5898;
+    color: white;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Botón de registrarse */
+  .register-button {
+    background-color: white;
+    color: #333;
+    border: 1px solid #333;
+    cursor: pointer;
+  }
