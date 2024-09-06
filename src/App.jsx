@@ -3,7 +3,7 @@ import { Container } from "@mui/material";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./views/Home";
 import Login from "./Login";
-import Register from "./views/Register";
+import Register from "./Register";
 import { Route, Routes } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
