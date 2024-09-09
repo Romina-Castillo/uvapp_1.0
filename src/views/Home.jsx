@@ -32,7 +32,6 @@ const TrendBox = styled(Box)({
     backgroundColor: "rgb(185, 171, 25)", // Color verde oliva
     padding: "20px",
     width: '20%',
-    display: "flex",
     borderRadius: "15px",
     margin: "20px auto",
     textAlign: "center",
