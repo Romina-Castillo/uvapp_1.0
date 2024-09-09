@@ -1,10 +1,12 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useState } from "react";
-import './Login.css';
+import './Login.css'; 
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const [error, setError] = useState({
     email: {
       error: false,
@@ -128,6 +130,7 @@ export default function Login() {
           variant="outlined"
           fullWidth
           className="register-button"
+          onClick={() => navigate("/register")}
           sx={{ mt: 2 }}
         >
           Registrarse
