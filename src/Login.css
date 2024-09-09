@@ -1,6 +1,6 @@
 body {
     background-image: url("/Vinedos-Mendoza.jpg");
-    height: 100vh;
+    height: 100%;
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -13,7 +13,6 @@ body {
 
   /* Cabecera con el título y los íconos */
   .header {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 10px 38%;
