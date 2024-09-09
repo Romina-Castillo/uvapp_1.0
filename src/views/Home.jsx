@@ -29,7 +29,7 @@ const HeaderBox = styled(StyledBox)({
 });
 
 const TrendBox = styled(Box)({
-    backgroundColor: "rgb(185, 171, 25)", // Color verde oliva
+    backgroundColor: "rgb(185, 171, 25)", // Color verde oliva?
     padding: "20px",
     width: '20%',
     borderRadius: "15px",
