@@ -8,7 +8,7 @@ const Background = styled("div")({
     backgroundSize: "cover",
     backgroundAttachment: "fixed",
     backgroundPosition: "center",
-    minHeight: "56vh",
+    minHeight: "3vh",
     display: "flex",
     flexDirection: "column",
     backgroundImage: `url(/Compuertas-Mendoza.jpg)`,

@@ -1,26 +1,15 @@
-/* Register.css */
-
-body, html {
+body {
+    background-image: url('/GI-975446116-winery.jpg');
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-}
-
-.background {
-    background-image: url('/GI-975446116-winery.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .header {
     position: absolute;
     top: 0;
     width: 100%;
-    background-color: #8D734A; /* Color de la barra superior */
+    background-color: #8D734A; 
     color: white;
     padding: 10px 0;
     text-align: center;
@@ -30,7 +19,7 @@ body, html {
 }
 
 .header .app-title {
-    margin-left: 50px; /* Ajusta según sea necesario */
+    margin-left: 50px; 
 }
 
 .form-container {
