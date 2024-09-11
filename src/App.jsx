@@ -7,6 +7,7 @@ import Register from "./Register";
 import { Route, Routes } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
+import Bodegas from "./views/Bodegas";
 
 const navArrayLinks = [
   {   
@@ -23,6 +24,10 @@ const navArrayLinks = [
       title: "Register", 
       path: "/register", 
   },
+  {
+      title: "Bodegas",
+      path: "/bodegas"
+  }
 ];
 
 export default function App() {
@@ -35,6 +40,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/bodegas" element={<Bodegas />} />
         </Routes>
       </Container>
 

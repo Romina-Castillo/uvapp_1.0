@@ -9,7 +9,7 @@ export default function Navbar({navArrayLinks}) {
 
     return (
         <>
-            <AppBar position="absolute">
+            <AppBar position="fixed">
                 <Toolbar>
                     <IconButton
                         color="inherit"
