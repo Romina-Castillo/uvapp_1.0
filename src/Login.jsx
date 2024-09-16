@@ -52,7 +52,7 @@ export default function Login() {
       });
   
       const data = await response.json();
-      console.log(data)
+      console.log
   
       if (response.ok) {
         // Redirigir si el login es exitoso
