@@ -1,6 +1,6 @@
 import { Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
 
-// Datos de las bodegas
+
 const bodegasData = [
     {
         name: "Bodega 1",
@@ -63,7 +63,7 @@ const Bodegas = () => {
         <Grid 
             container 
             spacing={3} 
-            sx={{ mt: 10 }} // Margen superior para separar de la Navbar
+            sx={{ mt: 10 }} // margen para separar el grid de la Navbar
         >
             {bodegasData.map((bodega, index) => (
                 <Grid 
