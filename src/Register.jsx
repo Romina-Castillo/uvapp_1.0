@@ -1,8 +1,11 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useState } from "react";
 import './Register.css';
+import { useNavigate } from "react-router-dom";
+
 
 export default function Register() {
+  const navigate = useNavigate(); 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -57,18 +60,20 @@ export default function Register() {
             username,
             email,
             password,
+            confirmPassword,
           }),
         });
-  
+    
         if (response.ok) {
-          console.log('Usuario registrado exitosamente');
+          // Redirigir al login después de registro exitoso
+          navigate('/login');
         } else {
           console.log('Error al registrar usuario');
         }
       } catch (error) {
         console.error('Error en la conexión:', error);
       }
-    }
+    }    
   };
   
 
