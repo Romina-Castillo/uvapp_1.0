@@ -39,89 +39,38 @@ export default function Register() {
     return password === confirmPassword;
   };
 
-  const handlerSubmit = (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault();
-
+  
     const isEmailValid = validateEmail(email);
     const isPasswordValid = validatePassword(password);
     const isConfirmPasswordValid = validateConfirmPassword(password, confirmPassword);
-
-    if (!username) {
-      setError((prevError) => ({
-        ...prevError,
-        username: {
-          error: true,
-          message: "El nombre de usuario es requerido",
-        },
-      }));
-    } else {
-      setError((prevError) => ({
-        ...prevError,
-        username: {
-          error: false,
-          message: "",
-        },
-      }));
-    }
-
-    if (!isEmailValid) {
-      setError((prevError) => ({
-        ...prevError,
-        email: {
-          error: true,
-          message: "El mail no es válido",
-        },
-      }));
-    } else {
-      setError((prevError) => ({
-        ...prevError,
-        email: {
-          error: false,
-          message: "",
-        },
-      }));
-    }
-
-    if (!isPasswordValid) {
-      setError((prevError) => ({
-        ...prevError,
-        password: {
-          error: true,
-          message: "La contraseña debe tener al menos 6 caracteres",
-        },
-      }));
-    } else {
-      setError((prevError) => ({
-        ...prevError,
-        password: {
-          error: false,
-          message: "",
-        },
-      }));
-    }
-
-    if (!isConfirmPasswordValid) {
-      setError((prevError) => ({
-        ...prevError,
-        confirmPassword: {
-          error: true,
-          message: "Las contraseñas no coinciden",
-        },
-      }));
-    } else {
-      setError((prevError) => ({
-        ...prevError,
-        confirmPassword: {
-          error: false,
-          message: "",
-        },
-      }));
-    }
-
+  
     if (username && isEmailValid && isPasswordValid && isConfirmPasswordValid) {
-      console.log("Formulario enviado correctamente");
+      try {
+        const response = await fetch('http://localhost:3001/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username,
+            email,
+            password,
+          }),
+        });
+  
+        if (response.ok) {
+          console.log('Usuario registrado exitosamente');
+        } else {
+          console.log('Error al registrar usuario');
+        }
+      } catch (error) {
+        console.error('Error en la conexión:', error);
+      }
     }
   };
+  
 
   return (
     <div className="background">

@@ -16,7 +16,12 @@ export default function Login() {
       error: false,
       message: "",
     },
+    login: {
+      error: false,
+      message: "",
+    }
   });
+  
 
   const validateEmail = (email) => {
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -27,52 +32,52 @@ export default function Login() {
     return password.length >= 6;
   };
 
-  const handlerSubmit = (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault();
-
+  
     const isEmailValid = validateEmail(email);
     const isPasswordValid = validatePassword(password);
-
-    if (!isEmailValid) {
+  
+    if (!isEmailValid || !isPasswordValid) return;
+  
+    // Realizar la solicitud al backend
+    try {
+      console.log(email, password)
+      const response = await fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      const data = await response.json();
+      console.log(data)
+  
+      if (response.ok) {
+        // Redirigir si el login es exitoso
+        navigate('/');
+      } else {
+        // Mostrar error si el login falla
+        setError((prevError) => ({
+          ...prevError,
+          login: {
+            error: true,
+            message: data.message || 'Error al iniciar sesión. Verifica tus credenciales.',
+          },
+        }));
+      }
+    } catch (error) {
       setError((prevError) => ({
         ...prevError,
-        email: {
+        login: {
           error: true,
-          message: "El mail no es válido",
+          message: 'Error en el servidor. Intenta nuevamente más tarde.',
         },
       }));
-    } else {
-      setError((prevError) => ({
-        ...prevError,
-        email: {
-          error: false,
-          message: "El mail se agregó exitosamente",
-        },
-      }));
-    }
-
-    if (!isPasswordValid) {
-      setError((prevError) => ({
-        ...prevError,
-        password: {
-          error: true,
-          message: "La contraseña debe tener al menos 6 caracteres",
-        },
-      }));
-    } else {
-      setError((prevError) => ({
-        ...prevError,
-        password: {
-          error: false,
-          message: "Contraseña correcta",
-        },
-      }));
-    }
-
-    if (isEmailValid && isPasswordValid) {
-      console.log("Formulario enviado correctamente");
     }
   };
+  
 
   return (
     <div className="background">
@@ -108,7 +113,11 @@ export default function Login() {
           className="input-field"
           sx={{ mt: 2 }}
         />
-         <Button
+        {error.login.error && (
+          <div style={{ color: 'red', marginTop: '10px' }}>{error.login.message}</div>
+          )}
+
+        <Button
           type="submit"
           variant="outlined"
           fullWidth
