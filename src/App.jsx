@@ -15,15 +15,6 @@ const navArrayLinks = [
       path: "/", 
       icon: <HomeIcon />
   },
-  {   
-      title: "Login", 
-      path: "/login", 
-      icon: <LoginIcon />
-  },
-  {   
-      title: "Register", 
-      path: "/register", 
-  },
   {
       title: "Bodegas",
       path: "/bodegas"

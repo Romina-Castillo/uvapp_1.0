@@ -1,28 +1,27 @@
 import { Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
 
-
 const bodegasData = [
     {
-        name: "Bodega 1",
-        description: "Una descripción breve de la Bodega 1.",
+        name: "Bodega Andeluna",
+        description: "Una descripción breve de la AAndeluna.",
         img: "/img/bodega-andeluna.jpg",
         website: "https://wineobs.com.ar/mro/andeluna"
     },
     {
-        name: "Bodega 2",
-        description: "Una descripción breve de la Bodega 2.",
+        name: "Bodega Séptima",
+        description: "Una descripción breve de la Bodega Séptima.",
         img: "/img/bodega-septima.jpg",
         website: "https://www.bodegaseptima.com/enoturismo/"
     },
     {
-        name: "Bodega 3",
-        description: "Una descripción breve de la Bodega 3.",
+        name: "Bodega Salentein",
+        description: "Una descripción breve de la Bodega Salentein.",
         img: "/img/bodega-salentein.jpg",
         website: "https://www.bodegasalentein.com/reservas"
     },
     {
-        name: "Bodega 4",
-        description: "Una descripción breve de la Bodega 4.",
+        name: "Bodega Trapiche",
+        description: "Una descripción breve de la Bodega Trapiche.",
         img: "/img/bodega-trapiche.jpeg",
         website: "https://trapiche-costaypampa.meitre.com/"
     },
@@ -62,7 +61,7 @@ const Bodegas = () => {
     return (
         <Grid 
             container 
-            spacing={3} 
+            spacing={3} // columnas 3
             sx={{ mt: 10 }} // margen para separar el grid de la Navbar
         >
             {bodegasData.map((bodega, index) => (

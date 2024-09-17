@@ -41,11 +41,11 @@ export default function Register() {
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
-  
+
     const isEmailValid = validateEmail(email);
     const isPasswordValid = validatePassword(password);
     const isConfirmPasswordValid = validateConfirmPassword(password, confirmPassword);
-  
+
     if (username && isEmailValid && isPasswordValid && isConfirmPasswordValid) {
       try {
         const response = await fetch('http://localhost:3001/register', {
@@ -59,9 +59,12 @@ export default function Register() {
             password,
           }),
         });
-  
+
         if (response.ok) {
+          // captura el nombre de usuario ingresado y guarda este en localStorage y redirige a la vista del perfil logueado
+          localStorage.setItem("username", username);
           console.log('Usuario registrado exitosamente');
+          navigate("/");  
         } else {
           console.log('Error al registrar usuario');
         }
@@ -70,7 +73,7 @@ export default function Register() {
       }
     }
   };
-  
+
 
   return (
     <div className="background">

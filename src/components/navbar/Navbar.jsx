@@ -1,11 +1,73 @@
-import { AppBar, Box, Button, Drawer, IconButton, Toolbar, Typography} from "@mui/material"
+import { AppBar, Box, Button, Drawer, IconButton, Toolbar, Typography, InputBase, Menu, MenuItem, Badge } from "@mui/material";
+import { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import NavListDrawer from "./NavListDrawer";
 import MenuIcon from '@mui/icons-material/Menu';
-import NavListDrawer from "./NavListDrawer"
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
 
-export default function Navbar({navArrayLinks}) {
-    const [open, setOpen] = useState(false)
+export default function Navbar({ navArrayLinks }) {
+    const [open, setOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [notificationsAnchorEl, setNotificationsAnchorEl] = useState(null);
+    const [userAnchorEl, setUserAnchorEl] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [username, setUsername] = useState("");  // Estado para guardar el nombre de usuario
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Al cargar el componente, verifica si el usuario está logueado
+        const storedUsername = localStorage.getItem("username");
+        if (storedUsername) {
+            setIsLoggedIn(true);
+            setUsername(storedUsername);
+        }
+    }, []);
+
+    const handleOpenNotifications = (event) => {
+        setNotificationsAnchorEl(event.currentTarget);
+    };
+
+    const handleCloseNotifications = () => {
+        setNotificationsAnchorEl(null);
+    };
+
+    const handleOpenUserMenu = (event) => {
+        setUserAnchorEl(event.currentTarget);
+    };
+
+    const handleCloseUserMenu = () => {
+        setUserAnchorEl(null);
+    };
+
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const handleFilterClick = () => {
+        console.log("Aplicar filtros");
+    };
+
+    const handleLogout = () => {
+        // Lógica para cerrar sesión
+        setIsLoggedIn(false);
+        setUsername("");
+        localStorage.removeItem("username");  // Eliminar el nombre de usuario de localStorage
+        setUserAnchorEl(null);
+        navigate("/login");
+    };
+
+    const handleLogin = () => {
+        setUserAnchorEl(null);
+        navigate("/login");
+    };
+
+    const handleRegister = () => {
+        setUserAnchorEl(null);
+        navigate("/register");
+    };
 
     return (
         <>
@@ -15,21 +77,20 @@ export default function Navbar({navArrayLinks}) {
                         color="inherit"
                         size="large"
                         onClick={() => setOpen(true)}
-                        sx={{ display: {xs: "flex", sm: "none" } }}
+                        sx={{ display: { xs: "flex", sm: "none" } }}
                         edge="start"
-                        >    
-                            <MenuIcon />
-                    </IconButton>
-                    <Typography  
-                    variant="h6" 
-                    sx={{ flexGrow: 1 }}
                     >
-                    UVAPP 
+                        <MenuIcon />
+                    </IconButton>
+
+                    <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                        UVAPP
                     </Typography>
-                    <Box>
-                        {navArrayLinks.map(item=> (
-                            <Button 
-                                color="inherit" 
+
+                    <Box sx={{ display: { xs: "none", sm: "flex" }, flexGrow: 1 }}>
+                        {navArrayLinks.map((item) => (
+                            <Button
+                                color="inherit"
                                 key={item.title}
                                 component={NavLink}
                                 to={item.path}
@@ -37,23 +98,76 @@ export default function Navbar({navArrayLinks}) {
                                 {item.title}
                             </Button>
                         ))}
-                
-                        <Button color="inherit"> Filtro </Button>
-                        <Button color="inherit"> Notificaciones </Button>
-                        <Button color="inherit"> Cuenta </Button>
-                        </Box>
-                    </Toolbar>
-                </AppBar>
-                <Drawer
-                    open={open}
-                    anchor="left" 
-                    onClose={() => setOpen(false)}
+                    </Box>
+
+                    <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
+                        <SearchIcon />
+                        <InputBase
+                            placeholder="Buscar…"
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                            sx={{
+                                ml: 1,
+                                color: "black",  // color del texto a negro para que sea visible con el fondo blanco
+                                backgroundColor: "white",  // el fondo del buscador en blanco
+                                borderRadius: 1,  // borde redondeado 
+                                padding: '0 10px', 
+                                width: '100%', // se ajusta el tamaño para que se extienda correctamente en todo tipo de pantallas
+                            }}
+                        />
+                    </Box>
+
+                    <Button color="inherit" startIcon={<FilterListIcon />} onClick={handleFilterClick}>
+                        Filtro
+                    </Button>
+
+                    <IconButton
+                        color="inherit"
+                        onClick={handleOpenNotifications}
                     >
-                    <NavListDrawer navArrayLinks={navArrayLinks} 
+                        <Badge badgeContent={4} color="error">  
+                            <NotificationsIcon />
+                        </Badge>
+                    </IconButton>
+
+                    <IconButton
+                        color="inherit"
+                        onClick={handleOpenUserMenu}
+                    >
+                        <AccountCircleIcon />
+                    </IconButton>
+
+                    <Menu
+                        anchorEl={userAnchorEl}
+                        open={Boolean(userAnchorEl)}
+                        onClose={handleCloseUserMenu}
+                    >
+                        {isLoggedIn ? (
+                            <>
+                                <MenuItem>Usuario: {username}</MenuItem>
+                                <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
+                            </>
+                        ) : (
+                            <>
+                                <MenuItem onClick={handleLogin}>Iniciar sesión</MenuItem>
+                                <MenuItem onClick={handleRegister}>Registrarse</MenuItem>
+                            </>
+                        )}
+                    </Menu>
+                </Toolbar>
+            </AppBar>
+
+            <Drawer
+                open={open}
+                anchor="left"
+                onClose={() => setOpen(false)}
+            >
+                <NavListDrawer
+                    navArrayLinks={navArrayLinks}
                     NavLink={NavLink}
                     setOpen={setOpen}
-                    />
-                </Drawer>
-    </>
-    )
+                />
+            </Drawer>
+        </>
+    );
 }
