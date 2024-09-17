@@ -18,13 +18,13 @@ export default function Navbar({ navArrayLinks }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Al cargar el componente, verifica si el usuario está logueado
         const storedUsername = localStorage.getItem("username");
         if (storedUsername) {
             setIsLoggedIn(true);
             setUsername(storedUsername);
         }
     }, []);
+    
 
     const handleOpenNotifications = (event) => {
         setNotificationsAnchorEl(event.currentTarget);
