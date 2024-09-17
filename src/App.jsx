@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
 import Bodegas from "./views/Bodegas";
+import OfertaEdu from "./views/OfertaEdu";
 
 const navArrayLinks = [
   {   
@@ -18,6 +19,10 @@ const navArrayLinks = [
   {
       title: "Bodegas",
       path: "/bodegas"
+  },
+  {
+    title: "Oferta Educativa",
+    path: "/OfertaEdu"
   }
 ];
 
@@ -32,6 +37,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/bodegas" element={<Bodegas />} />
+          <Route path="/OfertaEdu" element={<OfertaEdu />} />
         </Routes>
       </Container>
 
