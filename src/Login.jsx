@@ -21,7 +21,6 @@ export default function Login() {
       message: "",
     }
   });
-  
 
   const validateEmail = (email) => {
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -40,9 +39,7 @@ export default function Login() {
   
     if (!isEmailValid || !isPasswordValid) return;
   
-    // Realizar la solicitud al backend
     try {
-      console.log(email, password)
       const response = await fetch('http://localhost:3001/login', {
         method: 'POST',
         headers: {
@@ -50,15 +47,14 @@ export default function Login() {
         },
         body: JSON.stringify({ email, password }),
       });
-  
+
       const data = await response.json();
-      console.log
-  
+
       if (response.ok) {
-        // Redirigir si el login es exitoso
+        // Guardar nombre de usuario en localStorage y redirigir
+        localStorage.setItem("username", data.username); // Suponiendo que el servidor devuelve el nombre de usuario
         navigate('/');
       } else {
-        // Mostrar error si el login falla
         setError((prevError) => ({
           ...prevError,
           login: {
@@ -77,7 +73,6 @@ export default function Login() {
       }));
     }
   };
-  
 
   return (
     <div className="background">
@@ -115,7 +110,7 @@ export default function Login() {
         />
         {error.login.error && (
           <div style={{ color: 'red', marginTop: '10px' }}>{error.login.message}</div>
-          )}
+        )}
 
         <Button
           type="submit"
@@ -147,4 +142,4 @@ export default function Login() {
       </Box>
     </div>
   );
-}
+};

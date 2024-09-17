@@ -9,6 +9,7 @@ CREATE TABLE usuario (
 );
 Paso 2°: Ejecutar el back
 cd back
+npm install (para que instale todo lo de package.json del back)
 npm run dev
 (NO OLVIDARSE DE CAMBIAR LA CONTRASEÑA DE TU BD EN EL "db.js")
 Paso 3°: Ejecutar el front

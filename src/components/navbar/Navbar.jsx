@@ -14,7 +14,7 @@ export default function Navbar({ navArrayLinks }) {
     const [notificationsAnchorEl, setNotificationsAnchorEl] = useState(null);
     const [userAnchorEl, setUserAnchorEl] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [username, setUsername] = useState("");  // Estado para guardar el nombre de usuario
+    const [username, setUsername] = useState(""); 
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,7 +24,6 @@ export default function Navbar({ navArrayLinks }) {
             setUsername(storedUsername);
         }
     }, []);
-    
 
     const handleOpenNotifications = (event) => {
         setNotificationsAnchorEl(event.currentTarget);
@@ -51,10 +50,9 @@ export default function Navbar({ navArrayLinks }) {
     };
 
     const handleLogout = () => {
-        // Lógica para cerrar sesión
         setIsLoggedIn(false);
         setUsername("");
-        localStorage.removeItem("username");  // Eliminar el nombre de usuario de localStorage
+        localStorage.removeItem("username");
         setUserAnchorEl(null);
         navigate("/login");
     };
@@ -108,11 +106,11 @@ export default function Navbar({ navArrayLinks }) {
                             onChange={handleSearchChange}
                             sx={{
                                 ml: 1,
-                                color: "black",  // color del texto a negro para que sea visible con el fondo blanco
-                                backgroundColor: "white",  // el fondo del buscador en blanco
-                                borderRadius: 1,  // borde redondeado 
+                                color: "black", 
+                                backgroundColor: "white", 
+                                borderRadius: 1, 
                                 padding: '0 10px', 
-                                width: '100%', // se ajusta el tamaño para que se extienda correctamente en todo tipo de pantallas
+                                width: '100%',
                             }}
                         />
                     </Box>
