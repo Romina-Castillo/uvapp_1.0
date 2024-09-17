@@ -14,7 +14,7 @@ export default function Navbar({ navArrayLinks }) {
     const [notificationsAnchorEl, setNotificationsAnchorEl] = useState(null);
     const [userAnchorEl, setUserAnchorEl] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [username, setUsername] = useState(""); 
+    const [username, setUsername] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -50,13 +50,11 @@ export default function Navbar({ navArrayLinks }) {
     };
 
     const handleLogout = () => {
-        // redireccion de cerrar sesión
         setIsLoggedIn(false);
         setUsername("");
         localStorage.removeItem("username");  // Eliminar el nombre de usuario de localStorage
-        setUserAnchorEl(null);
         navigate('/');  // Redirige a la página de inicio
-    };    
+    };
 
     const handleLogin = () => {
         setUserAnchorEl(null);
@@ -107,10 +105,10 @@ export default function Navbar({ navArrayLinks }) {
                             onChange={handleSearchChange}
                             sx={{
                                 ml: 1,
-                                color: "black", 
-                                backgroundColor: "white", 
-                                borderRadius: 1, 
-                                padding: '0 10px', 
+                                color: "black",
+                                backgroundColor: "white",
+                                borderRadius: 1,
+                                padding: '0 10px',
                                 width: '100%',
                             }}
                         />
@@ -124,7 +122,7 @@ export default function Navbar({ navArrayLinks }) {
                         color="inherit"
                         onClick={handleOpenNotifications}
                     >
-                        <Badge badgeContent={4} color="error">  
+                        <Badge badgeContent={4} color="error">
                             <NotificationsIcon />
                         </Badge>
                     </IconButton>

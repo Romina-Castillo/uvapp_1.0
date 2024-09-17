@@ -33,46 +33,46 @@ export default function Login() {
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
-  
+
     const isEmailValid = validateEmail(email);
     const isPasswordValid = validatePassword(password);
-  
+
     if (!isEmailValid || !isPasswordValid) return;
-  
+
     try {
-      const response = await fetch('http://localhost:3001/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
+        const response = await fetch('http://localhost:3001/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (response.ok) {
-        // Guardar nombre de usuario en localStorage y redirigir
-        localStorage.setItem("username", data.username); // Suponiendo que el servidor devuelve el nombre de usuario
-        navigate('/');
-      } else {
-        setError((prevError) => ({
-          ...prevError,
-          login: {
-            error: true,
-            message: data.message || 'Error al iniciar sesión. Verifica tus credenciales.',
-          },
-        }));
-      }
+        if (response.ok) {
+            // Guardar nombre de usuario en localStorage y redirigir
+            localStorage.setItem("username", data.username); // Guardar el nombre de usuario recibido
+            navigate('/');
+        } else {
+            setError((prevError) => ({
+                ...prevError,
+                login: {
+                    error: true,
+                    message: data.message || 'Error al iniciar sesión. Verifica tus credenciales.',
+                },
+            }));
+        }
     } catch (error) {
-      setError((prevError) => ({
-        ...prevError,
-        login: {
-          error: true,
-          message: 'Error en el servidor. Intenta nuevamente más tarde.',
-        },
-      }));
+        setError((prevError) => ({
+            ...prevError,
+            login: {
+                error: true,
+                message: 'Error en el servidor. Intenta nuevamente más tarde.',
+            },
+        }));
     }
-  };
+};
 
   return (
     <div className="background">

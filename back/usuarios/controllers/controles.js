@@ -20,8 +20,8 @@ exports.register = async (req, res) => {
 }
 
 exports.login = async (req, res) => {
-    const data = req.body
-    console.log(data)
+    const data = req.body;
+    console.log(data);
 
     // Verificar si el usuario existe en la base de datos por su email
     const sql = 'SELECT * FROM usuario WHERE email = ?';
@@ -31,7 +31,7 @@ exports.login = async (req, res) => {
             res.status(500).send('Error en el servidor');
         } else if (results.length === 0) {
             // Si no se encuentra el email, se responde con un error
-            res.status(401).send('Email o contraseña incorrectos');
+            res.status(401).send({ message: 'Email o contraseña incorrectos' });
         } else {
             const user = results[0];
 
@@ -39,11 +39,10 @@ exports.login = async (req, res) => {
             const match = await bcrypt.compare(data.password, user.contraseña);
             if (match) {
                 // Si la contraseña es correcta, se responde con éxito
-              return res.status(200).json('Inicio de sesión exitoso');
-                console.log('User logged in successfully:', user);
+                return res.status(200).json({ message: 'Inicio de sesión exitoso', username: user.nombreUsuario });
             } else {
                 // Si la contraseña es incorrecta, se responde con error
-                res.status(401).send('Email o contraseña incorrectos');
+                res.status(401).send({ message: 'Email o contraseña incorrectos' });
             }
         }
     });
