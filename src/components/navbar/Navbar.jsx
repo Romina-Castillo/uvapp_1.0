@@ -50,12 +50,13 @@ export default function Navbar({ navArrayLinks }) {
     };
 
     const handleLogout = () => {
+        // redireccion de cerrar sesión
         setIsLoggedIn(false);
         setUsername("");
-        localStorage.removeItem("username");
+        localStorage.removeItem("username");  // Eliminar el nombre de usuario de localStorage
         setUserAnchorEl(null);
-        navigate("/login");
-    };
+        navigate('/');  // Redirige a la página de inicio
+    };    
 
     const handleLogin = () => {
         setUserAnchorEl(null);
