@@ -9,7 +9,11 @@ import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
 import Bodegas from "./views/Bodegas";
 import OfertaEdu from "./views/OfertaEdu";
+import Eventos from "./views/Eventos";
+import Footer from "./components/footer/Footer";
 
+
+// en esta const solo poner lo que queremos que aparezca en la parte superior, en la navbar
 const navArrayLinks = [
   {   
       title: "Home", 
@@ -23,6 +27,10 @@ const navArrayLinks = [
   {
     title: "Oferta Educativa",
     path: "/OfertaEdu"
+  },
+  {
+    title: "Eventos",
+    path: "/Eventos"
   }
 ];
 
@@ -38,7 +46,10 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/bodegas" element={<Bodegas />} />
           <Route path="/OfertaEdu" element={<OfertaEdu />} />
+          <Route path="/eventos" element={<Eventos />} />
+          
         </Routes>
+        <Footer />
       </Container>
 
     </>
