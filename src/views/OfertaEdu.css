@@ -52,6 +52,9 @@
 .programs-section h2 {
   font-size: 32px;
   margin-bottom: 30px;
+  position: relative;
+  color: white; /* Cambia este color según el fondo que tengas */
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
 }
 
 .program-list {
@@ -97,5 +100,5 @@
 }
 
 .program-link:hover .program-card {
-  transform: scale(1.05); /* Mantiene el efecto hover en el enlace */
+  transform: scale(1.05); 
 }
