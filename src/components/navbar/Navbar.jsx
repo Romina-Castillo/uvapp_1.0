@@ -74,7 +74,7 @@ export default function Navbar({ navArrayLinks }) {
                         color="inherit"
                         size="large"
                         onClick={() => setOpen(true)}
-                        sx={{ display: { xs: "flex", sm: "none" } }}
+                        // sx={{ display: { xs: "flex", sm: "none" } }} esto ocultaba el icono de menu y solo lo mostraba cuando se pasaba a pantalla pequeña
                         edge="start"
                     >
                         <MenuIcon />
@@ -118,14 +118,16 @@ export default function Navbar({ navArrayLinks }) {
                         Filtro
                     </Button>
 
-                    <IconButton
-                        color="inherit"
-                        onClick={handleOpenNotifications}
-                    >
-                        <Badge badgeContent={4} color="error">
-                            <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
+                    {isLoggedIn && (                                          // is loggedIn verifica que el usuario se ha logueado
+                        <IconButton
+                            color="inherit"
+                            onClick={handleOpenNotifications}
+                        >
+                            <Badge badgeContent={4} color="error">
+                                <NotificationsIcon />
+                            </Badge>
+                        </IconButton>
+                    )}
 
                     <IconButton
                         color="inherit"

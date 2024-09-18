@@ -39,7 +39,7 @@ exports.login = async (req, res) => {
             const match = await bcrypt.compare(data.password, user.contraseña);
             if (match) {
                 // Si la contraseña es correcta, se responde con éxito
-                return res.status(200).json({ message: 'Inicio de sesión exitoso', username: user.nombreUsuario });
+                return res.status(200).json({ message: 'Inicio de sesión exitoso', username: user.nombreUsuario });         // validacion de que el username este definido como nombreUsuario de la BD
             } else {
                 // Si la contraseña es incorrecta, se responde con error
                 res.status(401).send({ message: 'Email o contraseña incorrectos' });
