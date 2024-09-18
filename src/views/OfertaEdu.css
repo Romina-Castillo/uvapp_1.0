@@ -1,0 +1,104 @@
+/* Contenedor principal */
+.offer-container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Sección de Banner Principal */
+.main-banner {
+  position: relative;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.banner-text h1 {
+  font-size: 48px;
+  margin: 0;
+}
+
+.banner-text h2 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.banner-text p {
+  font-size: 18px;
+}
+
+/* Sección de Programas/Carreras */
+.programs-section {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.programs-section h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  position: relative;
+  color: white; /* Cambia este color según el fondo que tengas */
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.program-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.program-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.program-card:hover {
+  transform: scale(1.05);
+}
+
+.program-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.program-card h3 {
+  font-size: 22px;
+  margin: 20px 0;
+}
+
+.program-card p {
+  font-size: 16px;
+  padding: 0 15px 20px 15px;
+}
+
+.program-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.program-link:hover .program-card {
+  transform: scale(1.05); 
+}
