@@ -49,9 +49,9 @@ export default function App() {
           <Route path="/eventos" element={<Eventos />} />
           
         </Routes>
-        <Footer />
+        
       </Container>
-
+      <Footer />
     </>
     
   );

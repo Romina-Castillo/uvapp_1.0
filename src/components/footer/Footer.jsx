@@ -9,7 +9,8 @@ export default function Footer() {
                 p: 3,
                 padding: "20px",
                 marginTop: "50px", // Separación del contenido
-                textAlign: "center"
+                textAlign: "center",
+                width: "100% !important"
             }}
         >
             <Typography variant="body1">
