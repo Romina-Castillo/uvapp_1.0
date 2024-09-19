@@ -1,9 +1,18 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 body {
     background-image: url('/GI-975446116-winery.jpg');
-    height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-    width: 100%;
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    width: 100vw; /* Asegura que el body ocupe todo el ancho del viewport */
 }
 
 .header {
