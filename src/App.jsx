@@ -11,6 +11,7 @@ import Bodegas from "./views/Bodegas";
 import OfertaEdu from "./views/OfertaEdu";
 import Eventos from "./views/Eventos";
 import Footer from "./components/footer/Footer";
+import Contact from "./views/Contact";
 
 
 // en esta const solo poner lo que queremos que aparezca en la parte superior, en la navbar
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/bodegas" element={<Bodegas />} />
           <Route path="/OfertaEdu" element={<OfertaEdu />} />
           <Route path="/eventos" element={<Eventos />} />
+          <Route path="/Contact" element={<Contact />} />
           
         </Routes>
         

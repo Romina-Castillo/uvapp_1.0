@@ -3,14 +3,17 @@ import { Box, Typography, Link } from '@mui/material';
 export default function Footer() {
     return (
         <Box
+            component="footer" 
             sx={{
                 backgroundColor: 'primary.main',
                 color: 'white',
                 p: 3,
                 padding: "20px",
-                marginTop: "50px", // Separación del contenido
+                marginTop: "50px", 
                 textAlign: "center",
-                width: "100% !important"
+                width: "100vw", 
+                position: "relative", 
+                bottom: 0, 
             }}
         >
             <Typography variant="body1">
@@ -29,3 +32,4 @@ export default function Footer() {
         </Box>
     );
 }
+
