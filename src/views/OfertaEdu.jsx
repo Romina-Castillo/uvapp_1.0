@@ -4,22 +4,10 @@ import './OfertaEdu.css';
 const OfertaEdu = () => {
   return (
     <div className="offer-container">
-      {/* Sección Principal de Oferta Educativa */}
-      <section className="main-banner">
-        <img src="/img/2733_es.jpg" alt="Oferta Educativa" className="banner-image" />
-        <div className="banner-text">
-          <h1>Oferta Educativa</h1>
-          <h2>"Descubre el arte y la ciencia del vino: tu pasión, tu carrera."</h2>
-          <p>Encuentra tu futuro en las mejores instituciones terciarias y universidades de Mendoza.</p>
-        </div>
-      </section>
-
       {/* Sección de Programas / Carreras */}
       <section className="programs-section">
         <h2>Carreras y Programas</h2>
         <div className="program-list">
-
-
           <a href="https://ies9023-infd.mendoza.edu.ar/sitio/tecnicatura-superior-en-enologia-e-industrias-alimentarias/" className="program-link" target="_blank" rel="noopener noreferrer">
             <div className="program-card">
               <img src="/img/f1280x720-168780_300455_5050.jpg" alt="Carrera 1" />
@@ -27,7 +15,6 @@ const OfertaEdu = () => {
               <p>Instituto Educación Superior 9-023 Maipú.</p>
             </div>
           </a>
-
 
           <a href="https://www.umaza.edu.ar/landings/enologia/inicio" className="program-link" target="_blank" rel="noopener noreferrer">
             <div className="program-card">
@@ -37,16 +24,15 @@ const OfertaEdu = () => {
             </div>
           </a>
 
-
           <a href="https://www4.frm.utn.edu.ar/tecnicatura-superior-enologia/" className="program-link" target="_blank" rel="noopener noreferrer">
             <div className="program-card">
               <img src="\img\fce4ed7b-5493-474d-beca-f8b9653e2de4.jpg" alt="Carrera 3" />
               <h3>Tecnicatura Universitaria en Enología</h3>
-              <p>Universidad Tecnológica Nacional(Sede Mendoza).</p>
+              <p>Universidad Tecnológica Nacional (Sede Mendoza).</p>
             </div>
           </a>
 
-          <a href="hhttps://www.umaza.edu.ar/landings/sommelier/index.php" className="program-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.umaza.edu.ar/landings/sommelier/index.php" className="program-link" target="_blank" rel="noopener noreferrer">
             <div className="program-card">
               <img src="/img/WEB-ActoUMaza60Int2.jpg" alt="Carrera 4" />
               <h3>Sommelier Universitario</h3>
@@ -82,7 +68,7 @@ const OfertaEdu = () => {
             <div className="program-card">
               <img src="\img\d19bcb59a35c4170403a6799a2f56fc6_280_650_c.jpg" alt="Carrera 8" />
               <h3>Tecnicatura Universitaria en Enología y Viticultura</h3>
-              <p>Facultad de Ciencias Agrarias-Universidad Nacional de Cuyo</p>
+              <p>Facultad de Ciencias Agrarias - Universidad Nacional de Cuyo.</p>
             </div>
           </a>
 
@@ -90,10 +76,9 @@ const OfertaEdu = () => {
             <div className="program-card">
               <img src="\img\uncuyo-s-rafael-13-1_546_966.jpg" alt="Carrera 9" />
               <h3>Ciclo de Complementación Curricular Licenciatura en Enología</h3>
-              <p>Facultad de Ciencias Aplicadas a la Industria-Universidad Nacional de Cuyo(Sede San Rafael).</p>
+              <p>Facultad de Ciencias Aplicadas a la Industria - Universidad Nacional de Cuyo (Sede San Rafael).</p>
             </div>
           </a>
-
         </div>
       </section>
     </div>
@@ -101,4 +86,3 @@ const OfertaEdu = () => {
 };
 
 export default OfertaEdu;
-
