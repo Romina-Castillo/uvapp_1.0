@@ -14,3 +14,8 @@ npm run dev
 (NO OLVIDARSE DE CAMBIAR LA CONTRASEÑA DE TU BD EN EL "db.js")
 Paso 3°: Ejecutar el front
 npm run dev(en otra consola)
+
+
+
+npm run dev= front
+cd back---npm run dev= back
