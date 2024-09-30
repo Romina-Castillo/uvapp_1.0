@@ -14,7 +14,8 @@ import Footer from "./components/footer/Footer";
 import Contact from "./views/Contact";
 import Bodegas2 from "./views/Bodegas2";
 import Reservas from "./views/Reservas";
-
+import FormReservas from "./views/FormReservas"
+import Usuario from "./views/usuario";
 
 // en esta const solo poner lo que queremos que aparezca en la parte superior, en la navbar
 const navArrayLinks = [
@@ -53,6 +54,9 @@ export default function App() {
           <Route path="/eventos" element={<Eventos />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/reservas" element={<Reservas />} />
+          <Route path="/Usuario" element={<Usuario />} />
+          <Route path="/formReservas" element={<FormReservas />} />
+
         </Routes>
         
       </Container>

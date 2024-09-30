@@ -1,101 +1,53 @@
-import { useState, useEffect } from "react";
-import { TextField, Button, Typography, Box } from "@mui/material";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Box, Typography } from '@mui/material';
 
-const Reservar = () => {
-    const [nombrePersona, setNombrePersona] = useState("");
-    const [lugar, setLugar] = useState("");
-    const [fechaReservacion, setFechaReservacion] = useState("");
-    const [hora, setHora] = useState("");
-    const navigate = useNavigate();
-    const location = useLocation();
+const VistaReservas = () => {
+  const navigate = useNavigate();
+  const username = localStorage.getItem('username'); // Verificamos si el usuario está logueado
+  const reservas = []; // Aquí deberías traer las reservas del usuario
 
-    useEffect(() => {
-        const searchParams = new URLSearchParams(location.search);
-        const lugarParam = searchParams.get("lugar");
-        if (lugarParam) {
-            setLugar(lugarParam); // Prellenar el campo de lugar
-        }
-    }, [location]);
-
-const handleSubmit = async (event) => {
-    event.preventDefault();
-    const reserva = {
-        nombre_persona: nombrePersona,
-        lugar,
-        fecha_reservacion: fechaReservacion,
-        hora,
-    };
-
-    try {
-        const response = await fetch("http://localhost:3001/reservas", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(reserva),
-        });
-
-        const data = await response.json();
-        console.log("Datos de respuesta del servidor:", data); // Agregar esta línea para depurar
-
-        if (response.ok) {
-            console.log("Reserva realizada:", data);
-            navigate("/bodegas");
-        } else {
-            console.error("Error al realizar la reserva:", data);
-            alert(`Error: ${data}`); // Mostrar mensaje de error al usuario
-        }
-
-    } catch (error) {
-        console.error("Error en la solicitud:", error);
+  useEffect(() => {
+    // Si no hay un usuario logueado, redirigir al login
+    if (!username) {
+      navigate('/login');
     }
+  }, [username, navigate]);
+
+  // Si el usuario no está logueado, la vista no se mostrará debido a la redirección
+  return (
+    <Box>
+      {/* Barra Superior */}
+      <Box>
+        {/* Reutiliza tu barra de navegación aquí */}
+      </Box>
+
+      {/* Bienvenida al usuario */}
+      <Box mt={4} textAlign="center">
+        <Typography variant="h4">Bienvenido, {username}!</Typography>
+      </Box>
+
+      {/* Sección Tus Reservas */}
+      <Box mt={4} p={2}>
+        <Typography variant="h5">Tus Reservas</Typography>
+        {reservas.length > 0 ? (
+          reservas.map((reserva, index) => (
+            <Box key={index} p={2} my={2} border={1}>
+              <Typography variant="h6">{reserva.evento}</Typography>
+              <Typography variant="body1">{reserva.fecha}</Typography>
+            </Box>
+          ))
+        ) : (
+          <Typography>No tienes reservas</Typography>
+        )}
+      </Box>
+
+      {/* Footer */}
+      <Box position="fixed" bottom={0} width="100%">
+        {/* Reutiliza tu footer aquí */}
+      </Box>
+    </Box>
+  );
 };
 
-    return (
-        <Box sx={{ padding: "20px" }} component="form" className="form-container" >
-            <Typography variant="h4">Reservar</Typography>
-            <form onSubmit={handleSubmit}>
-                <TextField
-                    label="Nombre"
-                    value={nombrePersona} // Campo para el nombre de la persona
-                    onChange={(e) => setNombrePersona(e.target.value)}
-                    required
-                    sx={{ margin: "10px 0" }}
-                />
-                <TextField
-                    label="Lugar"
-                    value={lugar} // Campo prellenado con el lugar
-                    onChange={(e) => setLugar(e.target.value)} // Permitir cambios si es necesario
-                    required
-                    sx={{ margin: "10px 0" }}
-                    InputProps={{
-                        readOnly: true, // Hacer que el campo sea de solo lectura
-                    }}
-                />
-                <TextField
-                    label="Fecha de Reservación"
-                    type="date"
-                    value={fechaReservacion}
-                    onChange={(e) => setFechaReservacion(e.target.value)}
-                    required
-                    sx={{ margin: "10px 0" }}
-                />
-                
-                <TextField
-                    label="Hora"
-                    type="time"
-                    value={hora}
-                    onChange={(e) => setHora(e.target.value)}
-                    required
-                    sx={{ margin: "10px 0" }}
-                />
-                <Button type="submit" variant="contained" color="primary">
-                    Confirmar Reservación
-                </Button>
-            </form>
-        </Box>
-    );
-};
-
-export default Reservar;
+export default VistaReservas;

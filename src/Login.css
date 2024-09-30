@@ -46,15 +46,25 @@
   background-color: #8f9933;
 }
 
-/* Botón de Facebook */
+.gmail-button {
+  background-color: #d93025; /* Color rojo característico de Gmail */
+  color: white;
+}
+
+.gmail-button:hover {
+  background-color: #c62828; /* Color más oscuro al pasar el ratón */
+}
+
 .facebook-button {
-  background-color: #3b5998;
+  background-color: #3b5998; /* Color azul característico de Facebook */
   color: white;
 }
 
 .facebook-button:hover {
-  background-color: #314a86;
+  background-color: #314a86; /* Color más oscuro al pasar el ratón */
 }
+
+
 
 /* Botón de registrarse */
 .register-button {
