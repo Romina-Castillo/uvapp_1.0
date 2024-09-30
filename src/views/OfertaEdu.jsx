@@ -35,7 +35,7 @@ const OfertaEdu = () => {
           <a href="https://www.umaza.edu.ar/landings/sommelier/index.php" className="program-link" target="_blank" rel="noopener noreferrer">
             <div className="program-card">
               <img src="/img/WEB-ActoUMaza60Int2.jpg" alt="Carrera 4" />
-              <h3>Sommelier Universitario</h3>
+              <h3>Complementación Sommelier Universitario</h3>
               <p>Facultad de Ingeniería y Enología - Universidad Juan Agustín Maza.</p>
             </div>
           </a>
@@ -75,8 +75,8 @@ const OfertaEdu = () => {
           <a href="https://fcai.uncuyo.edu.ar/estudios/carrera/ciclo-de-licenciatura-en-enologia" className="program-link" target="_blank" rel="noopener noreferrer">
             <div className="program-card">
               <img src="\img\uncuyo-s-rafael-13-1_546_966.jpg" alt="Carrera 9" />
-              <h3>Ciclo de Complementación Curricular Licenciatura en Enología</h3>
-              <p>Facultad de Ciencias Aplicadas a la Industria - Universidad Nacional de Cuyo (Sede San Rafael).</p>
+              <h3>Complementación Curricular Licenciatura en Enología</h3>
+              <p>Universidad Nacional de Cuyo (Sede San Rafael).</p>
             </div>
           </a>
         </div>
