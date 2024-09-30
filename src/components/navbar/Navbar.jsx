@@ -143,7 +143,7 @@ export default function Navbar({ navArrayLinks }) {
                     >
                         {isLoggedIn ? (
                             <>
-                                <MenuItem>Usuario: {username}</MenuItem>
+                                <MenuItem onClick={() => navigate("/usuario")}>Mi cuenta: {username}</MenuItem>
                                 <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
                             </>
                         ) : (

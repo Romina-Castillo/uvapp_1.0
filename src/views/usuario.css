@@ -1,0 +1,76 @@
+/* Estilo para el fondo */
+.background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    gap: 20px;
+    color: #fff;
+}
+
+/* Header de la página (Bienvenida al usuario) */
+.welcome-header {
+    font-size: 100px; /* Aumentado para mayor impacto */
+    font-weight: 800; /* Mayor grosor para hacerla más destacada */
+    color: white;
+    text-align: center;
+    margin-bottom: 50px; /* Más espacio debajo */
+    text-shadow: 0px 6px 10px rgb(0, 0, 0); /* Sombra más pronunciada */
+}
+
+/* Contenedor de las reservas */
+.reservas-container {
+    background-color: rgba(145, 65, 76, 0.7);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+    max-width: 700px;
+    width: 100%;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px); /* Efecto blur */
+}
+
+/* Estilo de cada reserva */
+.reserva-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reserva-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Título de cada reserva */
+.reserva-item h6 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+/* Detalle de la reserva */
+.reserva-item p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Mensaje de "No tienes reservas" */
+.no-reservas {
+    text-align: center;
+    font-size: 20px;
+    color: #666;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
+}
