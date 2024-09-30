@@ -4,10 +4,13 @@ const router = express.Router();
 
 const controllersUsuarios = require("../controllers/controles");
 
+const controllersReservas = require("../controllers/reservas");
+
 
 router.post('/login', controllersUsuarios.login);
 
 router.post('/register',controllersUsuarios.register);
 
+router.post('/reservas', controllersReservas.crearReserva);
 
 module.exports = router;
