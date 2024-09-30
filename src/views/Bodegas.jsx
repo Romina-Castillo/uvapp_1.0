@@ -1,4 +1,5 @@
 import { Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
+import { Link } from "react-router-dom"; 
 
 const bodegasData = [
     {
@@ -44,8 +45,8 @@ const bodegasData = [
         website: "https://meitre.com/es/casa-vigil"
     },
     {
-        name: "Bodega 8",
-        description: "Una descripción breve de la Bodega 8.",
+        name: "Bodega Luigi Bosca",
+        description: "Una descripción breve de la Bodega Luigi Bosca.",
         img: "/img/bodega-luigibosca.jpg",
         website: "https://luigibosca.com/experiencias/"
     },
@@ -59,48 +60,74 @@ const bodegasData = [
 
 const Bodegas = () => {
     return (
-        <Grid 
-            container 
-            spacing={3} // columnas 3
-            sx={{ mt: 10 }} // margen para separar el grid de la Navbar
-        >
-            {bodegasData.map((bodega, index) => (
-                <Grid 
-                    item 
-                    xs={12}   // Toma toda la fila en dispositivos muy pequeños
-                    sm={6}    // 2 columnas en pantallas pequeñas
-                    md={4}    // 3 columnas en pantallas medianas y mayores
-                    lg={4}    // 3 columnas en pantallas grandes
-                    key={index}
+        <>
+            <Grid
+                container
+                spacing={3}
+                sx={{ mt: 10 }}
+            >
+                {bodegasData.map((bodega, index) => (
+                    <Grid
+                        item
+                        xs={12}
+                        sm={6}
+                        md={4}
+                        lg={4}
+                        key={index}
+                    >
+                        <Card>
+                            <CardMedia
+                                component="img"
+                                height="200"
+                                image={bodega.img}
+                                alt={bodega.name}
+                            />
+                            <CardContent>
+                                <Typography variant="h6" component="div">
+                                    {bodega.name}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    {bodega.description}
+                                </Typography>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    href={bodega.website}
+                                    target="_blank"
+                                    sx={{ mt: 2 }}
+                                >
+                                    Reservar
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
+            <Grid
+                container
+                justifyContent="center"
+                sx={{ mt: 5 }}
+            >
+            {/* boton de pagina siguiente */}
+                <Button
+                    variant="outlined"
+                    component={Link}
+                    to="/pagina2"
+                    sx={{
+                        backgroundColor: "white", // Fondo blanco
+                        color: "black",           // Texto negro
+                        borderColor: "rgb(185, 171, 25)",     // Borde oliva 
+                        '&:hover': {
+                            backgroundColor: "black", // Fondo negro al pasar el mouse
+                            color: "white",           // Texto blanco al pasar el mouse
+                        },
+                        padding: "10px 20px",        // más espacio en el botón
+                    }}
                 >
-                    <Card>
-                        <CardMedia
-                            component="img"
-                            height="200"
-                            image={bodega.img}
-                            alt={bodega.name}
-                        />
-                        <CardContent>
-                            <Typography variant="h6" component="div">
-                                {bodega.name}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {bodega.description}
-                            </Typography>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                href={bodega.website}
-                                target="_blank"
-                                sx={{ mt: 2 }}
-                            >
-                                Visitar sitio web
-                            </Button>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            ))}
-        </Grid>
+                    Siguiente página
+                </Button>
+            </Grid>
+        </>
     );
 };
 

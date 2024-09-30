@@ -7,7 +7,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-app.use("/" , require("./usuarios/rutas/rutas") )
+app.use("/" , require("./usuarios/rutas/rutas") )   // Rutas de Login, Register y Reseras estan en el mismo archivo de rutas
 
 
 app.listen(3001, () => {

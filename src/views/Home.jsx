@@ -21,7 +21,7 @@ const StyledBox = styled(Box)({
     backgroundColor: "white",
     padding: "40px",
     borderRadius: "15px",
-    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",         // color bordo los ultimos son el nivel de transparencia
     marginTop: "10px",
     margin: "0 auto",
 });
