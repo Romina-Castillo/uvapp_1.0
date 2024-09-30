@@ -63,7 +63,7 @@ export default function Login() {
         if (response.ok) {
             // Guardar nombre de usuario en localStorage y redirigir
             localStorage.setItem("username", data.username); // Guardar el nombre de usuario recibido del registro
-            navigate('/');
+            navigate('/usuario');
             window.location.reload(); // Recargar la página automaticamente
         } else {
             setError((prevError) => ({
