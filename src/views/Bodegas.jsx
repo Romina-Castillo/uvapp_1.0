@@ -3,7 +3,7 @@ import { Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/mat
 const bodegasData = [
     {
         name: "Bodega Andeluna",
-        description: "Una descripción breve de la AAndeluna.",
+        description: "Una descripción breve de la Andeluna.",
         img: "/img/bodega-andeluna.jpg",
         website: "https://wineobs.com.ar/mro/andeluna"
     },
@@ -26,20 +26,20 @@ const bodegasData = [
         website: "https://trapiche-costaypampa.meitre.com/"
     },
     {
-        name: "Bodega 5",
-        description: "Una descripción breve de la Bodega 5.",
+        name: "Bodega Achaval",
+        description: "Una descripción breve de la Bodega Achaval-Ferrer.",
         img: "/img/bodega-achaval.jpg",
         website: "https://meitre.com/es/quimera-achaval"
     },
     {
-        name: "Bodega 6",
-        description: "Una descripción breve de la Bodega 6.",
+        name: "Bodega Lopez",
+        description: "Una descripción breve de la Bodega Lopez.",
         img: "/bodega-lopez.jpg",
         website: "https://experiencias.bodegaslopez.com.ar/"
     },
     {
-        name: "Bodega 7",
-        description: "Una descripción breve de la Bodega 7.",
+        name: "Casa Vigil",
+        description: "Una descripción breve de la Casa Vigil.",
         img: "/img/casa-vigil.jpg",
         website: "https://meitre.com/es/casa-vigil"
     },
@@ -50,8 +50,8 @@ const bodegasData = [
         website: "https://luigibosca.com/experiencias/"
     },
     {
-        name: "Bodega 9",
-        description: "Una descripción breve de la Bodega 9.",
+        name: "Bodega Chandon",
+        description: "Una descripción breve de la Bodega Chandon.",
         img: "/img/Bodega-Chandon.jpg",
         website: "https://www.chandon.com.ar/nuestra-bodega/"
     }
