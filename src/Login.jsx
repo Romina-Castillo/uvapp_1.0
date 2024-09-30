@@ -31,6 +31,16 @@ export default function Login() {
     return password.length >= 6;
   };
 
+  
+  const handleGmailRedirect = () => {
+    window.open('https://mail.google.com/', '_blank'); // Redirige a Gmail en una nueva pestaña
+  };
+  
+  const handleFacebookRedirect = () => {
+    window.open('https://www.facebook.com/', '_blank'); // Redirige a Facebook en una nueva pestaña
+  };
+  
+
   const handlerSubmit = async (e) => {
     e.preventDefault();
 
@@ -124,13 +134,24 @@ export default function Login() {
         </Button>
         <a href="#" className="forgot-password">¿Olvidaste tu contraseña?</a>
         <Button
-          variant="contained"
-          fullWidth
-          className="facebook-button"
-          sx={{ mt: 2 }}
-        >
-          Conectarse con Facebook
-        </Button>
+        variant="contained"
+        fullWidth
+        className="gmail-button"
+        sx={{ mt: 2 }}
+        onClick={handleGmailRedirect} // Maneja el clic en el botón de Gmail
+      >
+        Conectarse con Gmail
+      </Button>
+      
+      <Button
+        variant="contained"
+        fullWidth
+        className="facebook-button"
+        sx={{ mt: 2, mb: 2 }} // Añadir margen inferior al botón de Facebook
+        onClick={handleFacebookRedirect} // Maneja el clic en el botón de Facebook
+      >
+        Conectarse con Facebook
+      </Button>
         <Button
           variant="outlined"
           fullWidth

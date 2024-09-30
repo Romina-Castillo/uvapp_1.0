@@ -14,7 +14,7 @@
 
 /* Header de la página (Bienvenida al usuario) */
 .welcome-header {
-    font-size: 100px; /* Aumentado para mayor impacto */
+    font-size: 48px; /* Aumentado para mayor impacto */
     font-weight: 800; /* Mayor grosor para hacerla más destacada */
     color: white;
     text-align: center;
@@ -24,7 +24,7 @@
 
 /* Contenedor de las reservas */
 .reservas-container {
-    background-color: rgba(145, 65, 76, 0.7);
+    background-color: rgba(145, 65, 76, 0.598);
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
