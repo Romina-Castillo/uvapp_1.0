@@ -7,7 +7,7 @@ const Contact = () => {
     const [formData, setFormData] = useState({
       name: '',
       surname: '',
-      email: '',
+      user_email: '',  // Cambiado a user_email
       message: ''
     });
   
@@ -72,13 +72,13 @@ const Contact = () => {
               required
             />
             
-            <label htmlFor="email">Email</label>
+            <label htmlFor="user_email">Email</label> {/* Cambiado a user_email */}
             <input
               type="email"
-              id="email"
-              name="email"
+              id="user_email"
+              name="user_email"
               placeholder="Email"
-              value={formData.email}
+              value={formData.user_email}
               onChange={handleChange}
               required
             />
@@ -104,5 +104,3 @@ const Contact = () => {
   };
   
   export default Contact;
-
-

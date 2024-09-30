@@ -14,7 +14,3 @@ npm run dev
 (NO OLVIDARSE DE CAMBIAR LA CONTRASEÑA DE TU BD EN EL "db.js")
 Paso 3°: Ejecutar el front
 npm run dev(en otra consola)
-
-Dependencias a descargar
-npm install rect-responsive-carousel        // carrusel
-npm install emailjs-com                     // emailjs para recibir mensajes
