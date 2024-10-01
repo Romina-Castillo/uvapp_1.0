@@ -26,6 +26,10 @@ const navArrayLinks = [
       icon: <HomeIcon />
   },
   {
+    title: "Nosotros",
+    path: "/About"
+  },
+  {
       title: "Bodegas",
       path: "/bodegas"
   },
