@@ -118,7 +118,7 @@ const Bodegas = () => {
                         color: "black",           // Texto negro
                         borderColor: "rgb(185, 171, 25)",     // Borde oliva 
                         '&:hover': {
-                            backgroundColor: "black", // Fondo negro al pasar el mouse
+                            backgroundColor: "rgb(185, 171, 25)", // Fondo negro al pasar el mouse
                             color: "white",           // Texto blanco al pasar el mouse
                         },
                         padding: "10px 20px",        // más espacio en el botón

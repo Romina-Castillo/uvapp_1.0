@@ -47,13 +47,13 @@ const Bodegas2 = () => {
                 <Button
                     variant="outlined"
                     component={Link}
-                    to="/pagina2"
+                    to="/bodegas"
                     sx={{
                         backgroundColor: "white",
                         color: "black",
                         borderColor: "rgb(185, 171, 25)",
                         '&:hover': {
-                            backgroundColor: "black",
+                            backgroundColor: "rgb(185, 171, 25)",
                             color: "white",
                         },
                         padding: "10px 20px",
