@@ -55,8 +55,7 @@ export default function App() {
           <Route path="/Contact" element={<Contact />} />
           <Route path="/reservas" element={<Reservas />} />
           <Route path="/Usuario" element={<Usuario />} />
-          <Route path="/formReservas" element={<FormReservas />} />
-
+          <Route path="/FormReservas" element={<FormReservas />} />
         </Routes>
         
       </Container>

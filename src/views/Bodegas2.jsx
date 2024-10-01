@@ -1,5 +1,5 @@
 import { Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 const bodegasData2 = [
     {
@@ -33,7 +33,7 @@ const Bodegas2 = () => {
                                     variant="contained"
                                     color="primary"
                                     component={Link}
-                                    to={`/reservas?lugar=${bodega.name}`} // Pasar el nombre de la bodega a la pag de reservar, fijardo en el campo de lugar 
+                                    to={`/FormReservas?lugar=${bodega.name}`} // Pasar el nombre de la bodega a la pag de reservar, fijardo en el campo de lugar
                                     sx={{ mt: 2 }}
                                 >
                                     Reservar

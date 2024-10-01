@@ -24,7 +24,7 @@ const VistaReservas = () => {
 
       {/* Bienvenida al usuario */}
       <Box mt={4} textAlign="center">
-        <Typography variant="h4">Bienvenido, {username}!</Typography>
+        <Typography variant="h4">Bienvenid@, {username}!</Typography>
       </Box>
 
       {/* Sección Tus Reservas */}

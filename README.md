@@ -14,3 +14,16 @@ npm run dev
 (NO OLVIDARSE DE CAMBIAR LA CONTRASEÑA DE TU BD EN EL "db.js")
 Paso 3°: Ejecutar el front
 npm run dev(en otra consola)
+
+reservas!
+npm install react-hook-form                 // en el front
+
+tabla de reservas en la misma bd uvapp
+CREATE TABLE reservas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_persona VARCHAR(255) NOT NULL,
+    lugar VARCHAR(255) NOT NULL,
+    fecha_reservacion DATE NOT NULL,
+    hora TIME NOT NULL
+);
+
