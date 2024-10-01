@@ -60,7 +60,7 @@ export default function HomePage() {
                     <Typography variant="h6" component="h2">
                         El estudio del vino
                     </Typography>
-                    <Box mt={3}>
+                    {/* <Box mt={3}>
                         <Button
                             variant="contained"
                             startIcon={<HomeIcon />}
@@ -76,7 +76,7 @@ export default function HomePage() {
                         >
                             Register
                         </Button>
-                    </Box>
+                    </Box> eran las opciones que aparecian debajo*/}
                 </HeaderBox>
 
                 <TrendBox>
