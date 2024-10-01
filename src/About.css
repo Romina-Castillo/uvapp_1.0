@@ -1,0 +1,177 @@
+/* HistoriaEmpresa.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  /* Contenedor principal */
+  .historia-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 50px;
+  }
+  
+  /* Estilos para el banner */
+  .banner {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(145, 65, 76, 0.8), rgba(145, 65, 76, 0.6), rgba(145, 65, 76, 0.9));
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    transition: transform 0.6s ease;
+  }
+  
+  .banner:hover::before {
+    transform: translateX(100%);
+  }
+  
+  .banner h1 {
+    font-size: 2.5rem; /* Tamaño ajustado */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+    animation: text-pop-up 0.5s ease forwards;
+  }
+  
+  .banner p {
+    font-size: 1.2rem; /* Tamaño ajustado */
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Efecto hover del fondo */
+  .banner:hover {
+    background: linear-gradient(135deg, rgba(145, 65, 76, 1), rgba(145, 65, 76, 0.8));
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+  
+  @keyframes text-pop-up {
+    0% {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Contenido de la historia */
+  .historia-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 900px;
+  }
+  
+  /* Estilos para cada bloque de historia */
+  .historia-texto {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    cursor: pointer;
+    position: relative; /* Para efectos de pseudo-elemento */
+  }
+  
+  
+  .historia-texto:hover::before {
+    opacity: 1;
+  }
+  
+  .historia-texto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  .historia-texto h2 {
+    font-size: 1.8rem; /* Tamaño ajustado */
+    margin-bottom: 12px;
+    color: #a4aa3e;
+    position: relative;
+    text-shadow: 0px 6px 10px rgba(0, 0, 0, 0.322)
+  }
+  
+  .historia-texto h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #a4aa3e;
+    margin-top: 5px;
+    text-shadow: 0px 6px 10px rgb(0, 0, 0)
+  }
+  
+  .historia-texto p {
+    font-size: 1rem; /* Tamaño ajustado */
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  /* Ajustes de diseño responsivo */
+  @media (max-width: 768px) {
+    .banner h1 {
+      font-size: 2rem; /* Tamaño ajustado */
+    }
+  
+    .historia-texto h2 {
+      font-size: 1.6rem; /* Tamaño ajustado */
+    }
+  
+    .historia-texto p {
+      font-size: 0.95rem; /* Tamaño ajustado */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner h1 {
+      font-size: 1.8rem; /* Tamaño ajustado */
+    }
+  
+    .historia-texto h2 {
+      font-size: 1.4rem; /* Tamaño ajustado */
+    }
+  
+    .historia-texto p {
+      font-size: 0.9rem; /* Tamaño ajustado */
+    }
+  
+    .historia-container {
+      padding: 20px;
+    }
+  }
+  
