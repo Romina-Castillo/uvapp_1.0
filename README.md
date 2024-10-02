@@ -18,6 +18,8 @@ npm run dev(en otra consola)
 reservas!
 npm install react-hook-form                 // en el front
 
+back: cree otro archivo controllers/reservas para la conexion lo hice aparte para no romper nada de login o register, despues lo pondre todo junto.
+
 tabla de reservas en la misma bd uvapp
 CREATE TABLE reservas (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -26,4 +28,7 @@ CREATE TABLE reservas (
     fecha_reservacion DATE NOT NULL,
     hora TIME NOT NULL
 );
+
+en la terminal del back pueden ver los datos ingresados al igual que si ocurre un error en la confirmación de la reserva
+
 
