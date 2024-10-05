@@ -36,7 +36,7 @@ const bodegasData = [
     {
         name: "Bodega Lopez",
         description: "Una descripción breve de la Bodega Lopez.",
-        img: "/img/bodega-lopez.jpg",
+        img: "\img\bodega-lopez.jpg",
         website: "https://experiencias.bodegaslopez.com.ar/"
     },
     {

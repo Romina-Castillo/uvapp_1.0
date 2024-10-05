@@ -3,6 +3,7 @@ import './OfertaEdu.css';
 
 const OfertaEdu = () => {
   const [selectedProgram, setSelectedProgram] = useState(null);
+  const [loading, setLoading] = useState(false); // Estado para manejar la carga
 
   const programs = [
     {
@@ -58,7 +59,18 @@ const OfertaEdu = () => {
 
   const closeModal = () => {
     setSelectedProgram(null);
+    setLoading(false); // Reiniciar el estado de carga al cerrar el modal
   };
+
+  const handleRedirect = () => {
+      setLoading(true);
+      // Simular una carga (puedes reemplazar esto con la lógica real)
+      setTimeout(() => {
+        window.open(selectedProgram.link, "_blank");
+        setLoading(false);
+        closeModal();
+      }, 2000); // Tiempo de carga simulado
+    };
 
   return (
     <div className="offer-container">
@@ -88,13 +100,13 @@ const OfertaEdu = () => {
             <button className="close-button" onClick={closeModal}>X</button>
             <h2>{selectedProgram.title}</h2>
             <p>{selectedProgram.description}</p>
-            <a 
-              href={selectedProgram.link} 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <button 
+              onClick={handleRedirect} 
+              className={`redirect-button ${loading ? 'loading' : ''}`} // Cambiar clase según el estado
+              disabled={loading} // Deshabilita el botón mientras está cargando
             >
-              Ir al Programa
-            </a>
+              {loading ? "Cargando..." : "Ir al Programa"}
+            </button>
           </div>
         </div>
       )}
