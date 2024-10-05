@@ -1,3 +1,5 @@
+/* Contact.css */
+
 /* Sección principal de contacto */
 .contact-section {
   position: relative;
@@ -79,6 +81,15 @@ footer {
   transition: background-color 0.3s ease, transform 0.2s ease;
   position: relative;
   overflow: hidden;
+  width: 100%; /* Asegura que el botón ocupe todo el ancho */
+}
+
+.contact-form button.loading {
+  background-color: #ffa500; /* Color durante la carga */
+}
+
+.contact-form button.submitted {
+  background-color: #32cd32; /* Color después del envío */
 }
 
 .contact-form button::before {
