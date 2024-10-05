@@ -23,11 +23,6 @@ const navArrayLinks = [
   {   
       title: "Home", 
       path: "/", 
-      icon: <HomeIcon />
-  },
-  {
-    title: "Nosotros",
-    path: "/About"
   },
   {
       title: "Bodegas",
