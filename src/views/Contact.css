@@ -85,7 +85,7 @@ footer {
 }
 
 .contact-form button.loading {
-  background-color: #ffa500; /* Color durante la carga */
+  background-color: #8f9933; /* Color durante la carga */
 }
 
 .contact-form button.submitted {

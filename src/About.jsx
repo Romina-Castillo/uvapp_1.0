@@ -11,7 +11,7 @@ const HistoriaEmpresa = () => {
         <div className="historia-texto">
           <h2>Sobre nosotros</h2>
           <p>
-          Nuestra aplicación, creada por dos compañeras de la carrera de Tecnicatura en Desarrollo de Software, se dedica a educar y difundir el conocimiento sobre el mundo del vino en Mendoza, promoviendo la inclusión, el turismo y la apreciación de la cultura vitivinícola de la región. A través de contenido de calidad y experiencias únicas, buscamos conectar a turistas y residentes con la riqueza cultural de la industria del vino.
+          Nuestra aplicación, creada por dos alumnas de la carrera de Tecnicatura en Desarrollo de Software, se dedica a educar y difundir el conocimiento sobre el mundo del vino en Mendoza, promoviendo la inclusión, el turismo y la apreciación de la cultura vitivinícola de la región. A través de contenido de calidad y experiencias únicas, buscamos conectar a turistas y residentes con la riqueza cultural de la industria del vino.
           </p>
         </div>
         <div className="historia-texto">

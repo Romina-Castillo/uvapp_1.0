@@ -1,10 +1,28 @@
-import { Container, Button, Box, Typography, Grid, Card, CardContent, Rating } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import HomeIcon from "@mui/icons-material/Home";
-import LoginIcon from "@mui/icons-material/Login";
+import { Container, Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
+import { motion } from 'framer-motion';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
+// Componente AnimatedTypography para la animación letra por letra
+const AnimatedTypography = ({ children, variant, component }) => {
+    const letters = Array.from(children); // Divide el texto en letras individuales
+
+    return (
+        <Typography variant={variant} component={component}>
+            {letters.map((letter, index) => (
+                <motion.span
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut", delay: index * 0.1 }} // Retraso incremental
+                >
+                    {letter}
+                </motion.span>
+            ))}
+        </Typography>
+    );
+}
 
 const Background = styled("div")({
     backgroundSize: "cover",
@@ -21,7 +39,7 @@ const StyledBox = styled(Box)({
     backgroundColor: "white",
     padding: "40px",
     borderRadius: "15px",
-    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",         // color bordo los ultimos son el nivel de transparencia
+    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)", // color borde los ultimos son el nivel de transparencia
     marginTop: "10px",
     margin: "0 auto",
 });
@@ -48,35 +66,16 @@ const CarouselImageContainer = styled(Box)({
 });
 
 export default function HomePage() {
-    const navigate = useNavigate();
-    
     return (
         <Background>
             <Container maxWidth="lg" sx={{ position: "relative" }}>
                 <HeaderBox textAlign="center" mt={5}>
-                    <Typography variant="h2" component="h1" gutterBottom>
+                    <AnimatedTypography variant="h2" component="h1" gutterBottom>
                         UVAPP
-                    </Typography>
-                    <Typography variant="h6" component="h2">
+                    </AnimatedTypography>
+                    <AnimatedTypography variant="h6" component="h2">
                         El estudio del vino
-                    </Typography>
-                    {/* <Box mt={3}>
-                        <Button
-                            variant="contained"
-                            startIcon={<HomeIcon />}
-                            onClick={() => navigate("/login")}
-                            sx={{ mr: 2 }}
-                        >
-                            Login
-                        </Button>
-                        <Button
-                            variant="contained"
-                            startIcon={<LoginIcon />}
-                            onClick={() => navigate("/register")}
-                        >
-                            Register
-                        </Button>
-                    </Box> eran las opciones que aparecian debajo*/}
+                    </AnimatedTypography>
                 </HeaderBox>
 
                 <TrendBox>
@@ -91,8 +90,6 @@ export default function HomePage() {
                             interval={5000}
                             showStatus={false}
                             dynamicHeight={false}
-                            onMouseEnter={() => setShowComments(true)}
-                            onMouseLeave={() => setShowComments(false)}
                         >
                             <div>
                                 <CarouselImageContainer>
@@ -159,3 +156,4 @@ export default function HomePage() {
         </Background>
     );
 }
+
