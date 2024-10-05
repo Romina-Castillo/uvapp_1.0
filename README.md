@@ -31,4 +31,6 @@ CREATE TABLE reservas (
 
 en la terminal del back pueden ver los datos ingresados al igual que si ocurre un error en la confirmación de la reserva
 
+transiciones!
+npm install framer-motion   //en el front
 
