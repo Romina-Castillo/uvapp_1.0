@@ -58,7 +58,7 @@ const UsuarioReservas = () => {
           className="welcome-header" 
           style={{ fontSize: '48px', fontWeight: 800, textShadow: '0px 6px 10px rgb(0, 0, 0)' }}
         >
-         🌟 Tus reservas, {username}! 🌟 
+         🍇 Tus reservas, {username}!🍇
         </Typography>
 
         {/* Sección Tus Reservas */}
