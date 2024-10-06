@@ -80,10 +80,9 @@ export default function Navbar({ navArrayLinks }) {
                         <MenuIcon />
                     </IconButton>
 
-                    <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                        UVAPP
-                    </Typography>
-
+                    <Box sx={{ flexGrow: 1 }}>
+                        <img src="\public\image.png" alt="UVAPP Logo" style={{ height: '70px' }} />
+                    </Box>
                     <Box sx={{ display: { xs: "none", sm: "flex" }, flexGrow: 1 }}>
                         {navArrayLinks.map((item) => (
                            <Button
@@ -165,8 +164,10 @@ export default function Navbar({ navArrayLinks }) {
                     >
                         {isLoggedIn ? (
                             <>
-                                <MenuItem onClick={() => navigate("/usuario")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Mi cuenta: {username}</MenuItem>
+                                <MenuItem onClick={() => navigate("/usuario_reservas")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Mis reservas</MenuItem>
+                                <MenuItem onClick={() => navigate("/usuario")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Gestionar cuenta</MenuItem>
                                 <MenuItem onClick={handleLogout} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Cerrar sesión</MenuItem>
+
                             </>
                         ) : (
                             <>

@@ -4,26 +4,6 @@ import { motion } from 'framer-motion';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-// Componente AnimatedTypography para la animación letra por letra
-const AnimatedTypography = ({ children, variant, component }) => {
-    const letters = Array.from(children); // Divide el texto en letras individuales
-
-    return (
-        <Typography variant={variant} component={component}>
-            {letters.map((letter, index) => (
-                <motion.span
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, ease: "easeInOut", delay: index * 0.1 }} // Retraso incremental
-                >
-                    {letter}
-                </motion.span>
-            ))}
-        </Typography>
-    );
-}
-
 const Background = styled("div")({
     backgroundSize: "cover",
     backgroundAttachment: "fixed",
@@ -49,7 +29,7 @@ const HeaderBox = styled(StyledBox)({
     color: "white",
 });
 
-const TrendBox = styled(Box)({
+const TrendBox = styled(motion.div)({
     backgroundColor: "rgb(185, 171, 25)",
     padding: "20px",
     borderRadius: "15px",
@@ -69,16 +49,24 @@ export default function HomePage() {
     return (
         <Background>
             <Container maxWidth="lg" sx={{ position: "relative" }}>
+                {/* Logo completo en lugar de la animación del texto */}
                 <HeaderBox textAlign="center" mt={5}>
-                    <AnimatedTypography variant="h2" component="h1" gutterBottom>
-                        UVAPP
-                    </AnimatedTypography>
-                    <AnimatedTypography variant="h6" component="h2">
-                        El estudio del vino
-                    </AnimatedTypography>
+                    <motion.img
+                        src="\public\image_uvapp.png" // Ruta de tu logo completo
+                        alt="UVAPP Logo"
+                        style={{ height: '150px', marginBottom: '20px' }} // Ajusta el tamaño según sea necesario
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1, ease: "easeInOut" }}
+                    />
                 </HeaderBox>
 
-                <TrendBox>
+                {/* TrendBox animado con efecto de entrada */}
+                <TrendBox
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                >
                     <Typography variant="h6" mb={2}>
                         EN TENDENCIA
                     </Typography>
@@ -93,10 +81,12 @@ export default function HomePage() {
                         >
                             <div>
                                 <CarouselImageContainer>
-                                    <img
+                                    <motion.img
                                         src="/img/bodega-achaval.jpg"
                                         alt="Bodega 1"
                                         style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                                        whileHover={{ scale: 1.05 }}
+                                        transition={{ duration: 0.3 }}
                                     />
                                     <Box
                                         sx={{
@@ -122,10 +112,12 @@ export default function HomePage() {
                             </div>
                             <div>
                                 <CarouselImageContainer>
-                                    <img
+                                    <motion.img
                                         src="/img/casa-vigil.jpg"
                                         alt="Bodega 2"
                                         style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                                        whileHover={{ scale: 1.05 }}
+                                        transition={{ duration: 0.3 }}
                                     />
                                     <Box
                                         sx={{
@@ -156,4 +148,3 @@ export default function HomePage() {
         </Background>
     );
 }
-

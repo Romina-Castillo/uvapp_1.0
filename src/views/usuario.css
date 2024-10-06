@@ -1,76 +1,62 @@
-/* Estilo para el fondo */
-.background {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-    gap: 20px;
-    color: #fff;
-}
-
-/* Header de la página (Bienvenida al usuario) */
-.welcome-header {
-    font-size: 48px; /* Aumentado para mayor impacto */
-    font-weight: 800; /* Mayor grosor para hacerla más destacada */
-    color: white;
-    text-align: center;
-    margin-bottom: 50px; /* Más espacio debajo */
-    text-shadow: 0px 6px 10px rgb(0, 0, 0); /* Sombra más pronunciada */
-}
-
-/* Contenedor de las reservas */
-.reservas-container {
-    background-color: rgba(145, 65, 76, 0.598);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
-    max-width: 700px;
-    width: 100%;
-    margin-bottom: 30px;
-    backdrop-filter: blur(10px); /* Efecto blur */
-}
-
-/* Estilo de cada reserva */
-.reserva-item {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.reserva-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Título de cada reserva */
-.reserva-item h6 {
-    font-size: 22px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 12px;
-}
-
-/* Detalle de la reserva */
-.reserva-item p {
-    font-size: 16px;
-    color: #666;
-    line-height: 1.5;
-}
-
-/* Mensaje de "No tienes reservas" */
-.no-reservas {
-    text-align: center;
-    font-size: 20px;
-    color: #666;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 10px;
-    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
-}
+/* Estilos para el contenedor de gestión de cuenta */
+.account-management-container {
+    padding: 20px; /* Espaciado interno */
+    background-color: rgb(255, 255, 255); /* Fondo blanco con transparencia */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    max-width: 600px; /* Ancho máximo */
+    margin: 20px auto; /* Centrar en la página */
+  }
+  
+  /* Estilo para el título de la gestión de cuenta */
+  .account-management-title {
+    color: #333; /* Color del texto */
+    font-size: 28px; /* Tamaño del texto */
+    font-weight: bold; /* Negrita */
+    text-align: center; /* Centrar el texto */
+    margin-bottom: 20px; /* Margen inferior para separación */
+  }
+  
+  /* Estilo para el campo de entrada */
+.text-field {
+    margin-bottom: 15px; /* Espaciado entre campos */
+    width: 100%; /* Ocupa todo el ancho */
+    background-color: #ffffff; /* Fondo blanco para el campo de entrada */
+    border: 1px solid rgba(0, 0, 0, 0.498); /* Borde suave */
+    border-radius: 4px; /* Bordes redondeados */
+    transition: border-color 0.6s ease; /* Transición suave para el borde */
+  }
+  
+  /* Efecto al enfocarse en el campo */
+  .text-field:focus {
+    border-color: #4caf50; /* Color del borde al hacer foco */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Sombra suave al enfocar */
+  }
+  
+  
+  /* Estilo para el botón de guardar cambios */
+  .save-button {
+    margin-top: 20px; /* Margen superior para separación */
+    background-color: #4caf50; /* Color de fondo verde */
+    color: white; /* Color del texto */
+    transition: background-color 0.3s ease; /* Transición suave */
+    width: 100%; /* Botón ocupa todo el ancho */
+  }
+  
+  /* Efecto hover para el botón */
+  .save-button:hover {
+    background-color: #45a049; /* Color más oscuro al pasar el mouse */
+  }
+  
+  /* Estilo para la lista */
+  .field-list {
+    list-style-type: none; /* Quitar los puntos de la lista */
+    padding: 0; /* Quitar el padding */
+    margin: 0; /* Quitar el margen */
+  }
+  
+  /* Estilo para cada item de la lista */
+  .field-list-item {
+    margin-bottom: 15px; /* Espaciado entre items */
+  }
+  

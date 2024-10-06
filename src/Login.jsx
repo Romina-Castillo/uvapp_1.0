@@ -63,7 +63,7 @@ export default function Login() {
 
         if (response.ok) {
             localStorage.setItem("username", data.username);
-            navigate('/usuario');
+            navigate('/');
             window.location.reload();
         } else {
             setError((prevError) => ({
@@ -88,11 +88,7 @@ export default function Login() {
   };
 
   return (
-    <div className="background">
-      <header className="header">
-        <div className="app-title">UVAPP</div>
-      </header>
-
+    <div className="background">  
       <Box component="form" className="form-container" onSubmit={handlerSubmit}>
         <TextField
           id="email"

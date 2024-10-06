@@ -1,62 +1,39 @@
-.offer-container { 
+/* OfertaEdu.css */
+
+.offer-container {
   padding: 20px;
 }
 
 .programs-section {
-  margin-bottom: 40px;
-}
-
-h2 {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 2em;
-  color: #333;
 }
 
 .program-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tres columnas */
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .program-card {
-  background: #f9f9f9;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 15px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Transiciones */
+  padding: 20px;
+  margin: 10px;
+  width: 250px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  opacity: 1; /* Hacer visible desde el inicio */
-  transform: translateY(20px); /* Desplazar hacia abajo para la animación */
-  animation: fadeInUp 0.5s forwards; /* Llama a la animación al abrir */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .program-card:hover {
-  transform: translateY(-10px) scale(1.05); /* Desplazamiento y escala al pasar el mouse */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Aumentar el efecto de sombra */
-  background-color: #e2e2e2; /* Cambiar el color de fondo al hacer hover */
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.program-card h3 {
-  margin: 10px 0;
-  font-size: 1.4em;
-}
-
-.program-card p {
-  color: #555;
-}
-
-/* Animaciones */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Nueva clase para tarjeta seleccionada */
+.program-card.selected {
+  border: 2px solid #8f9933; /* Cambia el borde a un color diferente cuando esté seleccionado */
+  background-color: #e0e0e0; /* Opcional: un color de fondo diferente para indicar que está seleccionado */
 }
 
 .modal-overlay {
@@ -65,93 +42,100 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 1000;
+  opacity: 1; /* Asegúrate de que sea visible */
 }
 
 .modal-content {
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
+  display: flex; /* Usar flexbox para centrar el contenido */
+  flex-direction: column; /* Alinear en columna */
+  align-items: center; /* Centrar horizontalmente */
+  justify-content: center; /* Centrar verticalmente */
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
   max-width: 600px;
-  width: 90%;
-  position: relative;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.3s; /* Animación al abrir el modal */
+  margin: 0 auto;
+  transform: scale(1); /* Asegúrate de que esté en su tamaño original */
+  animation: fadeIn 9.0s forwards; /* Aplica la animación */
+  border: 2px solid white;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Comienza invisible */
+  }
+  100% {
+    opacity: 1; /* Termina visible */
+  }
 }
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
+  top: 15px;
+  right: 15px;
+  background: none;
   border: none;
-  font-size: 1.2em; /* Tamaño más pequeño */
+  font-size: 15px;
   cursor: pointer;
-  color: #333;
-  padding: 5px; /* Añadir un poco de padding para que sea más fácil de hacer clic */
-  border-radius: 4px; /* Añadir bordes redondeados */
-}
-
-.close-button:hover {
-  color: red;
-  background-color: rgba(255, 0, 0, 0.1); /* Cambiar el color de fondo al hacer hover */
-}
-
-.modal-content a {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 15px;
-  background-color: #8f9933;
   color: black;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
 }
 
-/* Estilo para el botón de carga */
 .redirect-button {
   background-color: #8f9933;
-  color: black;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s, width 0.3s; /* Transiciones */
-  position: relative; /* Necesario para el pseudo-elemento */
-}
-
-.redirect-button.loading {
-  background-color: #6b7f29; /* Color más oscuro durante la carga */
   color: white;
-  cursor: not-allowed; /* Cambiar el cursor a no permitido */
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; /* Reducir la duración */
+  margin-top: 20px; /* Margen superior para separación */
 }
 
-/* Efecto de llenado */
-.redirect-button.loading::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.5); /* Color de llenado */
-  animation: fill 2s forwards; /* Duración de la animación */
+.redirect-button:hover {
+  background-color: #7e8830;
+  box-shadow: 0 0 20px rgba(143, 153, 51, 0.7); /* Efecto de sombra */
+  transform: scale(1.05); /* Aumenta el tamaño ligeramente */
 }
 
-@keyframes fill {
+.redirect-button.active {
+  animation: glow 0.5s infinite; /* Animación de brillo más rápida */
+}
+
+@keyframes glow {
   0% {
-    width: 0;
+    box-shadow: 0 0 5px rgba(143, 153, 51, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(143, 153, 51, 1);
   }
   100% {
-    width: 100%;
+    box-shadow: 0 0 5px rgba(143, 153, 51, 0.7);
   }
 }
 
+.redirect-button:disabled {
+  background-color: rgba(143, 153, 51, 0.7);
+  cursor: not-allowed;
+}
 
+/* Nueva clase para el spinner */
+.spinner {
+  border: 6px solid rgba(143, 153, 51, 0.3); /* Color de fondo */
+  border-top: 6px solid #8f9933; /* Color de la parte superior */
+  border-radius: 50%;
+  width: 40px; /* Tamaño del spinner */
+  height: 40px; /* Tamaño del spinner */
+  animation: spin 1s linear infinite; /* Animación del spinner */
+  margin-top: 20px; /* Espaciado */
+}
 
-.modal-content a:hover {
-  background-color: #ffffff;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

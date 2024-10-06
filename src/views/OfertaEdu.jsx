@@ -3,7 +3,8 @@ import './OfertaEdu.css';
 
 const OfertaEdu = () => {
   const [selectedProgram, setSelectedProgram] = useState(null);
-  const [loading, setLoading] = useState(false); // Estado para manejar la carga
+  const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const programs = [
     {
@@ -59,18 +60,18 @@ const OfertaEdu = () => {
 
   const closeModal = () => {
     setSelectedProgram(null);
-    setLoading(false); // Reiniciar el estado de carga al cerrar el modal
+    setLoading(false);
   };
 
   const handleRedirect = () => {
-      setLoading(true);
-      // Simular una carga (puedes reemplazar esto con la lógica real)
-      setTimeout(() => {
-        window.open(selectedProgram.link, "_blank");
-        setLoading(false);
-        closeModal();
-      }, 2000); // Tiempo de carga simulado
-    };
+    setLoading(true);
+
+    // Cambiar el tiempo de espera a 1200 ms para que sea más rápido
+    setTimeout(() => {
+      closeModal();
+      window.open(selectedProgram.link, "_blank");
+    }, 1200);
+  };
 
   return (
     <div className="offer-container">
@@ -80,7 +81,7 @@ const OfertaEdu = () => {
           {programs.map((program, index) => (
             <div 
               key={index} 
-              className="program-card" 
+              className={`program-card ${selectedProgram === program ? 'selected' : ''}`} 
               onClick={() => handleProgramClick(program)}
             >
               <h3>{program.title}</h3>
@@ -100,13 +101,16 @@ const OfertaEdu = () => {
             <button className="close-button" onClick={closeModal}>X</button>
             <h2>{selectedProgram.title}</h2>
             <p>{selectedProgram.description}</p>
-            <button 
-              onClick={handleRedirect} 
-              className={`redirect-button ${loading ? 'loading' : ''}`} // Cambiar clase según el estado
-              disabled={loading} // Deshabilita el botón mientras está cargando
-            >
-              {loading ? "Cargando..." : "Ir al Programa"}
-            </button>
+            {loading ? (
+              <div className="spinner"></div> // Aquí se coloca el spinner
+            ) : (
+              <button 
+                onClick={handleRedirect} 
+                className="redirect-button"
+              >
+                Ir al Programa
+              </button>
+            )}
           </div>
         </div>
       )}

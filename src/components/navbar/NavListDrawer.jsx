@@ -10,15 +10,17 @@ export default function NavListDrawer({ navArrayLinks, NavLink, setOpen }) {
                 height: '100vh', // Para que ocupe toda la altura de la pantalla
                 display: 'flex',
                 flexDirection: 'column',
+                alignItems: 'center', // Centra el contenido horizontalmente
+                paddingTop: '20px', // Espaciado superior
             }}
         >
+            {/* Logo */}
+            <img src="\public\image.png" alt="UVAPP Logo" style={{ height: '80px', marginBottom: '10px' }} />
+            
             <nav>
                 <List>
                     {navArrayLinks.map((item) => (
-                        <ListItem
-                            disablePadding
-                            key={item.title}
-                        >
+                        <ListItem disablePadding key={item.title}>
                             <ListItemButton
                                 component={NavLink}
                                 to={item.path}
@@ -47,4 +49,3 @@ export default function NavListDrawer({ navArrayLinks, NavLink, setOpen }) {
         </Box>
     );
 };
-
