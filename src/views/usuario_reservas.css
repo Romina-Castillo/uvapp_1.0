@@ -29,8 +29,8 @@
 .no-reservas {
     text-align: center; /* Centrar el texto */
     font-style: italic; /* Cursiva para el mensaje */
-    color: #353434; /* Color más suave para el mensaje */
-    margin-top: 20px; /* Margen superior para separación */
+    color: #000000; /* Color más suave para el mensaje */
+    margin-top: 10px; /* Margen superior para separación */
 }
 
 .no-reservas-container {
