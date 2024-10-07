@@ -1,5 +1,6 @@
 import { Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom"; 
+import { motion } from 'framer-motion'; // Importa Framer Motion
 
 const bodegasData = [
     {
@@ -35,7 +36,7 @@ const bodegasData = [
     {
         name: "Bodega Lopez",
         description: "Una descripción breve de la Bodega Lopez.",
-        img: "/bodega-lopez.jpg",
+        img: "\img\bodega-lopez.jpg",
         website: "https://experiencias.bodegaslopez.com.ar/"
     },
     {
@@ -75,31 +76,45 @@ const Bodegas = () => {
                         lg={4}
                         key={index}
                     >
-                        <Card>
-                            <CardMedia
-                                component="img"
-                                height="200"
-                                image={bodega.img}
-                                alt={bodega.name}
-                            />
-                            <CardContent>
-                                <Typography variant="h6" component="div">
-                                    {bodega.name}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {bodega.description}
-                                </Typography>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    href={bodega.website}
-                                    target="_blank"
-                                    sx={{ mt: 2 }}
-                                >
-                                    Reservar
-                                </Button>
-                            </CardContent>
-                        </Card>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }} // Inicialmente oculta y desplazada
+                            animate={{ opacity: 1, y: 0 }} // Se muestra y se desplaza hacia su posición original
+                            transition={{ duration: 0.5, delay: index * 0.1 }} // Retraso basado en el índice
+                        >
+                            <Card
+                                sx={{
+                                    '&:hover': {
+                                        boxShadow: '0 8px 20px rgba(0,0,0,0.2)', // Sombra al pasar el mouse
+                                        transform: 'scale(1.05)', // Escalado al pasar el mouse
+                                        transition: 'transform 0.3s ease-in-out', // Transición suave
+                                    }
+                                }}
+                            >
+                                <CardMedia
+                                    component="img"
+                                    height="200"
+                                    image={bodega.img}
+                                    alt={bodega.name}
+                                />
+                                <CardContent>
+                                    <Typography variant="h6" component="div">
+                                        {bodega.name}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        {bodega.description}
+                                    </Typography>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        href={bodega.website}
+                                        target="_blank"
+                                        sx={{ mt: 2 }}
+                                    >
+                                        Reservar
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        </motion.div>
                     </Grid>
                 ))}
             </Grid>

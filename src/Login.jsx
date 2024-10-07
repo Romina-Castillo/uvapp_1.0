@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, CircularProgress } from "@mui/material"; // Asegúrate de importar CircularProgress
 import { useState } from "react";
 import './Login.css'; 
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false); // Estado para controlar la carga
   const navigate = useNavigate();
   const [error, setError] = useState({
     email: {
@@ -31,15 +32,13 @@ export default function Login() {
     return password.length >= 6;
   };
 
-  
   const handleGmailRedirect = () => {
-    window.open('https://mail.google.com/', '_blank'); // Redirige a Gmail en una nueva pestaña
+    window.open('https://mail.google.com/', '_blank');
   };
   
   const handleFacebookRedirect = () => {
-    window.open('https://www.facebook.com/', '_blank'); // Redirige a Facebook en una nueva pestaña
+    window.open('https://www.facebook.com/', '_blank');
   };
-  
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +47,8 @@ export default function Login() {
     const isPasswordValid = validatePassword(password);
 
     if (!isEmailValid || !isPasswordValid) return;
+
+    setLoading(true); // Activa el estado de carga al iniciar el proceso de login
 
     try {
         const response = await fetch('http://localhost:3001/login', {
@@ -61,10 +62,9 @@ export default function Login() {
         const data = await response.json();
 
         if (response.ok) {
-            // Guardar nombre de usuario en localStorage y redirigir
-            localStorage.setItem("username", data.username); // Guardar el nombre de usuario recibido del registro
-            navigate('/usuario');
-            window.location.reload(); // Recargar la página automaticamente
+            localStorage.setItem("username", data.username);
+            navigate('/');
+            window.location.reload();
         } else {
             setError((prevError) => ({
                 ...prevError,
@@ -82,15 +82,13 @@ export default function Login() {
                 message: 'Error en el servidor. Intenta nuevamente más tarde.',
             },
         }));
+    } finally {
+        setLoading(false); // Desactiva el estado de carga al finalizar el proceso
     }
-};
+  };
 
   return (
-    <div className="background">
-      <header className="header">
-        <div className="app-title">UVAPP</div>
-      </header>
-
+    <div className="background">  
       <Box component="form" className="form-container" onSubmit={handlerSubmit}>
         <TextField
           id="email"
@@ -129,29 +127,33 @@ export default function Login() {
           fullWidth
           className="login-button"
           sx={{ mt: 2 }}
+          disabled={loading} // Desactiva el botón mientras se carga
         >
-          Iniciar sesión
+          {loading ? <CircularProgress size={24} color="inherit" /> : 'Iniciar sesión'}
         </Button>
+        
         <a href="#" className="forgot-password">¿Olvidaste tu contraseña?</a>
+        
         <Button
-        variant="contained"
-        fullWidth
-        className="gmail-button"
-        sx={{ mt: 2 }}
-        onClick={handleGmailRedirect} // Maneja el clic en el botón de Gmail
-      >
-        Conectarse con Gmail
-      </Button>
-      
-      <Button
-        variant="contained"
-        fullWidth
-        className="facebook-button"
-        sx={{ mt: 2, mb: 2 }} // Añadir margen inferior al botón de Facebook
-        onClick={handleFacebookRedirect} // Maneja el clic en el botón de Facebook
-      >
-        Conectarse con Facebook
-      </Button>
+          variant="contained"
+          fullWidth
+          className="gmail-button"
+          sx={{ mt: 2 }}
+          onClick={handleGmailRedirect}
+        >
+          Conectarse con Gmail
+        </Button>
+        
+        <Button
+          variant="contained"
+          fullWidth
+          className="facebook-button"
+          sx={{ mt: 2, mb: 2 }}
+          onClick={handleFacebookRedirect}
+        >
+          Conectarse con Facebook
+        </Button>
+        
         <Button
           variant="outlined"
           fullWidth

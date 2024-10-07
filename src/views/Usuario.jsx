@@ -1,57 +1,92 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Box, Typography } from '@mui/material';
-import './usuario.css';
+import React, { useState } from 'react';
+import { TextField, Button, Grid, Typography, Box } from '@mui/material';
 
-const Usuario = () => {
-  const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
+const AccountManagement = () => {
+  const [userData, setUserData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
 
-  useEffect(() => {
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setIsLoggedIn(true);
-      setUsername(storedUsername);
-    } else {
-      navigate('/login'); 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Aquí puedes agregar la lógica para guardar los datos
+    // Ejemplo: llamada a la API para actualizar el usuario
+    try {
+      const response = await fetch('/api/actualizar-cuenta', { // Cambia la URL a tu API
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al actualizar los datos');
+      }
+
+      // Si la actualización es exitosa
+      console.log('Datos actualizados:', userData);
+      alert('Los datos se han actualizado correctamente.');
+      
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Hubo un problema al actualizar los datos.');
     }
-  }, [navigate]);
-
-  const reservas = []; // Aquí deberías traer las reservas del usuario
+  };
 
   return (
-    isLoggedIn && (
-      <Box className="background">
-        <Box className="navbar">
-        </Box>
-
-        {/* Bienvenida al usuario */}
-        <Typography 
-            className="welcome-header" 
-            style={{ fontSize: '48px', fontWeight: 800, textShadow: '0px 6px 10px rgb(0, 0, 0)' }}
-        >
-            Bienvenido/a, {username}!
-        </Typography>
-
-
-        {/* Sección Tus Reservas */}
-        <Box className="reservas-container">
-          <Typography variant="h5">Tus Reservas</Typography>
-          {reservas.length > 0 ? (
-            reservas.map((reserva, index) => (
-              <Box key={index} className="reserva-item">
-                <Typography variant="h6">{reserva.evento}</Typography>
-                <Typography>{reserva.fecha}</Typography>
-              </Box>
-            ))
-          ) : (
-            <Typography className="no-reservas">No tienes reservas</Typography>
-          )}
-        </Box>
-      </Box>
-    )
+    <Box sx={{ p: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Gestión de Cuenta
+      </Typography>
+      <form onSubmit={handleSubmit}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              label="Nombre de Usuario"
+              name="username"
+              value={userData.username}
+              onChange={handleChange}
+              required
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              label="Dirección de Email"
+              name="email"
+              type="email"
+              value={userData.email}
+              onChange={handleChange}
+              required
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              label="Contraseña"
+              name="password"
+              type="password"
+              value={userData.password}
+              onChange={handleChange}
+              required
+            />
+          </Grid>
+        </Grid>
+        <Button type="submit" variant="contained" color="primary" sx={{ mt: 3 }}>
+          Guardar Cambios
+        </Button>
+      </form>
+    </Box>
   );
 };
 
-export default Usuario;
+export default AccountManagement;

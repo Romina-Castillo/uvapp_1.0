@@ -80,20 +80,27 @@ export default function Navbar({ navArrayLinks }) {
                         <MenuIcon />
                     </IconButton>
 
-                    <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                        UVAPP
-                    </Typography>
-
+                    <Box sx={{ flexGrow: 1 }}>
+                        <img src="\public\image.png" alt="UVAPP Logo" style={{ height: '70px' }} />
+                    </Box>
                     <Box sx={{ display: { xs: "none", sm: "flex" }, flexGrow: 1 }}>
                         {navArrayLinks.map((item) => (
-                            <Button
-                                color="inherit"
-                                key={item.title}
-                                component={NavLink}
-                                to={item.path}
-                            >
-                                {item.title}
-                            </Button>
+                           <Button
+                           color="inherit"
+                           key={item.title}
+                           component={NavLink}
+                           to={item.path}
+                           sx={{
+                               transition: 'all 0.3s ease-in-out',
+                               '&:hover': {
+                                   backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                   transform: 'scale(1.05)',
+                                   color: '#FFFFFF', // Cambia el color del texto al hacer hover
+                               },
+                           }}
+                       >
+                           {item.title}
+                       </Button>
                         ))}
                     </Box>
 
@@ -129,12 +136,26 @@ export default function Navbar({ navArrayLinks }) {
                         </IconButton>
                     )}
 
-                    <IconButton
-                        color="inherit"
-                        onClick={handleOpenUserMenu}
-                    >
-                        <AccountCircleIcon />
-                    </IconButton>
+                        <IconButton
+                            color="inherit"
+                            onClick={handleOpenUserMenu}
+                            sx={{
+                                transition: 'transform 0.3s ease-in-out, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                                '&:hover': {
+                                    transform: 'scale(1.2)', // Aumenta el tamaño en un 20% al hacer hover
+                                    filter: 'brightness(1.5)', // Efecto de brillo
+                                    boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.9)', // Añade una sombra suave
+                                },
+                                '&:active': {
+                                    transform: 'scale(1.1)', // Ligero rebote al hacer click
+                                },
+                            }}
+                        >
+                            <AccountCircleIcon />
+                        </IconButton>
+
+
+
 
                     <Menu
                         anchorEl={userAnchorEl}
@@ -143,13 +164,15 @@ export default function Navbar({ navArrayLinks }) {
                     >
                         {isLoggedIn ? (
                             <>
-                                <MenuItem onClick={() => navigate("/usuario")}>Mi cuenta: {username}</MenuItem>
-                                <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
+                                <MenuItem onClick={() => navigate("/usuario_reservas")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Mis reservas</MenuItem>
+                                <MenuItem onClick={() => navigate("/usuario")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Gestionar cuenta</MenuItem>
+                                <MenuItem onClick={handleLogout} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Cerrar sesión</MenuItem>
+
                             </>
                         ) : (
                             <>
-                                <MenuItem onClick={handleLogin}>Iniciar sesión</MenuItem>
-                                <MenuItem onClick={handleRegister}>Registrarse</MenuItem>
+                                <MenuItem onClick={handleLogin} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Iniciar sesión</MenuItem>
+                                <MenuItem onClick={handleRegister} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Registrarse</MenuItem>
                             </>
                         )}
                     </Menu>

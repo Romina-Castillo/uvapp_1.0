@@ -1,0 +1,56 @@
+
+
+.welcome-header {
+    color: #ffffff; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    margin-bottom: 20px; /* Margen inferior para separación */
+    text-shadow: 9px 7px 10px rgb(0, 0, 0); /* Sombra para el texto */
+}
+
+.reservas-container {
+    margin: 0 auto; /* Centrar el contenedor */
+    max-width: 600px; /* Ancho máximo para evitar que se extienda demasiado */
+}
+
+.reserva-item {
+    background-color: rgba(145, 65, 76, 0.598); /* Color para las reservas */
+    color: white; /* Color de texto para las reservas */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno */
+    margin-bottom: 15px; /* Espaciado inferior entre reservas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto de transición para hover */
+}
+
+.reserva-item:hover {
+    transform: translateY(-5px); /* Desplazamiento ligero al pasar el mouse */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hover */
+}
+
+.no-reservas {
+    text-align: center; /* Centrar el texto */
+    font-style: italic; /* Cursiva para el mensaje */
+    color: #353434; /* Color más suave para el mensaje */
+    margin-top: 20px; /* Margen superior para separación */
+}
+
+.no-reservas-container {
+    margin-top: 20px; /* Espacio superior para la imagen */
+    text-align: center; /* Centrar el contenido */
+}
+
+.no-reservas-image {
+    width: 150px; /* Ajusta el tamaño según lo necesites */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.separator {
+    height: 1px; /* Altura de la línea */
+    background-color: rgba(0, 0, 0, 0.2); /* Color del separador */
+    margin: 15px 0; /* Margen superior e inferior */
+}
+
+/* Agregar un poco de margen a la barra de navegación si es necesario */
+.navbar {
+    margin-bottom: 20px; /* Espaciado inferior */
+}
