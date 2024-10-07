@@ -15,6 +15,10 @@ npm run dev
 Paso 3°: Ejecutar el front
 npm run dev(en otra consola)
 
+Dependencias a descargar
+npm install rect-responsive-carousel        // en front carrusel
+npm install emailjs-com                     // en back emailjs para recibir mensajes
+
 reservas!
 npm install react-hook-form                 // en el front
 
@@ -29,7 +33,7 @@ CREATE TABLE reservas (
     hora TIME NOT NULL
 );
 
-en la terminal del back pueden ver los datos ingresados al igual que si ocurre un error en la confirmación de la reserva
+en la terminal del back pueden ver los datos ingresados en el formulario al igual que si ocurre un error en la confirmación de la reserva
 
 transiciones!
 npm install framer-motion   //en el front
