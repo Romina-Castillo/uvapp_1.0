@@ -138,21 +138,33 @@ export default function Login() {
           variant="contained"
           fullWidth
           className="gmail-button"
-          sx={{ mt: 2 }}
+          sx={{ mt: 2, mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           onClick={handleGmailRedirect}
         >
+          <img
+            src="\public\281769.png"
+            alt="Gmail logo"
+            style={{ width: '20px', height: '20px', marginRight: '8px' }}
+          />
           Conectarse con Gmail
         </Button>
+
         
         <Button
           variant="contained"
           fullWidth
           className="facebook-button"
-          sx={{ mt: 2, mb: 2 }}
+          sx={{ mt: 2, mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           onClick={handleFacebookRedirect}
         >
+          <img
+            src="\public\download.png"
+            alt="Facebook logo"
+            style={{ width: '20px', height: '20px', marginRight: '8px' }}
+          />
           Conectarse con Facebook
         </Button>
+
         
         <Button
           variant="outlined"
