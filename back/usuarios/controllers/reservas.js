@@ -14,3 +14,20 @@ exports.crearReserva = (req, res) => {
         }
     });
     }
+
+// Controlador para obtener reservas por id_usuario
+exports.obtenerReservasPorUsuario = (req, res) => {
+    const { id } = req.params; // El ID del usuario desde los parámetros de la ruta
+  
+    const sql = 'SELECT * FROM reservas WHERE id_usuario = ?'; // Filtrar por id_usuario
+    db.query(sql, [id], (err, result) => {
+      if (err) {
+        console.error('Error al obtener las reservas:', err);
+        res.status(500).json({ message: 'Error al obtener las reservas' });
+      } else {
+        console.log("Reservas encontradas:", result); // Verifica qué datos está devolviendo la base de datos
+        res.status(200).json(result); // Devolver las reservas
+      }
+    });
+  };
+  
