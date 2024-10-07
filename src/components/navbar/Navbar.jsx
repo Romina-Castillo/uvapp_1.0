@@ -123,7 +123,7 @@ export default function Navbar({ navArrayLinks }) {
                             color="inherit"
                             onClick={handleOpenNotifications}
                         >
-                            <Badge badgeContent={4} color="error">
+                            <Badge badgeContent={1} color="error">
                                 <NotificationsIcon />
                             </Badge>
                         </IconButton>

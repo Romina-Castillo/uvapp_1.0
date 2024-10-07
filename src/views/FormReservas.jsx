@@ -9,6 +9,14 @@ const Reservar = () => {
     const location = useLocation();
 
     useEffect(() => {
+        // Verifica si el usuario está logueado
+        const username = localStorage.getItem('username');
+        if (!username) {
+            // Si no está logueado, redirige al login
+            navigate('/login');
+        }
+
+        // Prellenar el campo de lugar si el parámetro "lugar" está en la URL
         const searchParams = new URLSearchParams(location.search);
         const lugarParam = searchParams.get("lugar");
         if (lugarParam) {
@@ -45,8 +53,15 @@ const Reservar = () => {
     };
 
     return (
-        <Box sx={{ padding: "20px" }} component="form" onSubmit={handleSubmit(onSubmit)} className="form-container" >
-            <Typography variant="h4">Reservar</Typography>
+        <Box 
+            sx={{  
+                padding: "20px", 
+            }} 
+            component="form" 
+            onSubmit={handleSubmit(onSubmit)} 
+            className="form-container"
+        >
+            <Typography variant="h4" sx={{ marginBottom: "20px" }}>Reservar</Typography>
             <Controller
                 name="nombre_persona"
                 control={control}
