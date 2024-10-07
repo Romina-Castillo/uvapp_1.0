@@ -81,7 +81,7 @@ export default function Navbar({ navArrayLinks }) {
                     </IconButton>
 
                     <Box sx={{ flexGrow: 1 }}>
-                        <img src="\public\image.png" alt="UVAPP Logo" style={{ height: '70px' }} />
+                        <img src="\public\image_copa.png" alt="UVAPP Logo" style={{ height: '70px' }} />
                     </Box>
                     <Box sx={{ display: { xs: "none", sm: "flex" }, flexGrow: 1 }}>
                         {navArrayLinks.map((item) => (
