@@ -2,6 +2,19 @@
 
 .offer-container {
   padding: 20px;
+  opacity: 0;
+  animation: fadeInAnimation 1s forwards; /* Añadido para que aparezca suavemente */
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Los elementos suben al aparecer */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .programs-section {
@@ -47,30 +60,31 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  opacity: 1; /* Asegúrate de que sea visible */
 }
 
 .modal-content {
-  display: flex; /* Usar flexbox para centrar el contenido */
-  flex-direction: column; /* Alinear en columna */
-  align-items: center; /* Centrar horizontalmente */
-  justify-content: center; /* Centrar verticalmente */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: white;
   padding: 30px;
   border-radius: 10px;
   max-width: 600px;
   margin: 0 auto;
-  transform: scale(1); /* Asegúrate de que esté en su tamaño original */
-  animation: fadeIn 9.0s forwards; /* Aplica la animación */
+  transform: scale(1);
+  animation: fadeIn 0.3s forwards; /* Animación más rápida */
   border: 2px solid white;
 }
 
 @keyframes fadeIn {
   0% {
-    opacity: 0; /* Comienza invisible */
+    opacity: 0;
+    transform: translateY(-20px); /* Aparece deslizándose hacia abajo */
   }
   100% {
-    opacity: 1; /* Termina visible */
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -93,18 +107,18 @@
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; /* Reducir la duración */
-  margin-top: 20px; /* Margen superior para separación */
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  margin-top: 20px;
 }
 
 .redirect-button:hover {
   background-color: #7e8830;
-  box-shadow: 0 0 20px rgba(143, 153, 51, 0.7); /* Efecto de sombra */
-  transform: scale(1.05); /* Aumenta el tamaño ligeramente */
+  box-shadow: 0 0 20px rgba(143, 153, 51, 0.7);
+  transform: scale(1.05);
 }
 
 .redirect-button.active {
-  animation: glow 0.5s infinite; /* Animación de brillo más rápida */
+  animation: glow 0.5s infinite;
 }
 
 @keyframes glow {
@@ -124,15 +138,15 @@
   cursor: not-allowed;
 }
 
-/* Nueva clase para el spinner */
+/* Spinner para la carga */
 .spinner {
   border: 6px solid rgba(143, 153, 51, 0.3); /* Color de fondo */
   border-top: 6px solid #8f9933; /* Color de la parte superior */
   border-radius: 50%;
-  width: 40px; /* Tamaño del spinner */
-  height: 40px; /* Tamaño del spinner */
-  animation: spin 1s linear infinite; /* Animación del spinner */
-  margin-top: 20px; /* Espaciado */
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-top: 20px;
 }
 
 @keyframes spin {

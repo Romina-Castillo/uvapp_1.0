@@ -66,7 +66,6 @@ const OfertaEdu = () => {
   const handleRedirect = () => {
     setLoading(true);
 
-    // Cambiar el tiempo de espera a 1200 ms para que sea más rápido
     setTimeout(() => {
       closeModal();
       window.open(selectedProgram.link, "_blank");
@@ -102,7 +101,7 @@ const OfertaEdu = () => {
             <h2>{selectedProgram.title}</h2>
             <p>{selectedProgram.description}</p>
             {loading ? (
-              <div className="spinner"></div> // Aquí se coloca el spinner
+              <div className="spinner"></div>
             ) : (
               <button 
                 onClick={handleRedirect} 
