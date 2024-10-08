@@ -1,14 +1,4 @@
-/* Estilos para el contenedor de gestión de cuenta */
-.account-management-container {
-    padding: 20px; /* Espaciado interno */
-    background-color: rgb(255, 255, 255); /* Fondo blanco con transparencia */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    max-width: 600px; /* Ancho máximo */
-    margin: 20px auto; /* Centrar en la página */
-  }
-  
-  /* Estilo para el título de la gestión de cuenta */
+
   .account-management-title {
     color: #333; /* Color del texto */
     font-size: 28px; /* Tamaño del texto */

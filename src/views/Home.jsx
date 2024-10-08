@@ -27,6 +27,11 @@ const StyledBox = styled(Box)({
 const HeaderBox = styled(StyledBox)({
     backgroundColor: "rgba(145, 65, 76, 0.7)",
     color: "white",
+    textAlign: 'center',
+    padding: '40px',
+    borderRadius: '15px',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+    margin: '0 auto',
 });
 
 const TrendBox = styled(motion.div)({
@@ -50,15 +55,15 @@ export default function HomePage() {
         <Background>
             <Container maxWidth="lg" sx={{ position: "relative" }}>
                 {/* Logo completo en lugar de la animación del texto */}
-                <HeaderBox textAlign="center" mt={5}>
-                    <motion.img
-                        src="\public\image_uvapp.png" // Ruta de tu logo completo
-                        alt="UVAPP Logo"
-                        style={{ height: '150px', marginBottom: '20px' }} // Ajusta el tamaño según sea necesario
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, ease: "easeInOut" }}
-                    />
+                <HeaderBox>
+                  <motion.img
+                    src="/public/image_uvapp.png" // Ruta de tu logo completo
+                    alt="UVAPP Logo"
+                    style={{ height: '150px', marginBottom: '20px' }} // Ajusta el tamaño según sea necesario
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                  />
                 </HeaderBox>
 
                 {/* TrendBox animado con efecto de entrada */}

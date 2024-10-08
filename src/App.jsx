@@ -17,6 +17,7 @@ import About from "./About";
 import Transicciones from './Transicciones';
 import Usuario_reservas from './views/Usuario_reservas';
 import ScrollToTop from './ScrollToTop'; // Importa el componente
+import './App.css';
 
 // en esta const solo poner lo que queremos que aparezca en la parte superior, en la navbar
 const navArrayLinks = [
