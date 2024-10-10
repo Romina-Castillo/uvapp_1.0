@@ -1,4 +1,8 @@
-/* OfertaEdu.css */
+.programs-section h2 {
+  font-size: 36px; /* Tamaño del texto más grande */
+  margin-bottom: 20px; /* Ajusta el espacio debajo del título */
+  font-weight: bold; /* Resalta el título */
+}
 
 .offer-container {
   padding: 20px;
