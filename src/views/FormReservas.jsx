@@ -41,7 +41,7 @@ const Reservar = () => {
 
             if (response.ok) {
                 console.log("Reserva realizada:", result);
-                navigate("/bodegas");
+                navigate("/usuarios_reservas");
             } else {
                 console.error("Error al realizar la reserva:", result);
                 alert(`Error: ${result.message}`); // Mostrar mensaje de error

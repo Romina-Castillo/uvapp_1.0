@@ -33,7 +33,7 @@ const UsuarioReservas = () => {
     <Box className="no-reservas-container" style={{ textAlign: 'center', marginTop: '10px' }}>
       <Box 
         component="img" 
-        src="/public/no_reservas.png" 
+        src="/no_reservas.png" 
         alt="Imagen que indica que no hay reservas" 
         className="no-reservas-image" 
         sx={{ width: '150px', height: 'auto', marginBottom: '10px' }}

@@ -15,7 +15,7 @@ import FormReservas from "./views/FormReservas";
 import Usuario from "./views/usuario";
 import About from "./About";
 import Transicciones from './Transicciones';
-import Usuario_reservas from './views/Usuario_reservas';
+import Usuario_reservas from './views/usuario_reservas';
 import ScrollToTop from './ScrollToTop'; // Importa el componente
 import './App.css';
 
