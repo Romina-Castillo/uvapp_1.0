@@ -11,6 +11,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 export default function Navbar({ navArrayLinks }) {
     const [open, setOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
+    const [filter, setFilter] = useState("bodega"); // Estado para el filtro (bodega o carrera)
+    const [results, setResults] = useState([]); // Estado para almacenar los resultados de la búsqueda
     const [notificationsAnchorEl, setNotificationsAnchorEl] = useState(null);
     const [userAnchorEl, setUserAnchorEl] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -45,8 +47,28 @@ export default function Navbar({ navArrayLinks }) {
         setSearchQuery(event.target.value);
     };
 
+    // Función para buscar y filtrar resultados
+    const handleSearch = async () => {
+        let filteredResults = [];
+        const response = await fetch("/api/search"); // Llama a tu API
+        const data = await response.json();
+
+        if (filter === "bodega") {
+            filteredResults = data.bodegas.filter(bodega =>
+                bodega.nombre.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        } else {
+            filteredResults = data.carreras.filter(carrera =>
+                carrera.nombre.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        }
+
+        setResults(filteredResults); // Actualiza el estado con los resultados filtrados
+    };
+
     const handleFilterClick = () => {
-        console.log("Aplicar filtros");
+        // Alterna entre filtrar por bodega o carrera
+        setFilter(filter === "bodega" ? "carrera" : "bodega");
     };
 
     const handleLogout = () => {
@@ -81,8 +103,9 @@ export default function Navbar({ navArrayLinks }) {
                     </IconButton>
 
                     <Box sx={{ flexGrow: 1 }}>
-                        <img src="\public\image_copa.png" alt="UVAPP Logo" style={{ height: '70px' }} />
+                        <img src="/image_copa.png" alt="UVAPP Logo" style={{ height: '70px' }} />
                     </Box>
+
                     <Box sx={{ display: { xs: "none", sm: "flex" }, flexGrow: 1 }}>
                         {navArrayLinks.map((item) => (
                             <Button
@@ -110,6 +133,7 @@ export default function Navbar({ navArrayLinks }) {
                             placeholder="Buscar…"
                             value={searchQuery}
                             onChange={handleSearchChange}
+                            
                             sx={{
                                 ml: 1,
                                 color: "black",
@@ -118,11 +142,16 @@ export default function Navbar({ navArrayLinks }) {
                                 padding: '0 10px',
                                 width: '100%',
                             }}
+                            onKeyPress={(e) => {
+                                if (e.key === "Enter") {
+                                    handleSearch(); // Ejecuta la búsqueda al presionar Enter
+                            }}
+                        }
                         />
                     </Box>
 
                     <Button color="inherit" startIcon={<FilterListIcon />} onClick={handleFilterClick}>
-                        Filtro
+                        {filter === "bodega" ? "Buscar por Carrera" : "Buscar por Bodega"}
                     </Button>
 
                     {isLoggedIn && (                                          // is loggedIn verifica que el usuario se ha logueado
@@ -153,9 +182,6 @@ export default function Navbar({ navArrayLinks }) {
                     >
                         <AccountCircleIcon />
                     </IconButton>
-
-
-
 
                     <Menu
                         anchorEl={userAnchorEl}
@@ -190,6 +216,20 @@ export default function Navbar({ navArrayLinks }) {
                     setOpen={setOpen}
                 />
             </Drawer>
+
+            {/* Mostrar resultados de búsqueda */}
+            <Box>
+                {results.length > 0 ? (
+                    results.map((result) => (
+                        <Box key={result.id}>
+                            <Typography>{result.nombre}</Typography>
+                        </Box>
+                    ))
+                ) : (
+                    <Typography>No se encontraron resultados</Typography>
+                )}
+            </Box>
+
         </>
     );
 }

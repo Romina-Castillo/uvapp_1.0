@@ -13,7 +13,4 @@ router.post('/register',controllersUsuarios.register);
 
 router.post('/reservas', controllersReservas.crearReserva);
 
-router.post('/reservas', controllersReservas.obtenerReservasPorUsuario);
-
-
 module.exports = router;
