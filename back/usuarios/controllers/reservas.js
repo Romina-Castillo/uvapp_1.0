@@ -13,8 +13,8 @@ exports.crearReserva = (req, res) => {
             res.status(200).send('Reserva realizada exitosamente');
         }
     });
-}
-
+    }
+    
 // Controlador para obtener reservas por id_usuario
 exports.obtenerReservasPorUsuario = (req, res) => {
     const { id } = req.params; // El ID del usuario desde los parámetros de la ruta

@@ -7,12 +7,12 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NavListDrawer from "./NavListDrawer";
 import MenuIcon from '@mui/icons-material/Menu';
+import { bodegasData } from '../../views/Bodegas.jsx';
 
 export default function Navbar({ navArrayLinks }) {
     const [open, setOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState("");
-    const [filter, setFilter] = useState("bodega"); // Estado para el filtro (bodega o carrera)
-    const [results, setResults] = useState([]); // Estado para almacenar los resultados de la búsqueda
+    const [searchQuery, setSearchQuery] = useState(""); // Estado para el término de búsqueda
+    const [filteredBodegas, setFilteredBodegas] = useState(bodegasData); // Estado para bodegas filtradas
     const [notificationsAnchorEl, setNotificationsAnchorEl] = useState(null);
     const [userAnchorEl, setUserAnchorEl] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,6 +20,8 @@ export default function Navbar({ navArrayLinks }) {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log(bodegasData); // Asegúrate de que es un array
+
         const storedUsername = localStorage.getItem("username");
         if (storedUsername) {
             setIsLoggedIn(true);
@@ -48,27 +50,18 @@ export default function Navbar({ navArrayLinks }) {
     };
 
     // Función para buscar y filtrar resultados
-    const handleSearch = async () => {
-        let filteredResults = [];
-        const response = await fetch("/api/search"); // Llama a tu API
-        const data = await response.json();
+    const handleSearch = () => {
+        const filteredResults = bodegasData.filter(bodega =>
+            bodega.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
 
-        if (filter === "bodega") {
-            filteredResults = data.bodegas.filter(bodega =>
-                bodega.nombre.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-        } else {
-            filteredResults = data.carreras.filter(carrera =>
-                carrera.nombre.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-        }
-
-        setResults(filteredResults); // Actualiza el estado con los resultados filtrados
+        setFilteredBodegas(filteredResults); // Actualiza el estado con los resultados filtrados
+        console.log(filteredResults); // Muestra los resultados filtrados en la consola
     };
 
     const handleFilterClick = () => {
         // Alterna entre filtrar por bodega o carrera
-        setFilter(filter === "bodega" ? "carrera" : "bodega");
+        // Implementación de filtro por carrera si es necesario
     };
 
     const handleLogout = () => {
@@ -96,7 +89,6 @@ export default function Navbar({ navArrayLinks }) {
                         color="inherit"
                         size="large"
                         onClick={() => setOpen(true)}
-                        // sx={{ display: { xs: "flex", sm: "none" } }} esto ocultaba el icono de menu y solo lo mostraba cuando se pasaba a pantalla pequeña
                         edge="start"
                     >
                         <MenuIcon />
@@ -118,7 +110,7 @@ export default function Navbar({ navArrayLinks }) {
                                     '&:hover': {
                                         backgroundColor: 'rgba(255, 255, 255, 0.1)',
                                         transform: 'scale(1.05)',
-                                        color: '#FFFFFF', // Cambia el color del texto al hacer hover
+                                        color: '#FFFFFF',
                                     },
                                 }}
                             >
@@ -133,7 +125,6 @@ export default function Navbar({ navArrayLinks }) {
                             placeholder="Buscar…"
                             value={searchQuery}
                             onChange={handleSearchChange}
-                            
                             sx={{
                                 ml: 1,
                                 color: "black",
@@ -145,16 +136,16 @@ export default function Navbar({ navArrayLinks }) {
                             onKeyPress={(e) => {
                                 if (e.key === "Enter") {
                                     handleSearch(); // Ejecuta la búsqueda al presionar Enter
+                                }
                             }}
-                        }
                         />
                     </Box>
 
                     <Button color="inherit" startIcon={<FilterListIcon />} onClick={handleFilterClick}>
-                        {filter === "bodega" ? "Buscar por Carrera" : "Buscar por Bodega"}
+                        Buscar por Carrera
                     </Button>
 
-                    {isLoggedIn && (                                          // is loggedIn verifica que el usuario se ha logueado
+                    {isLoggedIn && (
                         <IconButton
                             color="inherit"
                             onClick={handleOpenNotifications}
@@ -171,12 +162,12 @@ export default function Navbar({ navArrayLinks }) {
                         sx={{
                             transition: 'transform 0.3s ease-in-out, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
                             '&:hover': {
-                                transform: 'scale(1.2)', // Aumenta el tamaño en un 20% al hacer hover
-                                filter: 'brightness(1.5)', // Efecto de brillo
-                                boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.9)', // Añade una sombra suave
+                                transform: 'scale(1.2)',
+                                filter: 'brightness(1.5)',
+                                boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.9)',
                             },
                             '&:active': {
-                                transform: 'scale(1.1)', // Ligero rebote al hacer click
+                                transform: 'scale(1.1)',
                             },
                         }}
                     >
@@ -190,18 +181,18 @@ export default function Navbar({ navArrayLinks }) {
                     >
                         {isLoggedIn ? (
                             <>
-                                <MenuItem onClick={() => navigate("/usuario_reservas")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Mis reservas</MenuItem>
-                                <MenuItem onClick={() => navigate("/usuario")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Gestionar cuenta</MenuItem>
-                                <MenuItem onClick={handleLogout} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Cerrar sesión</MenuItem>
-
+                                <MenuItem key="mis_reservas" onClick={() => navigate("/usuario_reservas")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Mis reservas</MenuItem>
+                                <MenuItem key="gestionar_cuenta" onClick={() => navigate("/usuario")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Gestionar cuenta</MenuItem>
+                                <MenuItem key="cerrar_sesion" onClick={handleLogout} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Cerrar sesión</MenuItem>
                             </>
                         ) : (
                             <>
-                                <MenuItem onClick={handleLogin} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Iniciar sesión</MenuItem>
-                                <MenuItem onClick={handleRegister} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Registrarse</MenuItem>
+                                <MenuItem key="iniciar_sesion" onClick={handleLogin} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Iniciar sesión</MenuItem>
+                                <MenuItem key="registrarse" onClick={handleRegister} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Registrarse</MenuItem>
                             </>
                         )}
                     </Menu>
+
                 </Toolbar>
             </AppBar>
 
@@ -217,19 +208,16 @@ export default function Navbar({ navArrayLinks }) {
                 />
             </Drawer>
 
-            {/* Mostrar resultados de búsqueda */}
-            <Box>
-                {results.length > 0 ? (
-                    results.map((result) => (
-                        <Box key={result.id}>
-                            <Typography>{result.nombre}</Typography>
-                        </Box>
-                    ))
-                ) : (
-                    <Typography>No se encontraron resultados</Typography>
-                )}
-            </Box>
-
+            {/* Resultados de búsqueda */}
+            {filteredBodegas.length > 0 && (
+                <Box sx={{ position: "absolute", top: "70px", left: "50%", transform: "translateX(-50%)", backgroundColor: "white", zIndex: 1000 }}>
+                    {filteredBodegas.map((bodega, index) => (
+                        <Typography key={index} sx={{ padding: "10px", cursor: "pointer" }}>
+                            {bodega.name}
+                        </Typography>
+                    ))}
+                </Box>
+            )}
         </>
     );
 }

@@ -38,3 +38,8 @@ en la terminal del back pueden ver los datos ingresados en el formulario al igua
 transiciones!
 npm install framer-motion   //en el front
 
+jsonwebtoken en back
+npm install jsonwebtoken
+
+lo instale pero todavia no lo implemente, es para el tema de verificaciones
+

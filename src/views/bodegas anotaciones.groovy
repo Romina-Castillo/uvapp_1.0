@@ -1,3 +1,5 @@
+archivo de recuperacion por si las dudas
+
 import { Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom"; 
 import { motion } from 'framer-motion'; // Importa Framer Motion
@@ -7,64 +9,55 @@ export const bodegasData = [
         name: "Bodega Andeluna",
         description: "Una descripción breve de la Andeluna.",
         img: "/img/bodega-andeluna.jpg",
-        website: "https://wineobs.com.ar/mro/andeluna",
-        route: "/bodega/andeluna"
+        website: "https://wineobs.com.ar/mro/andeluna"
     },
     {
         name: "Bodega Séptima",
         description: "Una descripción breve de la Bodega Séptima.",
         img: "/img/bodega-septima.jpg",
-        website: "https://www.bodegaseptima.com/enoturismo/",
-        route: "/bodega/septima"
+        website: "https://www.bodegaseptima.com/enoturismo/"
     },
     {
         name: "Bodega Salentein",
         description: "Una descripción breve de la Bodega Salentein.",
         img: "/img/bodega-salentein.jpg",
-        website: "https://www.bodegasalentein.com/reservas",
-        route: "/bodega/salentein"
+        website: "https://www.bodegasalentein.com/reservas"
     },
     {
         name: "Bodega Trapiche",
         description: "Una descripción breve de la Bodega Trapiche.",
         img: "/img/bodega-trapiche.jpeg",
-        website: "https://trapiche-costaypampa.meitre.com/",
-        route: "/bodega/trapiche"
+        website: "https://trapiche-costaypampa.meitre.com/"
     },
     {
         name: "Bodega Achaval",
         description: "Una descripción breve de la Bodega Achaval-Ferrer.",
         img: "/img/bodega-achaval.jpg",
-        website: "https://meitre.com/es/quimera-achaval",
-        route: "/bodega/achaval"
+        website: "https://meitre.com/es/quimera-achaval"
     },
     {
         name: "Bodega Lopez",
         description: "Una descripción breve de la Bodega Lopez.",
         img: "/img/bodega-lopez.jpg",
-        website: "https://experiencias.bodegaslopez.com.ar/",
-        route: "/bodega/lopez"
+        website: "https://experiencias.bodegaslopez.com.ar/"
     },
     {
         name: "Casa Vigil",
         description: "Una descripción breve de la Casa Vigil.",
         img: "/img/casa-vigil.jpg",
-        website: "https://meitre.com/es/casa-vigil",
-        route: "/bodega/casa-vigil"
+        website: "https://meitre.com/es/casa-vigil"
     },
     {
         name: "Bodega Luigi Bosca",
         description: "Una descripción breve de la Bodega Luigi Bosca.",
         img: "/img/bodega-luigibosca.jpg",
-        website: "https://luigibosca.com/experiencias/",
-        route: "/bodega/luigi-bosca"
+        website: "https://luigibosca.com/experiencias/"
     },
     {
         name: "Bodega Chandon",
         description: "Una descripción breve de la Bodega Chandon.",
         img: "/img/Bodega-Chandon.jpg",
-        website: "https://www.chandon.com.ar/nuestra-bodega/",
-        route: "/bodega/chandon"
+        website: "https://www.chandon.com.ar/nuestra-bodega/"
     }
 ];
 
@@ -115,11 +108,11 @@ const Bodegas = () => {
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        component={Link} // Cambia href por Link
-                                        to={bodega.route} // Usar la nueva ruta de la bodega
+                                        href={bodega.website}
+                                        target="_blank"
                                         sx={{ mt: 2 }}
                                     >
-                                        Ver Bodega
+                                        Reservar
                                     </Button>
                                 </CardContent>
                             </Card>
@@ -132,7 +125,7 @@ const Bodegas = () => {
                 justifyContent="center"
                 sx={{ mt: 5 }}
             >
-            {/* botón de página siguiente */}
+            {/* boton de pagina siguiente */}
                 <Button
                     variant="outlined"
                     component={Link}

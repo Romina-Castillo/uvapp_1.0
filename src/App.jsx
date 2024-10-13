@@ -59,6 +59,8 @@ export default function App() {
           <Route path="/formReservas" element={<Transicciones><FormReservas /></Transicciones>} />
           <Route path="/About" element={<Transicciones><About /></Transicciones>} />
           <Route path="/Usuario_reservas" element={<Transicciones><Usuario_reservas /></Transicciones>} />
+          <Route path="/bodega/:name" element={<Transicciones><bodegaCard /></Transicciones>} />
+
         </Routes>
       </Container>
       <Footer />
