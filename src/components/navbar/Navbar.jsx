@@ -13,6 +13,7 @@ export default function Navbar({ navArrayLinks }) {
     const [open, setOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState(""); // Estado para el término de búsqueda
     const [filteredBodegas, setFilteredBodegas] = useState(bodegasData); // Estado para bodegas filtradas
+    const [showResults, setShowResults] = useState(false); // Estado para controlar la visibilidad de los resultados
     const [notificationsAnchorEl, setNotificationsAnchorEl] = useState(null);
     const [userAnchorEl, setUserAnchorEl] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,7 +21,7 @@ export default function Navbar({ navArrayLinks }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(bodegasData); // Asegúrate de que es un array
+        console.log(bodegasData); // ver en consola para ver si esta recibiendo el array
 
         const storedUsername = localStorage.getItem("username");
         if (storedUsername) {
@@ -56,12 +57,12 @@ export default function Navbar({ navArrayLinks }) {
         );
 
         setFilteredBodegas(filteredResults); // Actualiza el estado con los resultados filtrados
-        console.log(filteredResults); // Muestra los resultados filtrados en la consola
+        setShowResults(filteredResults.length > 0); // Muestra los resultados solo si hay coincidencias
     };
 
+
     const handleFilterClick = () => {
-        // Alterna entre filtrar por bodega o carrera
-        // Implementación de filtro por carrera si es necesario
+
     };
 
     const handleLogout = () => {
@@ -142,7 +143,7 @@ export default function Navbar({ navArrayLinks }) {
                     </Box>
 
                     <Button color="inherit" startIcon={<FilterListIcon />} onClick={handleFilterClick}>
-                        Buscar por Carrera
+                        Filtros
                     </Button>
 
                     {isLoggedIn && (
@@ -180,18 +181,29 @@ export default function Navbar({ navArrayLinks }) {
                         onClose={handleCloseUserMenu}
                     >
                         {isLoggedIn ? (
-                            <>
-                                <MenuItem key="mis_reservas" onClick={() => navigate("/usuario_reservas")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Mis reservas</MenuItem>
-                                <MenuItem key="gestionar_cuenta" onClick={() => navigate("/usuario")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Gestionar cuenta</MenuItem>
-                                <MenuItem key="cerrar_sesion" onClick={handleLogout} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Cerrar sesión</MenuItem>
-                            </>
+                            [// si esta logueado opiones del usuario muestra
+                                <MenuItem key="mis_reservas" onClick={() => navigate("/usuario_reservas")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>
+                                    Mis reservas
+                                </MenuItem>,
+                                <MenuItem key="gestionar_cuenta" onClick={() => navigate("/usuario")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>
+                                    Gestionar cuenta
+                                </MenuItem>,
+                                <MenuItem key="cerrar_sesion" onClick={handleLogout} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>
+                                    Cerrar sesión
+                                </MenuItem>
+                            ]
                         ) : (
-                            <>
-                                <MenuItem key="iniciar_sesion" onClick={handleLogin} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Iniciar sesión</MenuItem>
-                                <MenuItem key="registrarse" onClick={handleRegister} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>Registrarse</MenuItem>
-                            </>
+                            [// si no esta logueado en el icono de usuario muestra
+                                <MenuItem key="iniciar_sesion" onClick={handleLogin} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>
+                                    Iniciar sesión
+                                </MenuItem>,
+                                <MenuItem key="registrarse" onClick={handleRegister} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>
+                                    Registrarse
+                                </MenuItem>
+                            ]
                         )}
                     </Menu>
+
 
                 </Toolbar>
             </AppBar>
@@ -209,15 +221,23 @@ export default function Navbar({ navArrayLinks }) {
             </Drawer>
 
             {/* Resultados de búsqueda */}
-            {filteredBodegas.length > 0 && (
+            {searchQuery && showResults && (
                 <Box sx={{ position: "absolute", top: "70px", left: "50%", transform: "translateX(-50%)", backgroundColor: "white", zIndex: 1000 }}>
                     {filteredBodegas.map((bodega, index) => (
-                        <Typography key={index} sx={{ padding: "10px", cursor: "pointer" }}>
+                        <Typography
+                            key={index}
+                            sx={{ padding: "10px", cursor: "pointer" }}
+                            onClick={() => {
+                                navigate(`${bodega.route}`);  // Redirige a la vista de la bodega
+                                setShowResults(false); // Oculta los resultados después de hacer clic
+                            }}
+                        >
                             {bodega.name}
                         </Typography>
                     ))}
                 </Box>
             )}
+
         </>
     );
 }

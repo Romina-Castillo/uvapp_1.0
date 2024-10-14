@@ -1,8 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { bodegasData } from './Bodegas'; // Ajusta la ruta según tu estructura de carpetas
+import { bodegasData } from './Bodegas'; 
 import { Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
-import { bodegasData } from '../../views/Bodegas.jsx';
 
 const BodegaCard = () => {
     const { name } = useParams();

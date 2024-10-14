@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { TextField, Button, Typography, Box } from "@mui/material";
+import { useEffect, useState } from "react";
+import { TextField, Button, Typography, Box, Dialog, DialogTitle, DialogContent, DialogActions, Snackbar } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 
@@ -8,48 +8,27 @@ const Reservar = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const [openDialog, setOpenDialog] = useState(false);
+    const [reservationData, setReservationData] = useState(null);
+    const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+
     useEffect(() => {
-        // Verifica si el usuario está logueado
         const username = localStorage.getItem('username');
         if (!username) {
-            // Si no está logueado, redirige al login
             navigate('/login');
         }
 
-        // Prellenar el campo de lugar si el parámetro "lugar" está en la URL
         const searchParams = new URLSearchParams(location.search);
         const lugarParam = searchParams.get("lugar");
         if (lugarParam) {
-            setValue("lugar", lugarParam); // Prellenar el campo de lugar
+            setValue("lugar", lugarParam);
         }
-    }, [location, setValue]);
+    }, [location, setValue, navigate]);
 
-    const onSubmit = async (data) => {
-        console.log("Datos a enviar:", data); // Depuración
-
-        try {
-            const response = await fetch("http://localhost:3001/reservas", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
-
-            const result = await response.json();
-            console.log("Datos de respuesta del servidor:", result); // Depuración
-
-            if (response.ok) {
-                console.log("Reserva realizada:", result);
-                navigate("/usuarios_reservas");
-            } else {
-                console.error("Error al realizar la reserva:", result);
-                alert(`Error: ${result.message}`); // Mostrar mensaje de error
-            }
-
-        } catch (error) {
-            console.error("Error en la solicitud:", error);
-        }
+    const onSubmit = (data) => {
+        setReservationData(data);
+        setOpenDialog(true);
     };
 
     return (
@@ -87,7 +66,7 @@ const Reservar = () => {
                         label="Lugar"
                         {...field}
                         InputProps={{
-                            readOnly: true, // Hacer que el campo sea de solo lectura
+                            readOnly: true,
                         }}
                         sx={{ margin: "10px 0" }}
                     />
@@ -128,6 +107,71 @@ const Reservar = () => {
             <Button type="submit" variant="contained" color="primary">
                 Confirmar Reservación
             </Button>
+
+            <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
+                <DialogTitle>Confirmar Reservación</DialogTitle>
+                <DialogContent>
+                    <Typography variant="body1">
+                        ¿Está seguro de que desea confirmar la reserva para {reservationData?.nombre_persona} en {reservationData?.lugar}?
+                    </Typography>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setOpenDialog(false)} color="primary">
+                        No
+                    </Button>
+                    <Button 
+                        onClick={async () => {
+                            try {
+                                const response = await fetch("http://localhost:3001/reservas", {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify(reservationData),
+                                });
+
+                                // Manejar la respuesta solo una vez
+                                const textResponse = await response.text(); // Primero, obtén el texto
+                                let result;
+
+                                try {
+                                    result = JSON.parse(textResponse); // Intenta parsear el texto como JSON
+                                } catch (e) {
+                                    result = { message: textResponse }; // Si no puede, almacena el texto
+                                }
+
+                                if (response.ok) {
+                                    console.log("Reserva realizada:", result);
+                                    setSnackbarMessage("Reserva confirmada");
+                                    setOpenSnackbar(true);
+                                    setTimeout(() => {
+                                        navigate("/usuario_reservas");
+                                    }, 2000);
+                                } else {
+                                    console.error("Error al realizar la reserva:", result);
+                                    setSnackbarMessage(`Error: ${result.message}`);
+                                    setOpenSnackbar(true);
+                                }
+                            } catch (error) {
+                                console.error("Error en la solicitud:", error);
+                                setSnackbarMessage("Error en la solicitud");
+                                setOpenSnackbar(true);
+                            }
+                            setOpenDialog(false);
+                        }} 
+                        color="primary"
+                    >
+                        Sí
+                    </Button>
+                </DialogActions>
+            </Dialog>
+
+            <Snackbar
+                open={openSnackbar}
+                onClose={() => setOpenSnackbar(false)}
+                message={snackbarMessage}
+                autoHideDuration={3000}
+            />
         </Box>
     );
 };

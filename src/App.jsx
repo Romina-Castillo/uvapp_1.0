@@ -17,6 +17,7 @@ import About from "./About";
 import Transicciones from './Transicciones';
 import Usuario_reservas from './views/usuario_reservas';
 import ScrollToTop from './ScrollToTop'; // Importa el componente
+import BodegaCard from "./views/bodegaCard";
 import './App.css';
 
 // en esta const solo poner lo que queremos que aparezca en la parte superior, en la navbar
@@ -59,7 +60,7 @@ export default function App() {
           <Route path="/formReservas" element={<Transicciones><FormReservas /></Transicciones>} />
           <Route path="/About" element={<Transicciones><About /></Transicciones>} />
           <Route path="/Usuario_reservas" element={<Transicciones><Usuario_reservas /></Transicciones>} />
-          <Route path="/bodega/:name" element={<Transicciones><bodegaCard /></Transicciones>} />
+          <Route path="/bodega/:name" element={<Transicciones><BodegaCard /></Transicciones>} />
 
         </Routes>
       </Container>

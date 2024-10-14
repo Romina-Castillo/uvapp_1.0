@@ -8,7 +8,7 @@ export const bodegasData = [
         description: "Una descripción breve de la Andeluna.",
         img: "/img/bodega-andeluna.jpg",
         website: "https://wineobs.com.ar/mro/andeluna",
-        route: "/bodega/andeluna"
+        route: "/bodega/andeluna"                      // en route ponemos la ruta del buscador definido en app js bodega/:name
     },
     {
         name: "Bodega Séptima",
