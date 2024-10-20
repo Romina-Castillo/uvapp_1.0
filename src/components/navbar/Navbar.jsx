@@ -95,31 +95,6 @@ export default function Navbar({ navArrayLinks }) {
                         <MenuIcon />
                     </IconButton>
 
-                    <Box sx={{ flexGrow: 1 }}>
-                        <img src="/image_copa.png" alt="UVAPP Logo" style={{ height: '70px' }} />
-                    </Box>
-
-                    <Box sx={{ display: { xs: "none", sm: "flex" }, flexGrow: 1 }}>
-                        {navArrayLinks.map((item) => (
-                            <Button
-                                color="inherit"
-                                key={item.title}
-                                component={NavLink}
-                                to={item.path}
-                                sx={{
-                                    transition: 'all 0.3s ease-in-out',
-                                    '&:hover': {
-                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                        transform: 'scale(1.05)',
-                                        color: '#FFFFFF',
-                                    },
-                                }}
-                            >
-                                {item.title}
-                            </Button>
-                        ))}
-                    </Box>
-
                     <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
                         <SearchIcon />
                         <InputBase
@@ -132,7 +107,7 @@ export default function Navbar({ navArrayLinks }) {
                                 backgroundColor: "white",
                                 borderRadius: 1,
                                 padding: '0 10px',
-                                width: '100%',
+                                width: '50%',
                             }}
                             onKeyPress={(e) => {
                                 if (e.key === "Enter") {

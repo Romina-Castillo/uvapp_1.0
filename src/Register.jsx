@@ -82,10 +82,6 @@ export default function Register() {
 
   return (
     <div className="background">
-      <header className="header">
-        <div className="app-title">UVAPP</div>
-      </header>
-
       <Box component="form" className="form-container" onSubmit={handlerSubmit}>
         <TextField
           id="username"

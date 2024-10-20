@@ -1,86 +1,115 @@
-/* Estilo para el fondo */
+/* Estilo general del contenedor de la vista */
 .background {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* El fondo ocupa toda la altura */
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Ocupa el 100% de la altura */
-  background-image: url('../path/to/your/image.jpg'); /* Ruta a la imagen de fondo */
-  background-size: cover;
-  background-position: center;
-  padding: 20px;
+  pointer-events: none; /* No permite interacción por defecto */
+  overflow: hidden;
 }
 
-/* Header de la página */
-.header {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Contenedor del formulario */
+/* Contenedor del formulario de login */
 .form-container {
-  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco translúcido */
+  background-color: rgba(145, 65, 76, 0.8); /* Fondo translúcido */
   padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  max-width: 400px; /* Limita el ancho máximo del formulario */
-  width: 100%; /* Asegura que ocupe el 100% en móviles */
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra con más desenfoque */
+  pointer-events: auto; /* Permitir interacción en el formulario */
+  transform: translateY(-20px);
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Animación de aparición del formulario */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Campos de entrada */
 .input-field {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: white;
+  color: black;
 }
 
 /* Botón de iniciar sesión */
 .login-button {
-  background-color: #a4aa3e;
+  background-color: rgba(145, 65, 76, 0.8);
   color: white;
-  font-weight: bold;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 100%; /* Asegura que el botón ocupe todo el ancho */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .login-button:hover {
-  background-color: #8f9933;
+  background-color: rgba(145, 65, 76, 0.9); /* Ajustado para evitar el fondo negro */
+  transform: scale(1.05);
+}
+
+.login-button:disabled {
+  background-color: #ccc; /* Color durante la carga */
+}
+
+/* Botones de redes sociales */
+.gmail-button,
+.facebook-button {
+  color: white;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gmail-button {
-  background-color: #d93025; /* Color rojo característico de Gmail */
-  color: white;
+  background-color: #d93025;
 }
 
 .gmail-button:hover {
-  background-color: #c62828; /* Color más oscuro al pasar el ratón */
+  background-color: #c62828;
 }
 
 .facebook-button {
-  background-color: #3b5998; /* Color azul característico de Facebook */
-  color: white;
+  background-color: #3b5998;
 }
 
 .facebook-button:hover {
-  background-color: #314a86; /* Color más oscuro al pasar el ratón */
+  background-color: #314a86;
 }
-
-
 
 /* Botón de registrarse */
 .register-button {
-  background-color: #a4aa3e;
+  background-color: rgba(145, 65, 76, 0.8);
   color: white;
 }
 
 .register-button:hover {
-  background-color: #8f9933;
+  background-color: rgba(145, 65, 76, 0.9); /* Ajustado para evitar el fondo negro */
 }
 
 /* Enlace de "Olvidaste tu contraseña" */
 .forgot-password {
   display: block;
   text-align: center;
-  color: #a4aa3e;
+  color: white;
   margin-top: 10px;
   text-decoration: none;
 }

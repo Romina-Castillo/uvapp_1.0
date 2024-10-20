@@ -1,81 +1,69 @@
-
-
-.header {
-    position: absolute;
-    top: 0;
-    width: 0 !important;
-    background-color: #8D734A; 
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.header .app-title {
-    margin-left: 50px; 
-}
-
+/* Estilos generales del contenedor del formulario */
 .form-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-}
-
-.input-field {
-    margin-bottom: 20px;
-}
-
-.login-button {
-    background-color: black;
+    background-color: rgba(145, 65, 76, 0.8); /* Fondo translúcido */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra con más desenfoque */
+    pointer-events: auto;
+    transform: translateY(-20px);
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+  }
+  
+  /* Estilos para los campos de entrada */
+  .input-field {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo claro para campos */
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  }
+  
+  /* Botón de registrarse */
+  .register-button {
+    background-color: rgba(145, 65, 76, 1); /* Fondo sólido */
     color: white;
-    padding: 10px 0;
-    font-weight: bold;
-    border: none;
-}
-
-.login-button:hover {
-    background-color: #333;
-}
-
-.forgot-password {
-    display: block;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    font-size: 18px; /* Tamaño de fuente más grande */
+    font-weight: bold; /* Negrita */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+  }
+  
+  .register-button:hover {
+    background-color: #8f9933; /* Color distinto al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Sombra más grande */
+  }
+  
+  /* Efecto de "fade in" para el formulario */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Fondo general de la página */
+  .background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Título de la aplicación en la cabecera */
+  .header .app-title {
+    font-size: 36px;
+    color: white;
     text-align: center;
-    margin-top: 10px;
-    color: grey;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.forgot-password:hover {
-    color: black;
-}
-
-.facebook-button {
-    background-color: #3b5998;
-    color: white;
-    padding: 10px 0;
-    margin-top: 20px;
+    margin-bottom: 20px;
     font-weight: bold;
-    border: none;
-}
-
-.facebook-button:hover {
-    background-color: #2d4373;
-}
-
-.register-button {
-    color: black;
-    padding: 10px 0;
-    margin-top: 20px;
-    font-weight: bold;
-    border: 2px solid black;
-}
-
-.register-button:hover {
-    background-color: black;
-    color: white;
-}
+  }
+  

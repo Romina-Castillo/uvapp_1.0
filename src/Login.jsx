@@ -146,7 +146,7 @@ export default function Login() {
             alt="Gmail logo"
             style={{ width: '20px', height: '20px', marginRight: '8px' }}
           />
-          Conectarse con Gmail
+          Gmail
         </Button>
 
         
@@ -162,7 +162,7 @@ export default function Login() {
             alt="Facebook logo"
             style={{ width: '20px', height: '20px', marginRight: '8px' }}
           />
-          Conectarse con Facebook
+          Facebook
         </Button>
 
         

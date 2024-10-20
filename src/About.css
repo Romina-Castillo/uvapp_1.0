@@ -1,5 +1,3 @@
-/* HistoriaEmpresa.css */
-
 /* Reset básico */
 * {
   margin: 0;
@@ -23,16 +21,30 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   gap: 50px;
-  animation: fade-in 1s ease-out forwards;
+  animation: fade-in-up 1s ease-out forwards; /* Animación unificada */
 }
 
-/* Efecto de fade-in */
-@keyframes fade-in {
+/* Efecto de fade-in-up unificado */
+@keyframes fade-in-up {
   from {
       opacity: 0;
+      transform: translateY(20px);
   }
   to {
       opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Efecto para que el banner aparezca gradualmente desde abajo */
+@keyframes slide-in-up {
+  from {
+      opacity: 0;
+      transform: translateY(50px); /* Empieza desde abajo */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0); /* Se desplaza a su posición original */
   }
 }
 
@@ -48,6 +60,7 @@ body {
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+  animation: slide-in-up 1.5s ease-out forwards; /* Animación aplicada al banner */
 }
 
 .banner::before {
@@ -73,7 +86,7 @@ body {
   margin-bottom: 15px;
   position: relative;
   z-index: 1;
-  animation: text-pop-up 0.5s ease forwards;
+  animation: fade-in-up 1s ease-out forwards;
 }
 
 .banner p {
@@ -81,24 +94,13 @@ body {
   opacity: 0.9;
   position: relative;
   z-index: 1;
+  animation: fade-in-up 1s ease-out forwards;
 }
 
 /* Efecto hover del fondo */
 .banner:hover {
   background: linear-gradient(135deg, rgba(145, 65, 76, 1), rgba(145, 65, 76, 0.8));
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
-
-/* Animación en el texto del banner */
-@keyframes text-pop-up {
-  0% {
-      transform: scale(0.9);
-      opacity: 0;
-  }
-  100% {
-      transform: scale(1);
-      opacity: 1;
-  }
 }
 
 /* Contenido de la historia */
@@ -112,44 +114,42 @@ body {
 
 /* Estilos para cada bloque de historia */
 .historia-texto {
-  background-color: #ffffff;
+  background-color: rgba(145, 65, 76, 0.8);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   width: 100%;
   cursor: pointer;
-  position: relative; /* Para efectos de pseudo-elemento */
-  animation: fade-in-up 0.6s ease-out forwards;
-}
-
-@keyframes fade-in-up {
-  from {
-      opacity: 0;
-      transform: translateY(20px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
+  position: relative;
+  animation: fade-in-up 1s ease-out forwards; /* Animación unificada */
 }
 
 .historia-texto:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  background-color: rgba(145, 65, 76, 0.9);
+}
+
+.historia-texto:hover h2 {
+  color: #fff4f4;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.historia-texto:hover p {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
 }
 
 .historia-texto h2 {
-  font-size: 1.8rem; /* Tamaño ajustado */
+  font-size: 1.8rem;
   margin-bottom: 12px;
-  color: #a4aa3e;
+  color: #ffffff;
   position: relative;
   text-shadow: 0px 6px 10px rgba(0, 0, 0, 0.322);
   transition: color 0.3s ease;
-}
-
-.historia-texto h2:hover {
-  color: #87983d;
+  animation: fade-in-up 1s ease-out forwards;
 }
 
 .historia-texto h2::after {
@@ -157,45 +157,47 @@ body {
   display: block;
   width: 50px;
   height: 3px;
-  background-color: #a4aa3e;
+  background-color: #ffffff;
   margin-top: 5px;
 }
 
 .historia-texto p {
-  font-size: 1rem; /* Tamaño ajustado */
+  font-size: 1rem;
   line-height: 1.6;
-  color: #555;
+  color: #232323;
+  animation: fade-in-up 1s ease-out forwards;
 }
 
 /* Ajustes de diseño responsivo */
 @media (max-width: 768px) {
   .banner h1 {
-      font-size: 2rem; /* Tamaño ajustado */
+    font-size: 2rem;
   }
 
   .historia-texto h2 {
-      font-size: 1.6rem; /* Tamaño ajustado */
+    font-size: 1.6rem;
   }
 
   .historia-texto p {
-      font-size: 0.95rem; /* Tamaño ajustado */
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 480px) {
   .banner h1 {
-      font-size: 1.8rem; /* Tamaño ajustado */
+    font-size: 1.8rem;
   }
 
   .historia-texto h2 {
-      font-size: 1.4rem; /* Tamaño ajustado */
+    font-size: 1.4rem;
   }
 
   .historia-texto p {
-      font-size: 0.9rem; /* Tamaño ajustado */
+    font-size: 0.9rem;
   }
 
   .historia-container {
-      padding: 20px;
+    padding: 20px;
   }
 }
+  
