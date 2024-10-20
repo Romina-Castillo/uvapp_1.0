@@ -1,5 +1,5 @@
 import { AppBar, Box, Button, Drawer, IconButton, Toolbar, Typography, InputBase, Menu, MenuItem, Badge } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
@@ -11,17 +11,20 @@ import { bodegasData } from '../../views/Bodegas.jsx';
 
 export default function Navbar({ navArrayLinks }) {
     const [open, setOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState(""); // Estado para el término de búsqueda
-    const [filteredBodegas, setFilteredBodegas] = useState(bodegasData); // Estado para bodegas filtradas
-    const [showResults, setShowResults] = useState(false); // Estado para controlar la visibilidad de los resultados
+    const [searchQuery, setSearchQuery] = useState("");
+    const [filteredBodegas, setFilteredBodegas] = useState(bodegasData);
+    const [showResults, setShowResults] = useState(false);
     const [notificationsAnchorEl, setNotificationsAnchorEl] = useState(null);
     const [userAnchorEl, setUserAnchorEl] = useState(null);
+    const [filterAnchorEl, setFilterAnchorEl] = useState(null); // Estado para el menú de filtros
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
+    const searchBoxRef = useRef(null); // Ref para el Box de búsqueda
+    const [searchBoxPosition, setSearchBoxPosition] = useState(null); // Posición del Box
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(bodegasData); // ver en consola para ver si esta recibiendo el array
+        console.log(bodegasData);
 
         const storedUsername = localStorage.getItem("username");
         if (storedUsername) {
@@ -50,26 +53,48 @@ export default function Navbar({ navArrayLinks }) {
         setSearchQuery(event.target.value);
     };
 
-    // Función para buscar y filtrar resultados
     const handleSearch = () => {
         const filteredResults = bodegasData.filter(bodega =>
             bodega.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
-
-        setFilteredBodegas(filteredResults); // Actualiza el estado con los resultados filtrados
-        setShowResults(filteredResults.length > 0); // Muestra los resultados solo si hay coincidencias
+        setFilteredBodegas(filteredResults);
+        setShowResults(filteredResults.length > 0);
+        
+        // Calcula la posición del Box después de que se actualice
+        if (searchBoxRef.current) {
+            const position = searchBoxRef.current.getBoundingClientRect();
+            setSearchBoxPosition(position);
+        }
     };
 
+    const handleFilterClick = (event) => {
+        setFilterAnchorEl(event.currentTarget); // Abre el menú de filtros
+    };
 
-    const handleFilterClick = () => {
+    const handleFilterClose = () => {
+        setFilterAnchorEl(null); // Cierra el menú de filtros
+    };
 
+    const handleFilterByBodega = () => {
+        console.log("Filtrar por Bodega");
+        handleFilterClose(); // Cierra el menú después de seleccionar
+    };
+
+    const handleFilterByEvento = () => {
+        console.log("Filtrar por Evento");
+        handleFilterClose(); // Cierra el menú después de seleccionar
+    };
+
+    const handleFilterByPrograma = () => {
+        console.log("Filtrar por Programa");
+        handleFilterClose(); // Cierra el menú después de seleccionar
     };
 
     const handleLogout = () => {
         setIsLoggedIn(false);
         setUsername("");
-        localStorage.removeItem("username");  // Eliminar el nombre de usuario de localStorage
-        navigate('/');  // Redirige a la página de inicio
+        localStorage.removeItem("username");
+        navigate('/');
     };
 
     const handleLogin = () => {
@@ -86,16 +111,11 @@ export default function Navbar({ navArrayLinks }) {
         <>
             <AppBar position="fixed">
                 <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        size="large"
-                        onClick={() => setOpen(true)}
-                        edge="start"
-                    >
+                    <IconButton color="inherit" size="large" onClick={() => setOpen(true)} edge="start">
                         <MenuIcon />
                     </IconButton>
 
-                    <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
+                    <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }} ref={searchBoxRef}>
                         <SearchIcon />
                         <InputBase
                             placeholder="Buscar…"
@@ -111,7 +131,7 @@ export default function Navbar({ navArrayLinks }) {
                             }}
                             onKeyPress={(e) => {
                                 if (e.key === "Enter") {
-                                    handleSearch(); // Ejecuta la búsqueda al presionar Enter
+                                    handleSearch();
                                 }
                             }}
                         />
@@ -121,11 +141,14 @@ export default function Navbar({ navArrayLinks }) {
                         Filtros
                     </Button>
 
+                    <Menu anchorEl={filterAnchorEl} open={Boolean(filterAnchorEl)} onClose={handleFilterClose}>
+                        <MenuItem onClick={handleFilterByBodega}>Filtrar por Bodega</MenuItem>
+                        <MenuItem onClick={handleFilterByEvento}>Filtrar por Evento</MenuItem>
+                        <MenuItem onClick={handleFilterByPrograma}>Filtrar por Programa</MenuItem>
+                    </Menu>
+
                     {isLoggedIn && (
-                        <IconButton
-                            color="inherit"
-                            onClick={handleOpenNotifications}
-                        >
+                        <IconButton color="inherit" onClick={handleOpenNotifications}>
                             <Badge badgeContent={1} color="error">
                                 <NotificationsIcon />
                             </Badge>
@@ -150,68 +173,70 @@ export default function Navbar({ navArrayLinks }) {
                         <AccountCircleIcon />
                     </IconButton>
 
-                    <Menu
-                        anchorEl={userAnchorEl}
-                        open={Boolean(userAnchorEl)}
-                        onClose={handleCloseUserMenu}
-                    >
+                    <Menu anchorEl={userAnchorEl} open={Boolean(userAnchorEl)} onClose={handleCloseUserMenu}>
                         {isLoggedIn ? (
-                            [// si esta logueado opiones del usuario muestra
-                                <MenuItem key="mis_reservas" onClick={() => navigate("/usuario_reservas")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>
+                            [
+                                <MenuItem key="mis_reservas" onClick={() => navigate("/usuario_reservas")}>
                                     Mis reservas
                                 </MenuItem>,
-                                <MenuItem key="gestionar_cuenta" onClick={() => navigate("/usuario")} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>
+                                <MenuItem key="gestionar_cuenta" onClick={() => navigate("/usuario")}>
                                     Gestionar cuenta
                                 </MenuItem>,
-                                <MenuItem key="cerrar_sesion" onClick={handleLogout} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>
+                                <MenuItem key="cerrar_sesion" onClick={handleLogout}>
                                     Cerrar sesión
                                 </MenuItem>
                             ]
                         ) : (
-                            [// si no esta logueado en el icono de usuario muestra
-                                <MenuItem key="iniciar_sesion" onClick={handleLogin} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>
+                            [
+                                <MenuItem key="iniciar_sesion" onClick={handleLogin}>
                                     Iniciar sesión
                                 </MenuItem>,
-                                <MenuItem key="registrarse" onClick={handleRegister} sx={{ transition: 'transform 0.3s, background-color 0.3s', '&:hover': { transform: 'scale(1.05)', backgroundColor: 'rgba(0, 0, 0, 0.1)' } }}>
+                                <MenuItem key="registrarse" onClick={handleRegister}>
                                     Registrarse
                                 </MenuItem>
                             ]
                         )}
                     </Menu>
-
-
                 </Toolbar>
             </AppBar>
 
-            <Drawer
-                open={open}
-                anchor="left"
-                onClose={() => setOpen(false)}
-            >
-                <NavListDrawer
-                    navArrayLinks={navArrayLinks}
-                    NavLink={NavLink}
-                    setOpen={setOpen}
-                />
+            <Drawer open={open} anchor="left" onClose={() => setOpen(false)}>
+                <NavListDrawer navArrayLinks={navArrayLinks} NavLink={NavLink} setOpen={setOpen} />
             </Drawer>
 
             {/* Resultados de búsqueda */}
-            {searchQuery && showResults && (
-                <Box sx={{ position: "absolute", top: "70px", left: "50%", transform: "translateX(-50%)", backgroundColor: "white", zIndex: 1000 }}>
-                    {filteredBodegas.map((bodega, index) => (
-                        <Typography
-                            key={index}
-                            sx={{ padding: "10px", cursor: "pointer" }}
-                            onClick={() => {
-                                navigate(`${bodega.route}`);  // Redirige a la vista de la bodega
-                                setShowResults(false); // Oculta los resultados después de hacer clic
-                            }}
-                        >
-                            {bodega.name}
-                        </Typography>
-                    ))}
-                </Box>
-            )}
+{searchQuery && showResults && searchBoxPosition && (
+    <Box
+        sx={{
+            position: "absolute",
+            top: `${searchBoxPosition.bottom + 20}px`, // Añade un margen de 8px entre la navbar y los resultados
+            left: `${searchBoxPosition.left}px`,
+            width: `580px`, // Mantén el ancho igual al del box de búsqueda
+            backgroundColor: "white",
+            zIndex: 1000,
+            border: "1px solid rgba(0, 0, 0, 0.12)",
+            borderRadius: "4px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        }}
+    >
+        {filteredBodegas.map((bodega, index) => (
+            <Typography
+                key={index}
+                sx={{
+                    padding: "10px", 
+                    cursor: "pointer",
+                    borderBottom: index !== filteredBodegas.length - 1 ? "1px solid rgba(0, 0, 0, 0.12)" : "none"
+                }}
+                onClick={() => {
+                    navigate(`${bodega.route}`);
+                    setShowResults(false);
+                }}
+            >
+                {bodega.name}
+            </Typography>
+        ))}
+    </Box>
+)}
 
         </>
     );

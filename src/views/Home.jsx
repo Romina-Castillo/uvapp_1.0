@@ -40,14 +40,14 @@ const TrendBox = styled(motion.div)({
     padding: "20px",
     borderRadius: "15px",
     margin: "20px auto",
-    maxWidth: "80%",
+    maxWidth: "100%",
     textAlign: "center",
     color: "white",
 });
 
 const CarouselImageContainer = styled(Box)({
     position: "relative",
-    height: "300px",
+    height: "450px",
     overflow: "hidden",
 });
 

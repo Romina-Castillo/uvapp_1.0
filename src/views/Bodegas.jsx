@@ -33,7 +33,7 @@ export const bodegasData = [
     },
     {
         name: "Bodega Achaval",
-        description: "Una descripción breve de la Bodega Achaval-Ferrer.",
+        description: "Una descripción breve la Bodega Achaval Ferrer.",
         img: "/img/bodega-achaval.jpg",
         website: "https://meitre.com/es/quimera-achaval",
         route: "/bodega/achaval"
