@@ -1,34 +1,34 @@
 import { Grid, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; // Importa Framer Motion
 import CardComponent from "../components/CardComponent"; // Importa CardComponent
 
-export const eventosData = [
+export const industriasData = [
     {
-        name: "SUNSET",
-        description: "Una descripción breve del sunset.",
+        name: "AVA S.A.",
+        description: "Una descripción breve de la Conservera AVA.",
         img: "/img/ava.png",
-        route: "/eventos/sunset"
+        route: "/industrias/ava"
     },
-    // Agrega más eventos si es necesario
 ];
 
-const Eventos = () => {
+const Industrias = () => {
     return (
         <>
             <Grid container spacing={3} sx={{ mt: 10 }}>
-                {eventosData.map((evento, index) => (
+                {industriasData.map((industria, index) => (
                     <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
+                        {/* // se importa el card component para ahorrar codigo bdegas, eventos, industria y ofertas edu tiene la misma estructura */}
                             <CardComponent 
-                                name={evento.name} 
-                                description={evento.description} 
-                                img={evento.img} 
-                                route={evento.route} 
+                                name={industria.name} 
+                                description={industria.description} 
+                                img={industria.img} 
+                                route={industria.route} 
                             />
                         </motion.div>
                     </Grid>
@@ -57,4 +57,4 @@ const Eventos = () => {
     );
 };
 
-export default Eventos;
+export default Industrias;

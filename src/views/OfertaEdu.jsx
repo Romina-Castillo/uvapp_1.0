@@ -1,8 +1,8 @@
 import React from 'react';
-import { Grid, Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
-import { Link } from "react-router-dom"; 
+import { Grid } from "@mui/material";
 import { motion } from 'framer-motion'; // Importa Framer Motion
 import './OfertaEdu.css';
+import CardComponent from "../components/CardComponent"; // Importa CardComponent
 
 const programs = [
     {
@@ -61,56 +61,29 @@ const programs = [
     },
 ];
 
+const MotionDiv = motion.create('div');
+
 const OfertaEdu = () => {
-  return (
-      <>
-          <Grid container spacing={3} sx={{ mt: 10 }}>
-              {programs.map((program, index) => (
-                  <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
-                      <motion.div
-                          initial={{ opacity: 0, y: 20 }} // Inicialmente oculta y desplazada
-                          animate={{ opacity: 1, y: 0 }} // Se muestra y se desplaza hacia su posición original
-                          transition={{ duration: 0.5, delay: index * 0.1 }} // Retraso basado en el índice
-                      >
-                          <Card
-                              sx={{
-                                  '&:hover': {
-                                      boxShadow: '0 8px 20px rgba(0,0,0,0.2)', // Sombra al pasar el mouse
-                                      transform: 'scale(1.05)', // Escalado al pasar el mouse
-                                      transition: 'transform 0.3s ease-in-out', // Transición suave
-                                  }
-                              }}
-                          >
-                              <CardMedia
-                                  component="img"
-                                  height="200" // Ajusta la altura de la imagen
-                                  image={program.image} // Usa la URL de la imagen del programa
-                                  alt={program.title} // Texto alternativo para la imagen
-                              />
-                              <CardContent>
-                                  <Typography variant="h6" component="div">
-                                      {program.title}
-                                  </Typography>
-                                  <Typography variant="body2" color="text.secondary">
-                                      {program.description}
-                                  </Typography>
-                                  <Button
-                                      variant="contained"
-                                      color="primary"
-                                      component={Link}
-                                      to={program.link} // Usar el enlace del programa
-                                      sx={{ mt: 2 }}
-                                  >
-                                      Ver Programa
-                                  </Button>
-                              </CardContent>
-                          </Card>
-                      </motion.div>
-                  </Grid>
-              ))}
-          </Grid>
-      </>
-  );
+    return (
+        <Grid container spacing={3} sx={{ mt: 10 }}>
+            {programs.map((program, index) => (
+                <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                        <CardComponent
+                            name={program.title}
+                            description={program.description}
+                            img={program.image}
+                            route={program.link}
+                        />
+                    </motion.div>
+                </Grid>
+            ))}
+        </Grid>
+    );
 };
 
 export default OfertaEdu;

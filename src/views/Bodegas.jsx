@@ -1,6 +1,7 @@
-import { Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import { Link } from "react-router-dom"; 
 import { motion } from 'framer-motion'; // Importa Framer Motion
+import CardComponent from "../components/CardComponent"; // Importa CardComponent
 
 export const bodegasData = [
     {
@@ -86,43 +87,17 @@ const Bodegas = () => {
                         key={index}
                     >
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }} // Inicialmente oculta y desplazada
-                            animate={{ opacity: 1, y: 0 }} // Se muestra y se desplaza hacia su posición original
-                            transition={{ duration: 0.5, delay: index * 0.1 }} // Retraso basado en el índice
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
-                            <Card
-                                sx={{
-                                    '&:hover': {
-                                        boxShadow: '0 8px 20px rgba(0,0,0,0.2)', // Sombra al pasar el mouse
-                                        transform: 'scale(1.05)', // Escalado al pasar el mouse
-                                        transition: 'transform 0.3s ease-in-out', // Transición suave
-                                    }
-                                }}
-                            >
-                                <CardMedia
-                                    component="img"
-                                    height="200"
-                                    image={bodega.img}
-                                    alt={bodega.name}
-                                />
-                                <CardContent>
-                                    <Typography variant="h6" component="div">
-                                        {bodega.name}
-                                    </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        {bodega.description}
-                                    </Typography>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        component={Link} // Cambia href por Link
-                                        to={bodega.route} // Usar la nueva ruta de la bodega
-                                        sx={{ mt: 2 }}
-                                    >
-                                        Ver Bodega
-                                    </Button>
-                                </CardContent>
-                            </Card>
+                            {/* Reemplaza la tarjeta original con CardComponent */}
+                            <CardComponent
+                                name={bodega.name}
+                                description={bodega.description}
+                                img={bodega.img}
+                                route={bodega.route}
+                            />
                         </motion.div>
                     </Grid>
                 ))}
@@ -132,20 +107,20 @@ const Bodegas = () => {
                 justifyContent="center"
                 sx={{ mt: 5 }}
             >
-            {/* botón de página siguiente */}
+                {/* botón de página siguiente */}
                 <Button
                     variant="outlined"
                     component={Link}
-                    to="/pagina2"
+                    to="/bodegas"
                     sx={{
-                        backgroundColor: "white", // Fondo blanco
-                        color: "black",           // Texto negro
-                        borderColor: "rgb(185, 171, 25)",     // Borde oliva 
+                        backgroundColor: "white",
+                        color: "black",
+                        borderColor: "rgb(185, 171, 25)",
                         '&:hover': {
-                            backgroundColor: "rgb(185, 171, 25)", // Fondo negro al pasar el mouse
-                            color: "white",           // Texto blanco al pasar el mouse
+                            backgroundColor: "rgb(185, 171, 25)",
+                            color: "white",
                         },
-                        padding: "10px 20px",        // más espacio en el botón
+                        padding: "10px 20px",
                     }}
                 >
                     Siguiente página
