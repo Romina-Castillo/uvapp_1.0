@@ -209,9 +209,9 @@ export default function Navbar({ navArrayLinks }) {
     <Box
         sx={{
             position: "absolute",
-            top: `${searchBoxPosition.bottom + 20}px`, // Añade un margen de 8px entre la navbar y los resultados
+            top: `${searchBoxPosition.bottom + 20}px`, // margen entre la navbar y los resultados
             left: `${searchBoxPosition.left}px`,
-            width: `580px`, // Mantén el ancho igual al del box de búsqueda
+            width: `580px`, // resultados ancho igual al del box de búsqueda
             backgroundColor: "white",
             zIndex: 1000,
             border: "1px solid rgba(0, 0, 0, 0.12)",
