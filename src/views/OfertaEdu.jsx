@@ -19,7 +19,7 @@ const programs = [
     },
     {
         title: 'Tecnicatura Universitaria en Enología',
-        description: 'Universidad Tecnológica Nacional ( Mendoza).',
+        description: 'Universidad Tecnológica Nacional (Mendoza).',
         link: 'https://www4.frm.utn.edu.ar/tecnicatura-superior-enologia/',
         image: 'UTN.jpg',
     },
@@ -61,24 +61,49 @@ const programs = [
     },
 ];
 
-const MotionDiv = motion.create('div');
-
 const OfertaEdu = () => {
     return (
         <Grid container spacing={3} sx={{ mt: 10 }}>
-            {programs.map((program, index) => (
+            {programs.map((programa, index) => (
                 <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        initial={{ opacity: 0, y: 20 }} // Inicialmente oculta y desplazada
+                        animate={{ opacity: 1, y: 0 }} // Se muestra y se desplaza hacia su posición original
+                        transition={{ duration: 0.5, delay: index * 0.1 }} // Retraso basado en el índice
                     >
-                        <CardComponent
-                            name={program.title}
-                            description={program.description}
-                            img={program.image}
-                            route={program.link}
-                        />
+                        <Card
+                            sx={{
+                                backgroundColor: '#d3d3d3', // Color gris para las tarjetas
+                                '&:hover': {
+                                    boxShadow: '0 8px 20px rgba(0,0,0,0.2)', // Sombra al pasar el mouse
+                                    transform: 'scale(1.05)', // Escalado al pasar el mouse
+                                    transition: 'transform 0.3s ease-in-out', // Transición suave
+                                }
+                            }}
+                        >
+                            <CardMedia
+                                component="img"
+                                height="200"
+                                image={programa.image}
+                                alt={programa.title}
+                            />
+                            <CardContent>
+                                <Typography variant="h6" component="div">
+                                    {programa.title}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    {programa.description}
+                                </Typography>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    href={programa.link}
+                                    sx={{ mt: 2 }}
+                                >
+                                    Ver Programa
+                                </Button>
+                            </CardContent>
+                        </Card>
                     </motion.div>
                 </Grid>
             ))}
