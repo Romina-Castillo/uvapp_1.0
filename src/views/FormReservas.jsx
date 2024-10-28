@@ -35,80 +35,110 @@ const Reservar = () => {
 
     return (
         <Box
-            sx={{
-                padding: "20px",
-            }}
-            component="form"
-            onSubmit={handleSubmit(onSubmit)}
-            className="form-container"
-        >
+    sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'absolute', 
+        width: '400px', // Puedes ajustar el tamaño según sea necesario
+        height: '480px', // Cambia este valor si deseas un tamaño cuadrado
+        padding: "40px",
+        borderRadius: "15px", 
+        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)', 
+        margin: 'auto', // Centra el Box en la página
+        position: 'relative', // Asegura que el Box se coloque correctamente en la página
+        top: '50%', 
+        transform: 'translateY(-50%)', 
+        marginTop: '30px', 
+    }}
+    component="form"
+    onSubmit={handleSubmit(onSubmit)}
+    className="form-container"
+>
             <Typography variant="h4" sx={{ marginBottom: "20px" }}>Reservar</Typography>
             <Controller
-                name="nombre_persona"
-                control={control}
-                defaultValue=""
-                rules={{ required: "El nombre es requerido" }}
-                render={({ field, fieldState: { error } }) => (
-                    <TextField
-                        label="Nombre"
-                        {...field}
-                        error={!!error}
-                        helperText={error ? error.message : null}
-                        sx={{ margin: "10px 0" }}
-                    />
-                )}
+        name="nombre_persona"
+        control={control}
+        defaultValue=""
+        rules={{ required: "El nombre es requerido" }}
+        render={({ field, fieldState: { error } }) => (
+            <TextField
+                label="Nombre"
+                {...field}
+                error={!!error}
+                helperText={error ? error.message : null}
+                sx={{
+                    margin: "10px 0",
+                    backgroundColor: 'white', // Color de fondo blanco
+                    borderRadius: '5px', // Opcional: para esquinas redondeadas
+                }}
             />
-            <Controller
-                name="lugar"
-                control={control}
-                defaultValue=""
-                rules={{ required: "El lugar es requerido" }}
-                render={({ field }) => (
-                    <TextField
-                        label="Lugar"
-                        {...field}
-                        InputProps={{
-                            readOnly: true,
-                        }}
-                        sx={{ margin: "10px 0" }}
-                    />
-                )}
+        )}
+    />
+    <Controller
+        name="lugar"
+        control={control}
+        defaultValue=""
+        rules={{ required: "El lugar es requerido" }}
+        render={({ field }) => (
+            <TextField
+                label="Lugar"
+                {...field}
+                InputProps={{
+                    readOnly: true,
+                }}
+                sx={{
+                    margin: "10px 0",
+                    backgroundColor: 'white', // Color de fondo blanco
+                    borderRadius: '5px', // Opcional: para esquinas redondeadas
+                }}
             />
-            <Controller
-                name="fecha_reservacion"
-                control={control}
-                defaultValue=""
-                rules={{ required: "La fecha es requerida" }}
-                render={({ field, fieldState: { error } }) => (
-                    <TextField
-                        label="Fecha de Reservación"
-                        type="date"
-                        {...field}
-                        error={!!error}
-                        helperText={error ? error.message : null}
-                        sx={{ margin: "10px 0" }}
-                    />
-                )}
+        )}
+    />
+    <Controller
+        name="fecha_reservacion"
+        control={control}
+        defaultValue=""
+        rules={{ required: "La fecha es requerida" }}
+        render={({ field, fieldState: { error } }) => (
+            <TextField
+                label="Fecha de Reservación"
+                type="date"
+                {...field}
+                error={!!error}
+                helperText={error ? error.message : null}
+                sx={{
+                    margin: "10px 0",
+                    backgroundColor: 'white', // Color de fondo blanco
+                    borderRadius: '5px', // Opcional: para esquinas redondeadas
+                }}
             />
-            <Controller
-                name="hora"
-                control={control}
-                defaultValue=""
-                rules={{ required: "La hora es requerida" }}
-                render={({ field, fieldState: { error } }) => (
-                    <TextField
-                        label="Hora"
-                        type="time"
-                        {...field}
-                        error={!!error}
-                        helperText={error ? error.message : null}
-                        sx={{ margin: "10px 0" }}
-                    />
-                )}
+        )}
+    />
+    <Controller
+        name="hora"
+        control={control}
+        defaultValue=""
+        rules={{ required: "La hora es requerida" }}
+        render={({ field, fieldState: { error } }) => (
+            <TextField
+                label="Hora"
+                type="time"
+                {...field}
+                error={!!error}
+                helperText={error ? error.message : null}
+                sx={{
+                    margin: "10px 0",
+                    backgroundColor: 'white', // Color de fondo blanco
+                    borderRadius: '5px', // Opcional: para esquinas redondeadas
+                }}
             />
-            <Button type="submit" variant="contained" color="primary">
-                Confirmar Reservación
-            </Button>
+        )}
+    />
+    <Button type="submit" variant="contained" color="primary">
+        Confirmar Reservación
+    </Button>
+
 
             <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
                 <DialogTitle>Confirmar Reservación</DialogTitle>
@@ -168,7 +198,6 @@ const Reservar = () => {
                     >
                         Sí
                     </Button>
-
                 </DialogActions>
             </Dialog>
 
