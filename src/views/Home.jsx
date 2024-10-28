@@ -210,6 +210,42 @@ export default function HomePage() {
                 </Typography>
                 
                 {/* Contenedor con efecto hover para las secciones */}
+                <BannerContainer onClick={() => handleRedirect('/Bodegas')}>
+                    <HoverEffectContainer whileHover={{ scale: 1.05 }}>
+                        <BannerImage
+                            src="bodegas.jpg" // Ruta de tu imagen de oferta educativa
+                            alt="Bodegas"
+                        />
+                        <BannerText
+                            variant="body2"
+                            initial={{ opacity: 0 }} // Efecto de aparición inicial
+                            animate={{ opacity: 1 }} // Efecto de aparición
+                            whileHover={{ scale: 1.1, color: "rgb(185, 171, 25)" }} // Efecto al pasar el cursor, cambia a color tendencia
+                            transition={{ duration: 0.5, delay: 0.3 }} // Tiempo de aparición
+                        >
+                            Bodegas
+                        </BannerText>
+                    </HoverEffectContainer>
+                </BannerContainer>
+
+                <BannerContainer onClick={() => handleRedirect('/Industrias')}>
+                    <HoverEffectContainer whileHover={{ scale: 1.05 }}>
+                        <BannerImage
+                            src="industrias.jpg" // Ruta de tu imagen de oferta educativa
+                            alt="Industrias"
+                        />
+                        <BannerText
+                            variant="body2"
+                            initial={{ opacity: 0 }} // Efecto de aparición inicial
+                            animate={{ opacity: 1 }} // Efecto de aparición
+                            whileHover={{ scale: 1.1, color: "rgb(185, 171, 25)" }} // Efecto al pasar el cursor, cambia a color tendencia
+                            transition={{ duration: 0.5, delay: 0.3 }} // Tiempo de aparición
+                        >
+                            Industrias
+                        </BannerText>
+                    </HoverEffectContainer>
+                </BannerContainer>
+
                 <BannerContainer onClick={() => handleRedirect('/OfertaEdu')}>
                     <HoverEffectContainer whileHover={{ scale: 1.05 }}>
                         <BannerImage
@@ -227,7 +263,6 @@ export default function HomePage() {
                         </BannerText>
                     </HoverEffectContainer>
                 </BannerContainer>
-
                 <BannerContainer onClick={() => handleRedirect('/Eventos')}>
                     <HoverEffectContainer whileHover={{ scale: 1.05 }}>
                         <BannerImage
