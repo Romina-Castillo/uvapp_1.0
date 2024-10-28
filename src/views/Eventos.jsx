@@ -5,12 +5,11 @@ import CardComponent from "../components/CardComponent"; // Importa CardComponen
 
 export const eventosData = [
     {
-        name: "SUNSET",
+        name: "Sunset",
         description: "Una descripción breve del sunset.",
         img: "/img/ava.png",
         route: "/eventos/sunset"
     },
-    // Agrega más eventos si es necesario
 ];
 
 const Eventos = () => {

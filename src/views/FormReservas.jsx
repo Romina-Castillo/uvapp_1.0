@@ -12,32 +12,34 @@ const Reservar = () => {
     const [reservationData, setReservationData] = useState(null);
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const username = localStorage.getItem('username');
         if (!username) {
             navigate('/login');
         }
+    }, [navigate]);
 
-        const searchParams = new URLSearchParams(location.search);
-        const lugarParam = searchParams.get("lugar");
+    useEffect(() => {
+        const lugarParam = location.state?.lugar; // Obtener lugar desde el estado
         if (lugarParam) {
             setValue("lugar", lugarParam);
         }
-    }, [location, setValue, navigate]);
+    }, [location.state, setValue]);
 
     const onSubmit = (data) => {
         setReservationData(data);
-        setOpenDialog(true);
+        setOpenDialog(true); // Asegúrate de que este diálogo muestre la información esperada.
     };
 
     return (
-        <Box 
-            sx={{  
-                padding: "20px", 
-            }} 
-            component="form" 
-            onSubmit={handleSubmit(onSubmit)} 
+        <Box
+            sx={{
+                padding: "20px",
+            }}
+            component="form"
+            onSubmit={handleSubmit(onSubmit)}
             className="form-container"
         >
             <Typography variant="h4" sx={{ marginBottom: "20px" }}>Reservar</Typography>
@@ -119,8 +121,10 @@ const Reservar = () => {
                     <Button onClick={() => setOpenDialog(false)} color="primary">
                         No
                     </Button>
-                    <Button 
+                    <Button
                         onClick={async () => {
+                            setLoading(true);
+                            console.log("Datos de reserva enviados:", reservationData); // Agregar log para depuración
                             try {
                                 const response = await fetch("http://localhost:3001/reservas", {
                                     method: "POST",
@@ -130,14 +134,13 @@ const Reservar = () => {
                                     body: JSON.stringify(reservationData),
                                 });
 
-                                // Manejar la respuesta solo una vez
-                                const textResponse = await response.text(); // Primero, obtén el texto
+                                const textResponse = await response.text();
                                 let result;
 
                                 try {
-                                    result = JSON.parse(textResponse); // Intenta parsear el texto como JSON
+                                    result = JSON.parse(textResponse);
                                 } catch (e) {
-                                    result = { message: textResponse }; // Si no puede, almacena el texto
+                                    result = { message: textResponse };
                                 }
 
                                 if (response.ok) {
@@ -156,13 +159,16 @@ const Reservar = () => {
                                 console.error("Error en la solicitud:", error);
                                 setSnackbarMessage("Error en la solicitud");
                                 setOpenSnackbar(true);
+                            } finally {
+                                setLoading(false);
+                                setOpenDialog(false);
                             }
-                            setOpenDialog(false);
-                        }} 
+                        }}
                         color="primary"
                     >
                         Sí
                     </Button>
+
                 </DialogActions>
             </Dialog>
 

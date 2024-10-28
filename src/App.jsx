@@ -32,7 +32,7 @@ const navArrayLinks = [
   },
   {
     title: "Industrias",
-    path:"/industrias"
+    path: "/industrias"
   },
   {
     title: "Oferta Educativa",
@@ -64,7 +64,7 @@ export default function App() {
           <Route path="/formReservas" element={<Transicciones><FormReservas /></Transicciones>} />
           <Route path="/About" element={<Transicciones><About /></Transicciones>} />
           <Route path="/Usuario_reservas" element={<Transicciones><Usuario_reservas /></Transicciones>} />
-          <Route path="/bodegas/:name" element={<EntityPage entityType="bodega" />} />
+          <Route path="/bodega/:name" element={<EntityPage entityType="bodega" />} />
           <Route path="/industrias/:name" element={<EntityPage entityType="industria" />} />
           <Route path="/eventos/:name" element={<EntityPage entityType="evento" />} />
           {/* <Route path="/eventos/:name" element={<EntityPage />} /> */}

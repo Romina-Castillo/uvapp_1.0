@@ -4,17 +4,21 @@ exports.crearReserva = (req, res) => {
     const { fecha_reservacion, lugar, hora, nombre_persona } = req.body;
     console.log('Datos de la reserva:', req.body); // Imprimir los datos de la reserva en la terminal para ver que este funcionando
 
+    // Validar que los datos no sean nulos o indefinidos
+    if (!nombre_persona || !lugar || !fecha_reservacion || !hora) {
+        return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
+    }
+
     const sql = 'INSERT INTO reservas (nombre_persona, lugar, fecha_reservacion, hora) VALUES (?, ?, ?, ?)';
     db.query(sql, [nombre_persona, lugar, fecha_reservacion, hora], (err, result) => {
         if (err) {
             console.error('Error al realizar la reserva:', err); // Verifica si ocurre un error aquí
-            res.status(500).send('Error al realizar la reserva');
-        } else {
-            res.status(200).send('Reserva realizada exitosamente');
+            return res.status(500).json({ message: 'Error al realizar la reserva', error: err });
         }
+        res.status(200).send('Reserva realizada exitosamente');
     });
-    }
-    
+}
+
 // Controlador para obtener reservas por id_usuario
 exports.obtenerReservasPorUsuario = (req, res) => {
     const { id } = req.params; // El ID del usuario desde los parámetros de la ruta
