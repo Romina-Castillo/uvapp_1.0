@@ -111,9 +111,9 @@ export default function HomePage() {
                 {/* Logo completo en lugar de la animación del texto */}
                 <HeaderBox>
                     <motion.img
-                        src="image.png" // Ruta de tu logo completo
+                        src="image_uvapp.png" // Ruta de tu logo completo
                         alt="UVAPP Logo"
-                        style={{ height: '250px', width: 'auto', marginBottom: '20px' }} // Ajusta el tamaño según sea necesario
+                        style={{ height: '150px', width: 'auto', marginBottom: '20px' }} // Ajusta el tamaño según sea necesario
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 2, ease: "easeInOut" }}

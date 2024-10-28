@@ -15,7 +15,7 @@ export default function NavListDrawer({ navArrayLinks, NavLink, setOpen }) {
             }}
         >
             {/* Logo */}
-            <img src="image_uvapp.png" alt="UVAPP Logo" style={{ height: '80px', marginBottom: '10px' }} />
+            <img src="image.png" alt="UVAPP Logo" style={{ height: '150px', marginBottom: '10px' }} />
             
             <nav>
                 <List>
