@@ -179,9 +179,6 @@ export default function Navbar({ navArrayLinks }) {
                                 <MenuItem key="mis_reservas" onClick={() => navigate("/usuario_reservas")}>
                                     Mis reservas
                                 </MenuItem>,
-                                <MenuItem key="gestionar_cuenta" onClick={() => navigate("/usuario")}>
-                                    Gestionar cuenta
-                                </MenuItem>,
                                 <MenuItem key="cerrar_sesion" onClick={handleLogout}>
                                     Cerrar sesión
                                 </MenuItem>
