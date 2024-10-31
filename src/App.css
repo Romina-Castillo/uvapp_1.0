@@ -3,14 +3,15 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-
 }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-image: url('../public/img/fondo.png'); /*fondo gris claro */
     background-size: cover; /* Asegura que la imagen cubra todo el fondo */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     width: 100vw; /* Asegura que el body ocupe todo el ancho del viewport */
 }
+
