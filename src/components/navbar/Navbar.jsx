@@ -36,15 +36,15 @@ export default function Navbar({ navArrayLinks }) {
         }
     }, []);
 
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (searchBoxRef.current && !searchBoxRef.current.contains(event.target)) {
-                setShowResults(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
+    // useEffect(() => {
+    //     const handleClickOutside = (event) => {
+    //         if (searchBoxRef.current && !searchBoxRef.current.contains(event.target)) {
+    //             setShowResults(false);
+    //         }
+    //     };
+    //     document.addEventListener("mousedown", handleClickOutside);
+    //     return () => document.removeEventListener("mousedown", handleClickOutside);
+    // }, []);
 
     const handleOpenNotifications = (event) => {
         setNotificationsAnchorEl(event.currentTarget);
