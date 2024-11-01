@@ -8,7 +8,18 @@ const CardComponent = ({ name, description, img, route }) => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
     >
-        <Card sx={{ '&:hover': { boxShadow: '0 8px 20px rgba(0,0,0,0.2)', transform: 'scale(1.05)', transition: 'transform 0.3s ease-in-out' } }}>
+        <Card 
+            sx={{ 
+                backgroundColor: '#c0c0c0', // Color de fondo suave para la tarjeta
+                border: '1px solid #e0e0e0', // Borde sutil
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Sombra normal
+                '&:hover': { 
+                    boxShadow: '0 8px 20px rgba(0,0,0,0.2)', 
+                    transform: 'scale(1.05)', 
+                    transition: 'transform 0.3s ease-in-out' 
+                } 
+            }}
+        >
             <CardMedia component="img" height="200" image={img} alt={name} />
             <CardContent>
                 <Typography variant="h6" component="div">{name}</Typography>
