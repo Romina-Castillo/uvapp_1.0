@@ -7,20 +7,23 @@ export const eventosData = [
     {
         name: 'Sunset Wines: Especial HalloWine',
         description: 'Sábado 26 - Open 19:00 hs/Dj Simón Pendola.',
-        link: 'https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fmlqryo%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAaZOjtY4sZ2h395lRiwlMtlyiLKbu16Z-X0dK0iJlZP0WKBMJhoLC96shtw_aem_rGUK0m80ukCQyjxE442e2g&e=AT0oY0WBqQJrYy5Df-U7z0HJN-It9Bn9KPKfk0lZaEpTkugU5L8K_nuDJHRgxTQ6QqV5P6UIvUFVyp81cM_WuKY0Bv-tAW764KO4kKeJrT9PQGUnnZa7xA',
+        website: 'https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fmlqryo%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAaZOjtY4sZ2h395lRiwlMtlyiLKbu16Z-X0dK0iJlZP0WKBMJhoLC96shtw_aem_rGUK0m80ukCQyjxE442e2g&e=AT0oY0WBqQJrYy5Df-U7z0HJN-It9Bn9KPKfk0lZaEpTkugU5L8K_nuDJHRgxTQ6QqV5P6UIvUFVyp81cM_WuKY0Bv-tAW764KO4kKeJrT9PQGUnnZa7xA',
         img: 'sunset_wines.png',
+        route: '/eventos/sunset_hallowine'
     },
     {
         name: 'Sunset Wines: Temporada 24/25',
         description: 'Open 19:00 hs/Dj Simón Pendola.',
-        link: 'https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fmlqryo%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAaZOjtY4sZ2h395lRiwlMtlyiLKbu16Z-X0dK0iJlZP0WKBMJhoLC96shtw_aem_rGUK0m80ukCQyjxE442e2g&e=AT0oY0WBqQJrYy5Df-U7z0HJN-It9Bn9KPKfk0lZaEpTkugU5L8K_nuDJHRgxTQ6QqV5P6UIvUFVyp81cM_WuKY0Bv-tAW764KO4kKeJrT9PQGUnnZa7xA',
         img: 'sunset.png',
+        website: 'https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fmlqryo%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAaZOjtY4sZ2h395lRiwlMtlyiLKbu16Z-X0dK0iJlZP0WKBMJhoLC96shtw_aem_rGUK0m80ukCQyjxE442e2g&e=AT0oY0WBqQJrYy5Df-U7z0HJN-It9Bn9KPKfk0lZaEpTkugU5L8K_nuDJHRgxTQ6QqV5P6UIvUFVyp81cM_WuKY0Bv-tAW764KO4kKeJrT9PQGUnnZa7xA',
+        rote: '/eventos/sunset_wines'
     },
     {
         name: 'Sunset Wines: Verano 2024',
         description: 'Sábado 20-Open 19:00 hs/Dj Simón Pendola.',
-        link: 'https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fmlqryo%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAaZOjtY4sZ2h395lRiwlMtlyiLKbu16Z-X0dK0iJlZP0WKBMJhoLC96shtw_aem_rGUK0m80ukCQyjxE442e2g&e=AT0oY0WBqQJrYy5Df-U7z0HJN-It9Bn9KPKfk0lZaEpTkugU5L8K_nuDJHRgxTQ6QqV5P6UIvUFVyp81cM_WuKY0Bv-tAW764KO4kKeJrT9PQGUnnZa7xA',
+        website: 'https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fmlqryo%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAaZOjtY4sZ2h395lRiwlMtlyiLKbu16Z-X0dK0iJlZP0WKBMJhoLC96shtw_aem_rGUK0m80ukCQyjxE442e2g&e=AT0oY0WBqQJrYy5Df-U7z0HJN-It9Bn9KPKfk0lZaEpTkugU5L8K_nuDJHRgxTQ6QqV5P6UIvUFVyp81cM_WuKY0Bv-tAW764KO4kKeJrT9PQGUnnZa7xA',
         img: 'sunset_verano.png',
+        route: '/eventos/sunset_verano'
     },
 ];
 

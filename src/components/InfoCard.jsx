@@ -6,10 +6,6 @@ import { useNavigate } from "react-router-dom";
 const InfoCard = ({ data }) => {
     const navigate = useNavigate();
 
-    if (!data) {
-        return <Typography variant="h6">Información no disponible</Typography>;
-    }
-
     const handleReserveClick = () => {
         console.log("Data:", data); // Muestra la data en la consola
         if (data.website) {
@@ -25,7 +21,18 @@ const InfoCard = ({ data }) => {
     };
 
     return (
-        <Card sx={{ maxWidth: 600, margin: 'auto', mt: 5 }}>
+        <Card sx={{ 
+            backgroundColor: '#c0c0c0', // Color de fondo suave para la tarjeta
+            border: '1px solid #e0e0e0', // Borde sutil
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Sombra normal
+            marginTop: '120px', // Espacio de separación superior
+            '&:hover': { 
+                boxShadow: '0 8px 20px rgba(0,0,0,0.2)', 
+                transform: 'scale(1.05)', 
+                transition: 'transform 0.3s ease-in-out' 
+            } 
+        }}        
+    >
             <CardMedia
                 component="img"
                 height="300"
