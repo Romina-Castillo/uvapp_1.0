@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'; // Importa Framer Motion
 import './OfertaEdu.css';
 import CardComponent from "../components/CardComponent"; // Importa CardComponent
 
-const programs = [
+export const programs = [
     {
         title: 'Tecnicatura en Enología e Industrias del Alimento',
         description: 'Instituto Educación Superior 9-023 Maipú.',

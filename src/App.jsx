@@ -12,7 +12,6 @@ import Contact from "./views/Contact";
 import Industrias from "./views/Industrias";
 import Reservas from "./views/Reservas";
 import FormReservas from "./views/FormReservas";
-import Usuario from "./views/usuario";
 import About from "./About";
 import Transicciones from './Transicciones';
 import Usuario_reservas from './views/usuario_reservas';
@@ -60,14 +59,12 @@ export default function App() {
           <Route path="/eventos" element={<Transicciones><Eventos /></Transicciones>} />
           <Route path="/Contact" element={<Transicciones><Contact /></Transicciones>} />
           <Route path="/reservas" element={<Transicciones><Reservas /></Transicciones>} />
-          <Route path="/Usuario" element={<Transicciones><Usuario /></Transicciones>} />
           <Route path="/formReservas" element={<Transicciones><FormReservas /></Transicciones>} />
           <Route path="/About" element={<Transicciones><About /></Transicciones>} />
           <Route path="/Usuario_reservas" element={<Transicciones><Usuario_reservas /></Transicciones>} />
           <Route path="/bodega/:name" element={<EntityPage entityType="bodega" />} />
           <Route path="/industrias/:name" element={<EntityPage entityType="industria" />} />
           <Route path="/eventos/:name" element={<EntityPage entityType="evento" />} />
-          {/* <Route path="/eventos/:name" element={<EntityPage />} /> */}
         </Routes>
       </Container>
       <Footer />

@@ -193,7 +193,7 @@ const Reservar = () => {
 
             if (response.ok) {
                 console.log("Reserva realizada:", result);
-                navigate("/usuarios_reservas");
+                navigate("/usuario_reservas");
             } else {
                 console.error("Error al realizar la reserva:", result);
                 alert(`Error: ${result.message}`); // Mostrar mensaje de error

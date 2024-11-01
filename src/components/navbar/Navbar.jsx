@@ -180,7 +180,6 @@ export default function Navbar({ navArrayLinks }) {
                         {isLoggedIn ? (
                             <>
                                 <MenuItem onClick={() => navigate("/usuario_reservas")}>Mis reservas</MenuItem>
-                                <MenuItem onClick={() => navigate("/usuario")}>Gestionar cuenta</MenuItem>
                                 <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
                             </>
                         ) : (
