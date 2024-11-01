@@ -179,6 +179,7 @@ export default function Navbar({ navArrayLinks }) {
                     <Menu anchorEl={userAnchorEl} open={Boolean(userAnchorEl)} onClose={handleCloseUserMenu}>
                         {isLoggedIn ? (
                             <>
+                                <MenuItem onClick={() => navigate("/UsuarioGestion")}>Gestionar cuenta</MenuItem>
                                 <MenuItem onClick={() => navigate("/usuario_reservas")}>Mis reservas</MenuItem>
                                 <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
                             </>

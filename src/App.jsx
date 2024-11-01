@@ -12,6 +12,7 @@ import Contact from "./views/Contact";
 import Industrias from "./views/Industrias";
 import Reservas from "./views/Reservas";
 import FormReservas from "./views/FormReservas";
+import UsuarioGestion from './views/UsuarioGestion';
 import About from "./About";
 import Transicciones from './Transicciones';
 import Usuario_reservas from './views/usuario_reservas';
@@ -40,6 +41,10 @@ const navArrayLinks = [
   {
     title: "Eventos",
     path: "/Eventos"
+  },
+  {
+    title: "Sobre Nosotros",
+    path: "/about"
   }
 ];
 
@@ -59,6 +64,7 @@ export default function App() {
           <Route path="/eventos" element={<Transicciones><Eventos /></Transicciones>} />
           <Route path="/Contact" element={<Transicciones><Contact /></Transicciones>} />
           <Route path="/reservas" element={<Transicciones><Reservas /></Transicciones>} />
+          <Route path="/UsuarioGestion" element={<Transicciones><UsuarioGestion /></Transicciones>} />
           <Route path="/formReservas" element={<Transicciones><FormReservas /></Transicciones>} />
           <Route path="/About" element={<Transicciones><About /></Transicciones>} />
           <Route path="/Usuario_reservas" element={<Transicciones><Usuario_reservas /></Transicciones>} />

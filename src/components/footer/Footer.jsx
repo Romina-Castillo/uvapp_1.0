@@ -21,15 +21,14 @@ export default function Footer() {
             </Typography>
 
             <Box sx={{ mt: 2 }}>
-                <Link href="/about" color="inherit" sx={{ mx: 2 }}>
+                <Link href="/about" color="inherit" sx={{ mx: 2, textDecoration: 'none' }}>
                     Sobre nosotros
                 </Link>
 
-                <Link href="/contact" color="inherit" sx={{ mx: 2 }}>
+                <Link href="/contact" color="inherit" sx={{ mx: 2, textDecoration: 'none' }}>
                     Contáctanos
                 </Link>
             </Box>
         </Box>
     );
 }
-
