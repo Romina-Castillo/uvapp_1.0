@@ -1,12 +1,12 @@
 const mysql = require('mysql2');
+require('dotenv').config(); // Cargar variables de entorno
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root', // tu usuario de MySQL
-    password: '43544580', // cambiar nuevamente a tu contraseña de MySQL
-    database: 'uvapp',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 });
-
 
 db.connect((err) => {
     if (err) {
@@ -16,7 +16,7 @@ db.connect((err) => {
     console.log('Connected to MySQL database');
 });
 
-
 module.exports = db;
+
 
 
