@@ -43,3 +43,16 @@ npm install jsonwebtoken
 
 lo instale pero todavia no lo implemente, es para el tema de verificaciones
 
+NOVIEMBRE
+en cd back 
+
+dotenv!
+npm install dotenv
+
+crea el archivo   .env    en back
+
+mapas!
+npm install @react-google-maps/api
+
+cualquier cosa pone cd back, despues npm install y de ahi recien npm run dev
+y en el front primero npm install y recien el npm run dev
