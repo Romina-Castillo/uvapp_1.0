@@ -1,18 +1,47 @@
 // vista detalle de cada bodega, eventos, etc.
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { useJsApiLoader } from '@react-google-maps/api';
 import { useNavigate } from "react-router-dom";
+
+// Define libraries outside the component to avoid reloading issues
+const libraries = ["marker"];
 
 const InfoCard = ({ data }) => {
     const navigate = useNavigate();
-    
-    // Cargar la API de Google Maps
-    const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    });
+    const mapRef = useRef(null); // Ref for the Google Map container
+    const markerRef = useRef(null); // Ref for the Advanced Marker
 
+    // Load the Google Maps API
+    const { isLoaded, loadError } = useJsApiLoader({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+        id: "DEMO_MAP_ID",
+        libraries,  // Use the constant libraries array
+    });
+    
+    // Initialize the AdvancedMarkerElement when the map loads
+    useEffect(() => {
+        if (isLoaded && mapRef.current) {
+            const map = new google.maps.Map(mapRef.current, {
+                zoom: 15,
+                center: data.location,
+                mapId: "DEMO_MAP_ID",
+            });
+    
+            // Check if AdvancedMarkerElement is available before using it
+            if (google?.maps?.marker?.AdvancedMarkerElement) {
+                markerRef.current = new google.maps.marker.AdvancedMarkerElement({
+                    map,
+                    position: data.location,
+                    title: data.name,
+                });
+            } else {
+                console.warn("AdvancedMarkerElement no está disponible. Verifica si la API está correctamente configurada.");
+            }
+        }
+    }, [isLoaded, data.location, data.name]);
+    
     const handleReserveClick = () => {
         if (data.website) {
             window.open(data.website, "_blank");
@@ -22,6 +51,11 @@ const InfoCard = ({ data }) => {
             console.error("No hay información disponible para redirigir.");
         }
     };
+
+    if (loadError) {
+        console.error("Error cargando Google Maps: ", loadError);
+        return <p>Error cargando mapa</p>;
+    }
 
     return (
         <Card sx={{
@@ -49,15 +83,12 @@ const InfoCard = ({ data }) => {
                     {data.description}
                 </Typography>
                 {isLoaded ? (
-                    <GoogleMap
-                        mapContainerStyle={{ width: '100%', height: '200px', marginTop: '20px' }}
-                        center={data.location}
-                        zoom={15}
-                    >
-                        <Marker position={data.location} />
-                    </GoogleMap>
+                    <div
+                        ref={mapRef}
+                        style={{ width: '100%', height: '200px', marginTop: '20px' }}
+                    />
                 ) : (
-                    <p>Cargando el mapa...</p>
+                    <p>Cargando mapa...</p>
                 )}
                 <Button
                     variant="contained"

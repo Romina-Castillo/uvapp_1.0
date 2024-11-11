@@ -92,40 +92,45 @@ const OfertaEdu = () => {
                     </Grid>
                 ))}
             </Grid>
-            
+
             <Box
                 sx={{
                     position: 'fixed',
-                    bottom: 0,
-                    right: 0,  
+                    bottom: 20,
+                    right: 20,
                     zIndex: 10,
                 }}
             >
-                <motion.div 
-                    whileHover={{ scale: 1.1 }} 
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
                 >
                     <Button
                         variant="contained"
-                        color="primary"
                         onClick={handleOpenJuego}
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            borderRadius: '20px',
+                            borderRadius: '200px',
                             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-                            paddingX: 3,
-                            paddingY: 1.5
+                            paddingX: 4,
+                            paddingY: 2,
+                            backgroundColor: 'rgba(145, 65, 76)', // Color burdo para el botón
+                            fontSize: '0.9rem', // Aumenta el tamaño de la fuente
+                            color: 'white', // Texto en blanco
+                            '&:hover': {
+                                backgroundColor: '#a0002f', // Un burdeos un poco más claro al hacer hover
+                            },
                         }}
                     >
-                        <SportsEsportsIcon sx={{ mr: 1 }} />
-                        {hovered && "¿Quieres jugar?"}
+                        <SportsEsportsIcon sx={{ mr: 1, color: 'white' }} /> {/* Icono en blanco */}
+                        {hovered && "¿Quieres jugar?"} {/* Texto en blanco */}
                     </Button>
                 </motion.div>
             </Box>
-            
+
             <Juego open={openJuego} onClose={handleCloseJuego} />
         </>
     );
