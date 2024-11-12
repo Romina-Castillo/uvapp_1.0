@@ -16,9 +16,9 @@ const EntityPage = ({ entityType }) => {
     };
 
     // Busca la entidad que coincide con el nombre en la URL
-const data = dataMap[entityType]?.find(
-    item => item.route?.split('/').pop().toLowerCase() === name.toLowerCase()
-);
+    const data = dataMap[entityType]?.find(
+        item => item.name.toLowerCase() === name.toLowerCase()
+    );    
 
     return (
         <InfoCard data={data} />

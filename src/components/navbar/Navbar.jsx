@@ -81,13 +81,14 @@ export default function Navbar({ navArrayLinks }) {
             programa.name && programa.name.toLowerCase().includes(searchQuery.toLowerCase()) 
         );
     
-        // Combina todos los resultados filtrados
+        // Combina todos los resultados buscados
         const combinedResults = [
-            ...filteredBodegas.map(bodega => ({ ...bodega, route: `/bodegas/${bodega.id}` })), // Asegúrate de que cada bodega tenga un 'id'
-            ...filteredEventos.map(evento => ({ ...evento, route: `/eventos/${evento.id}` })),
-            ...filteredIndustrias.map(industria => ({ ...industria, route: `/industrias/${industria.id}` })),
-            ...filteredProgramas.map(programa => ({ ...programa, route: `/programas/${programa.id}` })),
+            ...filteredBodegas.map(bodega => ({ ...bodega, route: `/bodega/${bodega.name}` })), 
+            ...filteredEventos.map(evento => ({ ...evento, route: `/eventos/${evento.name}` })),
+            ...filteredIndustrias.map(industria => ({ ...industria, route: `/industrias/${industria.name}` })),
+            ...filteredProgramas.map(programa => ({ ...programa, route: `/programas/${programa.name}` })),
         ];
+        
     
         setFilteredResults(combinedResults);
         setShowResults(combinedResults.length > 0);
@@ -204,7 +205,7 @@ export default function Navbar({ navArrayLinks }) {
                         position: "absolute",
                         top: `${searchBoxPosition.bottom + 20}px`,
                         left: `${searchBoxPosition.left}px`,
-                        width: `580px`,
+                        width: `600px`,
                         backgroundColor: "white",
                         zIndex: 1000,
                         border: "1px solid rgba(0, 0, 0, 0.12)",
