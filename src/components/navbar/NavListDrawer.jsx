@@ -1,7 +1,5 @@
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 
-
-
 export default function NavListDrawer({ navArrayLinks, NavLink, setOpen }) {
     return (
         <Box
@@ -17,7 +15,7 @@ export default function NavListDrawer({ navArrayLinks, NavLink, setOpen }) {
             }}
         >
             {/* Logo */}
-            <img src="image_copa.png" alt="UVAPP Logo" style={{ width: '130px', marginBottom: '10px' }} />
+            <img src="image_uvapp.png" alt="UVAPP Logo" style={{ height: '80px', marginBottom: '10px' }} />
             
             <nav>
                 <List>
