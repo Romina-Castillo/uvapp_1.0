@@ -6,6 +6,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NavListDrawer from "./NavListDrawer";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MenuIcon from '@mui/icons-material/Menu';
 
 // Importa los datos de bodegas, eventos, industrias y programas
@@ -129,10 +130,16 @@ export default function Navbar({ navArrayLinks }) {
         <>
             <AppBar position="fixed">
                 <Toolbar>
+                    {/* Botón para retroceder */}
+                    <IconButton color="inherit" onClick={() => navigate(-1)} edge="start">
+                        <ArrowBackIcon />
+                    </IconButton>
+
                     <IconButton color="inherit" size="large" onClick={() => setOpen(true)} edge="start">
                         <MenuIcon />
                     </IconButton>
 
+                    {/* Resto del código del AppBar */}
                     <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }} ref={searchBoxRef}>
                         <SearchIcon />
                         <InputBase

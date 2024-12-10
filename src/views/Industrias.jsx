@@ -8,7 +8,8 @@ export const industriasData = [
         name: "AVA S.A.",
         description: "Una descripción breve de la Conservera AVA.",
         img: "/img/ava.png",
-        route: "/industrias/ava"
+        route: "/industrias/AVA%20S.A.",
+        location: { lat:-33.200561, lng: -68.896118},
     },
 ];
 
