@@ -1,4 +1,4 @@
-import { Box, Button, TextField, CircularProgress } from "@mui/material"; // Asegúrate de importar CircularProgress
+import { Box, Button, TextField, CircularProgress } from "@mui/material"; 
 import { useState } from "react";
 import './Login.css'; 
 import { useNavigate } from "react-router-dom";

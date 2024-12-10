@@ -52,7 +52,10 @@ npm install dotenv
 crea el archivo   .env    en back
 
 mapas!
-npm install @react-google-maps/api
+https://react-leaflet.js.org/docs/start-introduction/ -> documentacion
+
+npm install leaflet react-leaflet           //instala leaflet y leaflet para react
+npm install leaflet@latest                  // estilos de leaflet
 
 cualquier cosa pone cd back, despues npm install y de ahi recien npm run dev
 y en el front primero npm install y recien el npm run dev

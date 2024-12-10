@@ -1,47 +1,26 @@
 // vista detalle de cada bodega, eventos, etc.
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
-import { useJsApiLoader } from '@react-google-maps/api';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css'; 
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import L from 'leaflet';
 import { useNavigate } from "react-router-dom";
 
-// Define libraries outside the component to avoid reloading issues
-const libraries = ["marker"];
+// Corregir el problema de los íconos predeterminados de Leaflet
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: markerIcon2x,
+    iconUrl: markerIcon,
+    shadowUrl: markerShadow,
+});
 
 const InfoCard = ({ data }) => {
     const navigate = useNavigate();
-    const mapRef = useRef(null); // Ref for the Google Map container
-    const markerRef = useRef(null); // Ref for the Advanced Marker
 
-    // Load the Google Maps API
-    const { isLoaded, loadError } = useJsApiLoader({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-        id: "DEMO_MAP_ID",
-        libraries,  // Use the constant libraries array
-    });
-    
-    // Initialize the AdvancedMarkerElement when the map loads
-    useEffect(() => {
-        if (isLoaded && mapRef.current) {
-            const map = new google.maps.Map(mapRef.current, {
-                zoom: 15,
-                center: data.location,
-                mapId: "DEMO_MAP_ID",
-            });
-    
-            // Check if AdvancedMarkerElement is available before using it
-            if (google?.maps?.marker?.AdvancedMarkerElement) {
-                markerRef.current = new google.maps.marker.AdvancedMarkerElement({
-                    map,
-                    position: data.location,
-                    title: data.name,
-                });
-            } else {
-                console.warn("AdvancedMarkerElement no está disponible. Verifica si la API está correctamente configurada.");
-            }
-        }
-    }, [isLoaded, data.location, data.name]);
-    
     const handleReserveClick = () => {
         if (data.website) {
             window.open(data.website, "_blank");
@@ -51,11 +30,6 @@ const InfoCard = ({ data }) => {
             console.error("No hay información disponible para redirigir.");
         }
     };
-
-    if (loadError) {
-        console.error("Error cargando Google Maps: ", loadError);
-        return <p>Error cargando mapa</p>;
-    }
 
     return (
         <Card sx={{
@@ -82,14 +56,19 @@ const InfoCard = ({ data }) => {
                 <Typography variant="body1" color="text.secondary" sx={{ mt: 2 }}>
                     {data.description}
                 </Typography>
-                {isLoaded ? (
-                    <div
-                        ref={mapRef}
-                        style={{ width: '100%', height: '200px', marginTop: '20px' }}
+                <MapContainer
+                    center={data.location}
+                    zoom={15}
+                    style={{ width: '100%', height: '200px', marginTop: '20px' }}
+                >
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     />
-                ) : (
-                    <p>Cargando mapa...</p>
-                )}
+                    <Marker position={data.location}>
+                        <Popup>{data.name}</Popup>
+                    </Marker>
+                </MapContainer>
                 <Button
                     variant="contained"
                     color="primary"
