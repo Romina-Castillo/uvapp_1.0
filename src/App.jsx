@@ -1,58 +1,52 @@
+import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
+import Spinner from "./components/Spinner"; // Spinner
+import Footer from "./components/footer/Footer";
 import Home from "./views/Home";
 import Login from "./Login";
 import Register from "./Register";
-import { Route, Routes } from "react-router-dom";
 import Bodegas from "./views/Bodegas";
 import OfertaEdu from "./views/OfertaEdu";
 import Eventos from "./views/Eventos";
-import Footer from "./components/footer/Footer";
 import Contact from "./views/Contact";
 import Industrias from "./views/Industrias";
 import Reservas from "./views/Reservas";
 import FormReservas from "./views/FormReservas";
-import UsuarioGestion from './views/UsuarioGestion';
+import UsuarioGestion from "./views/UsuarioGestion";
 import About from "./About";
-import Transicciones from './Transicciones';
-import Usuario_reservas from './views/usuario_reservas';
-import ScrollToTop from './ScrollToTop'; // Importa el componente
-import EntityPage from './routes/EntityPage';
-import './App.css';
+import Transicciones from "./Transicciones";
+import Usuario_reservas from "./views/usuario_reservas";
+import ScrollToTop from "./ScrollToTop";
+import EntityPage from "./routes/EntityPage";
+import "./App.css";
 
-// en esta const solo poner lo que queremos que aparezca en la parte superior, en la navbar
 const navArrayLinks = [
-  {
-    title: "Home",
-    path: "/",
-  },
-  {
-    title: "Bodegas",
-    path: "/bodegas"
-  },
-  {
-    title: "Industrias",
-    path: "/industrias"
-  },
-  {
-    title: "Oferta Educativa",
-    path: "/OfertaEdu"
-  },
-  {
-    title: "Eventos",
-    path: "/Eventos"
-  },
-  {
-    title: "Sobre Nosotros",
-    path: "/about"
-  }
+  { title: "Home", path: "/" },
+  { title: "Bodegas", path: "/bodegas" },
+  { title: "Industrias", path: "/industrias" },
+  { title: "Oferta Educativa", path: "/OfertaEdu" },
+  { title: "Eventos", path: "/Eventos" },
+  { title: "Sobre Nosotros", path: "/about" },
 ];
 
 export default function App() {
+  const [loading, setLoading] = useState(false); // Estado del spinner
+  const location = useLocation(); // Detecta cambios de ruta
+
+  useEffect(() => {
+    // Mostrar el spinner al cambiar de ruta
+    setLoading(true);
+    const timer = setTimeout(() => setLoading(false), 1000); // Simula un retraso
+    return () => clearTimeout(timer); // Limpia el temporizador
+  }, [location]);
+
   return (
     <>
+      {loading && <Spinner />} {/* Mostrar spinner mientras carga */}
       <Navbar navArrayLinks={navArrayLinks} />
-      <ScrollToTop /> {/* Añade el componente aquí */}
+      <ScrollToTop />
       <Container sx={{ mt: 5 }}>
         <Routes>
           <Route path="/" element={<Transicciones><Home /></Transicciones>} />
