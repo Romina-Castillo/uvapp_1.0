@@ -62,3 +62,7 @@ y en el front primero npm install y recien el npm run dev
 
 función de cargar: spinner!
 npm install @mui/material @emotion/react @emotion/styled
+FEBRERO
+Instalación Vitest: npm install --save-dev vitest @vitest/ui
+Instalación de React Testing Library: npm install --save-dev @testing-library/react @testing-library/jest-dom
+
