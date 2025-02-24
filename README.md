@@ -59,3 +59,6 @@ npm install leaflet@latest                  // estilos de leaflet
 
 cualquier cosa pone cd back, despues npm install y de ahi recien npm run dev
 y en el front primero npm install y recien el npm run dev
+
+función de cargar: spinner!
+npm install @mui/material @emotion/react @emotion/styled

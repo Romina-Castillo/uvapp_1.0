@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import Spinner from "./components/Spinner"; // Spinner
+import Spinner from "./components/spinner"; // Spinner
 import Footer from "./components/footer/Footer";
 import Home from "./views/Home";
 import Login from "./Login";
@@ -16,7 +16,7 @@ import Reservas from "./views/Reservas";
 import FormReservas from "./views/FormReservas";
 import UsuarioGestion from "./views/UsuarioGestion";
 import About from "./About";
-import Transicciones from "./Transicciones";
+import Transicciones from "./transicciones";
 import Usuario_reservas from "./views/usuario_reservas";
 import ScrollToTop from "./ScrollToTop";
 import EntityPage from "./routes/EntityPage";

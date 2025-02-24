@@ -108,19 +108,18 @@ export default function HomePage() {
     return (
         <Background>
             <Container maxWidth="lg" sx={{ position: "relative" }}>
-                {/* Logo completo en lugar de la animación del texto */}
+               
                 <HeaderBox>
                     <motion.img
-                        src="image_uvapp.png" // Ruta de tu logo completo
+                        src="image_uvapp.png" 
                         alt="UVAPP Logo"
-                        style={{ height: '150px', width: 'auto', marginBottom: '20px' }} // Ajusta el tamaño según sea necesario
+                        style={{ height: '150px', width: 'auto', marginBottom: '20px' }} 
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 2, ease: "easeInOut" }}
                     />
                 </HeaderBox>
 
-                {/* TrendBox animado con efecto de entrada */}
                 <TrendBox
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
