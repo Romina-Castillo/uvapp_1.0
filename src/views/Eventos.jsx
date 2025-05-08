@@ -9,21 +9,25 @@ export const eventosData = [
         description: 'Sábado 26 - Open 19:00 hs/Dj Simón Pendola.',
         website: 'https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fmlqryo%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAaZOjtY4sZ2h395lRiwlMtlyiLKbu16Z-X0dK0iJlZP0WKBMJhoLC96shtw_aem_rGUK0m80ukCQyjxE442e2g&e=AT0oY0WBqQJrYy5Df-U7z0HJN-It9Bn9KPKfk0lZaEpTkugU5L8K_nuDJHRgxTQ6QqV5P6UIvUFVyp81cM_WuKY0Bv-tAW764KO4kKeJrT9PQGUnnZa7xA',
         img: 'sunset_wines.png',
-        route: '/eventos/Sunset%20Wines:%20Especial%20HalloWine'
+        route: '/eventos/Sunset%20Wines:%20Especial%20HalloWine',
+        location: { lat:-33.0198122, lng:-68.8299186 },
     },
     {
         name: 'Sunset Wines: Temporada 24/25',
         description: 'Open 19:00 hs/Dj Simón Pendola.',
         img: 'sunset.png',
         website: 'https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fmlqryo%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAaZOjtY4sZ2h395lRiwlMtlyiLKbu16Z-X0dK0iJlZP0WKBMJhoLC96shtw_aem_rGUK0m80ukCQyjxE442e2g&e=AT0oY0WBqQJrYy5Df-U7z0HJN-It9Bn9KPKfk0lZaEpTkugU5L8K_nuDJHRgxTQ6QqV5P6UIvUFVyp81cM_WuKY0Bv-tAW764KO4kKeJrT9PQGUnnZa7xA',
-        rote: '/eventos/sSunset%20Wines:%20Temporada%2024/25'
+        rote: '/eventos/sSunset%20Wines:%20Temporada%2024/25',
+        location: { lat:-33.0198122, lng:-68.8299186 },
     },
     {
         name: 'Sunset Wines: Verano 2024',
         description: 'Sábado 20-Open 19:00 hs/Dj Simón Pendola.',
         website: 'https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fmlqryo%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAaZOjtY4sZ2h395lRiwlMtlyiLKbu16Z-X0dK0iJlZP0WKBMJhoLC96shtw_aem_rGUK0m80ukCQyjxE442e2g&e=AT0oY0WBqQJrYy5Df-U7z0HJN-It9Bn9KPKfk0lZaEpTkugU5L8K_nuDJHRgxTQ6QqV5P6UIvUFVyp81cM_WuKY0Bv-tAW764KO4kKeJrT9PQGUnnZa7xA',
         img: 'sunset_verano.png',
-        route: '/eventos/sSunset%20Wines:%20Verano%202024'
+        route: '/eventos/sSunset%20Wines:%20Verano%202024',
+        location: { lat:-33.0198122, lng:-68.8299186 },
+    
     },
 ];
 

@@ -11,7 +11,7 @@ const HistoriaEmpresa = () => {
         <div className="historia-texto">
           <h2>Sobre nosotros</h2>
           <p>
-          Nuestra aplicación, creada por dos alumnas de la carrera de Tecnicatura en Desarrollo de Software, se dedica a educar y difundir el conocimiento sobre el mundo del vino en Mendoza, promoviendo la inclusión, el turismo y la apreciación de la cultura vitivinícola de la región. A través de contenido de calidad y experiencias únicas, buscamos conectar a turistas y residentes con la riqueza cultural de la industria del vino.
+          Somos dos alumnas de la Tecnicatura en Desarrollo de Software que creamos esta aplicación con el objetivo de educar y difundir el conocimiento sobre el mundo del vino en Mendoza. Nuestra propuesta busca promover la inclusión, el turismo y la apreciación de la cultura vitivinícola de la región. A través de contenido de calidad y experiencias auténticas, conectamos a turistas y residentes con la riqueza cultural de la industria del vino y otras actividades locales que hacen única a nuestra provincia.
           </p>
         </div>
         <div className="historia-texto">
@@ -23,7 +23,7 @@ const HistoriaEmpresa = () => {
         <div className="historia-texto">
           <h2>Nuestra aplicación</h2>
           <p>
-          Nuestra aplicación está diseñada con un enfoque en la orientación, educación e inclusión, facilitando la generación de reservas para experiencias únicas. Guiamos a turistas y personas interesadas en explorar Mendoza y realizar visitas a bodegas, mientras ampliamos nuestro alcance a aquellos que desean aprender sobre la cultura del vino y otras industrias locales. También ofrecemos opciones como el "vino sin alcohol", permitiendo la participación de embarazadas, menores de edad y madres lactantes.
+          Nuestra aplicación está diseñada con un enfoque en la orientación, educación e inclusión, facilitando la generación de reservas para experiencias únicas. Guiamos a turistas y personas interesadas en explorar Mendoza y realizar visitas a bodegas, mientras ampliamos nuestro alcance a aquellos que desean aprender sobre la cultura del vino y otras industrias locales. Promovemos la participación de embarazadas, menores de edad y madres lactantes a través de propuestas inclusivas y adaptadas a sus necesidades.
           </p>
         </div>
       </section>
