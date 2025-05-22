@@ -6,7 +6,7 @@ import CardComponent from "../components/CardComponent"; // Importa CardComponen
 export const bodegasData = [
     {
         name: "Bodega Andeluna",
-        description: "Una descripción breve de la Andeluna.",
+        description: "Bodega Andeluna, ubicada en Gualtallary, Valle de Uco, Mendoza, elabora vinos de alta gama aprovechando la altitud y el terroir único de la región. Fundada en 2003, combina tradición e innovación y ofrece experiencias enoturísticas con vistas a los Andes.",
         img: "/img/bodega-andeluna.jpg",
         website: "https://wineobs.com.ar/mro/andeluna",
         route: "/bodega/Bodega%20Andeluna",                      // en route ponemos la ruta del buscador definido en app js bodega/:name
@@ -14,7 +14,7 @@ export const bodegasData = [
     },
     {
         name: "Bodega Séptima",
-        description: "Una descripción breve de la Bodega Séptima.",
+        description: "Bodega Séptima, ubicada en Luján de Cuyo, Mendoza, es la filial argentina del Grupo Codorníu. Destaca por su arquitectura en piedra, sus vinos elegantes y su enfoque en la sustentabilidad. Ofrece experiencias turísticas con gastronomía y vistas a la cordillera.",
         img: "/img/bodega-septima.jpg",
         website: "https://www.bodegaseptima.com/enoturismo/",
         route: "/bodega/Bodega%20septima",
@@ -22,7 +22,7 @@ export const bodegasData = [
     },
     {
         name: "Bodega Salentein",
-        description: "Una descripción breve de la Bodega Salentein.",
+        description: "Bodega Salentein, ubicada en el Valle de Uco, Mendoza, es reconocida por su arquitectura única y su bodega subterránea. Fundada en 1996, produce vinos de alta calidad como Malbec y Chardonnay, y ofrece experiencias enoturísticas con arte y alojamiento.",
         img: "/img/bodega-salentein.jpg",
         website: "https://www.bodegasalentein.com/reservas",
         route: "/bodega/Bodega%20salentein",
@@ -30,7 +30,7 @@ export const bodegasData = [
     },
     {
         name: "Bodega Trapiche",
-        description: "Una descripción breve de la Bodega Trapiche.",
+        description: "Bodega Trapiche, fundada en 1883 en Mendoza, es una de las bodegas más reconocidas de Argentina. Destaca por su innovación, viñedos propios y una amplia variedad de vinos de alta calidad. Además, ofrece experiencias enoturísticas premiadas internacionalmente.",
         img: "/img/bodega-trapiche.jpeg",
         website: "https://trapiche-costaypampa.meitre.com/",
         route: "/bodega/Bodega%20trapiche",
@@ -38,7 +38,7 @@ export const bodegasData = [
     },
     {
         name: "Bodega Achaval",
-        description: "Una descripción breve la Bodega Achaval Ferrer.",
+        description: "Bodega Achaval Ferrer, fundada en 1998 en Luján de Cuyo, Mendoza, es reconocida por sus vinos de alta calidad elaborados con viñedos antiguos y un fuerte respeto por el terroir.",
         img: "/img/bodega-achaval.jpg",
         website: "https://meitre.com/es/quimera-achaval",
         route: "/bodega/Bodega%20achaval",
@@ -46,7 +46,7 @@ export const bodegasData = [
     },
     {
         name: "Bodega Lopez",
-        description: "Una descripción breve de la Bodega Lopez.",
+        description: "Bodega López, fundada en 1898 en Maipú, Mendoza, es una bodega familiar emblemática que produce vinos clásicos de alta calidad y ofrece visitas guiadas y degustaciones.",
         img: "/img/bodega-lopez.jpg",
         website: "https://experiencias.bodegaslopez.com.ar/",
         route: "/bodega/Bodega%20lopez",

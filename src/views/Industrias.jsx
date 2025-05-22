@@ -6,7 +6,7 @@ import CardComponent from "../components/CardComponent"; // Importa CardComponen
 export const industriasData = [
     {
         name: "AVA S.A.",
-        description: "Una descripción breve de la Conservera AVA.",
+        description: "AVA S.A., ubicada en Ugarteche, Mendoza, es una empresa líder en producción de conservas y pulpas de frutas, con alta capacidad de procesamiento y exportación a varios mercados internacionales.",
         img: "/img/ava.png",
         route: "/industrias/AVA%20S.A.",
         location: { lat:-33.200561, lng: -68.896118},

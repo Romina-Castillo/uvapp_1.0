@@ -23,7 +23,9 @@ const HistoriaEmpresa = () => {
         <div className="historia-texto">
           <h2>Nuestra aplicación</h2>
           <p>
-          Nuestra aplicación está diseñada con un enfoque en la orientación, educación e inclusión, facilitando la generación de reservas para experiencias únicas. Guiamos a turistas y personas interesadas en explorar Mendoza y realizar visitas a bodegas, mientras ampliamos nuestro alcance a aquellos que desean aprender sobre la cultura del vino y otras industrias locales. Promovemos la participación de embarazadas, menores de edad y madres lactantes a través de propuestas inclusivas y adaptadas a sus necesidades.
+          Nuestra aplicación está diseñada con un enfoque educativo, inclusivo y orientador, poniendo en el centro la cultura del vino. Facilitamos la reserva de experiencias únicas que no solo permiten recorrer bodegas y explorar Mendoza, sino también aprender sobre el mundo del vino y su importancia en la región. Nos dirigimos tanto a turistas como a personas interesadas en formarse en esta área, promoviendo el conocimiento y la valoración de las industrias locales.
+
+Además, fomentamos la participación de embarazadas, madres lactantes y menores de edad a través de propuestas especialmente adaptadas, como visitas sin degustación, para que todos puedan disfrutar y aprender sin restricciones.
           </p>
         </div>
       </section>

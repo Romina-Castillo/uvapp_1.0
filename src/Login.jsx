@@ -63,7 +63,7 @@ export default function Login() {
 
         if (response.ok) {
             localStorage.setItem("username", data.username);
-            navigate('/usuario_reservas');
+            navigate('/');
             window.location.reload();
         } else {
             setError((prevError) => ({
